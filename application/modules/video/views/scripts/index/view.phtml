@@ -1,0 +1,364 @@
+<?php echo sand_dev_info_phtml(__FILE__);?>
+<?php 
+    $row = $this->row;
+    $lu = Zend_Registry::get('user');
+    $related = isset($this->related) ? $this->related : array();
+    $newVideos = isset($this->newVideos) ? $this->newVideos : array();
+    $hotVideos = isset($this->hotVideos) ? $this->hotVideos : array();
+    $ori_video = isset($this->ori_video) ? $this->ori_video : array();
+    
+    $subscribe = isset($lu['subscribe']) ? $lu['subscribe'] : array();
+    $subscribed = false;
+    if(count($subscribe) > 0){
+    	foreach ($subscribe as $u){
+    		if($u['id'] == $row['u']['id']){
+    			$subscribed = true;
+    			break;
+    		}
+    	}
+    }
+    
+    $playList = isset($lu['playlist']) ? $lu['playlist'] : array();
+    $isFavourite = false;
+    if(count($playList) > 0){
+		foreach ($playList as $v){
+			if($v['id'] == $row['id']){
+				$isFavourite = true;
+				break;
+			}
+		}    	
+    }
+    
+    $subLink = "/user/subscribe?id={$row['u']['id']}";
+    $unsubLink = "/user/unsubscribe?id={$row['u']['id']}";
+?>
+<script>
+CL.nid = '<?php echo $row['id']?>';
+</script>
+
+<div class="inner-page">
+	<div class="searchbar">
+		<div class="search-left">
+			<?php echo $this->render('/widget/search-box.phtml');?>
+		</div>
+		<div class="search-right">
+			<p>Chi tiết video</p>
+		</div>
+		<div class="clear"> </div>
+	</div>
+	<div class="title margin-left">
+		<h3><?php echo $row['name'];?> </h3>
+		<ul>
+			<li><h4>Đăng bởi:</h4></li>
+			<li><a href="#" class='user-link'><?php echo $row['u']['name'];?></a></li>
+			<li>
+				<?php /*
+					<a href='javascript:void(0);'>				
+				*/?>
+				<a href='<?php if($subscribed) 
+							       echo $unsubLink; 
+							   else 
+							   	   echo $subLink;?>' 	
+			   	   	class='cl_ajax sublink'>			
+					<button type="button" 
+						class="vd-button vd-is-buffered vd-button-branded sub-button
+							<?php if($subscribed):?>vd-button-active<?php endif;?>">
+						<span class="button-icon-wrapper">
+							<img class="vd-button-icon" 
+							src="<?php echo ASSETS_CDN;?>/img/youtube-icon-small.png">
+						</span>
+						
+						<span class="vd-button-content">
+							<span aria-label="<?php if($subscribed):?>Đã đăng ký<?php else:?>
+										Chưa đăng ký<?php endif;?>" 
+								   class="subscribe-label sub-label">
+								<?php if($subscribed):?>Đã đăng ký<?php else:?>
+										Chưa đăng ký<?php endif;?>
+								</span>
+						</span>
+					</button>
+				</a>
+				<?php /*
+					<a href="#">
+						<img src="<?php echo ASSETS_CDN?>/img/sub.png" title="subscribe" />subscribe</a>
+				*/?>
+			</li>
+			<li style='float: right;'> 
+				<span class="pull-right"
+						title='Thêm vào playlist ưa thích'>
+					<a href="/video/add-playlist?id=<?php echo $row['id'];?>" class='cl_ajax'>				
+						<button type="button" 
+							class="vd-button vd-is-buffered vd-button-branded btn-favourite 
+								<?php if($isFavourite):?>vd-button-active<?php endif;?>">
+							<span class="button-icon-wrapper">
+								<img class="vd-button-icon" 
+								src="<?php echo ASSETS_CDN?>/img/favourites-8.png">
+							</span>
+							<span class="vd-button-content">
+								<span aria-label="Clip ưa thích" class="subscribe-label">
+								<?php if($isFavourite):?>Bỏ thích<?php else:?>Ưa thích<?php endif;?></span>
+							</span>		
+						</button>
+					</a>
+				</span>
+				
+				<span class="pull-right replay-video"
+						data-replay='0'
+						title='Luôn replay khi clip kết thúc'>
+					<a href='javascript:void(0);'>				
+						<button type="button" 
+							class="vd-button vd-is-buffered vd-button-branded btn-replay">
+							<span class="button-icon-wrapper">
+								<img class="vd-button-icon vd-button-icon" 
+								src="<?php echo ASSETS_CDN;?>/img/replay-icon-2.png">
+							</span>
+							<span class="vd-button-content">
+								<span aria-label="Replay" class="subscribe-label">
+								Replay</span>
+							</span>
+						</button>
+					</a>
+				</span>
+			</li>
+		</ul>
+	</div>
+	<div class="video-inner videoview margin-left" style='min-height: 440px;'>
+		<div id="player"></div>
+	</div>
+	<div class="viwes margin-left">
+		<div class="view-links">
+			<ul>
+				<li><h4>Chia sẻ:</h4></li>
+				<li>
+					<ul class="share-links">
+					         <div class="fb-like" 
+								data-href="<?echo SITE_URL;?><?php echo node_link('video',$row);?>"  
+		                        data-layout="button_count" 
+		                        data-action="like" 
+		                        data-show-faces="true" 
+		                        data-share="true">
+		                     </div>
+				    </ul>
+				</li>
+			</ul>
+			<?php /*
+			<ul class="comment1">
+				<li><a href="#">Bình luận(1)</a></li>
+				<li><a href="#"><img src="<?php echo ASSETS_CDN?>/img/re.png" title="report" /><span>Báo cáo</span></a></li>
+			</ul>
+			*/?>
+		</div>
+		<div class="views-count">
+			<?php $row['counter']['vyt'] = isset($row['counter']['vyt']) ? $row['counter']['vyt'] : 0;?>
+			<p><span title='Lượt xem được cập nhật từ trên trang youtube'><?php echo number_format($row['counter']['vyt']);?></span> Lượt xem</p>
+		</div>
+		<div class="clear"> </div>
+	</div>
+	<div class="clear"> </div>
+	<div class="video-details margin-left">
+		<ul>
+			<li><p>Được tải lên  <a href="#"><?php echo date('Y-m-d H:i:s', $row['ts']);?></a>
+				 bỏi <a href="#"><?php echo $row['u']['name'];?></a></p></li>
+			<li><span><?php //echo $row['content'];?></span></li>
+		</ul>
+	</div>
+	<div class="clear"> </div>
+	<div class="tags margin-left">
+		<ul>
+			<?php if(isset($row['tags']) && count($row['tags']) > 0):?>
+			<li><h3>Tags:</h3></li>
+				<?php foreach ($row['tags'] as $tag):?><li>
+					<li title='<?php echo $tag['name'];?>'><a href="<?php echo tag_link($tag);?>"><?php echo $tag['name'];?></a> </li>					
+				<?php endforeach;?>
+			<?php endif;?>
+		</ul>
+	</div>
+	<div class="clear"> </div>
+	<div class='video-details margin-left' style='margin-top: 15px; width: 100%;'>
+		 <div class="fb-comments" 
+	     	data-href="<?echo SITE_URL;?><?php echo node_link('video',$row);?>" data-width="100%" 
+	     		data-num-posts="10"></div>
+     </div>
+     <?php if(count($related) > 0):?>
+		<div class="related-videos margin-left">
+			<h6>Video liên quan</h6>
+		<div class="grids">
+			<?php if(count($related) > 0):?>
+				<?php foreach ($related as $video):?>
+					<?php $imgLink = "http://img.youtube.com/vi/{$video['ytid']}/0.jpg";?>
+					<div class="grid" style='margin-bottom: 4px;'>
+						<a href="<?php echo node_link('video', $video);?>"><h3>
+							<?php echo $video['name'];?></h3></a>
+						<a href="<?php echo node_link('video', $video);?>">
+							<img src="<?php echo $imgLink;?>" title="video-name"
+							style='width: 243px;height: 152px;'>
+							<img class="tidypics-photo-start" width="35px" height="25px" 
+								src="<?php echo ASSETS_CDN?>/img/play_youtube.png" 
+								style="left: 102px; position: absolute; top: 116px; width: 50px; 
+								height: 40px; cursor: pointer;">
+							</a>
+						<div class="time">
+							<?php $video['duration'] = isset($video['duration']) ? $video['duration'] : 0;?>
+							<span><?php echo gmdate("H:i:s", (int)$video['duration']);?></span>
+						</div>
+						<div class="grid-info">
+							<div class="video-share">
+								<ul>
+									<li><a href="#"><img src="<?php echo ASSETS_CDN?>/img/likes.png" title="links"></a></li>
+									<li><a href="#"><img src="<?php echo ASSETS_CDN?>/img/link.png" title="Link"></a></li>
+									<li><a href="#"><img src="<?php echo ASSETS_CDN?>/img/views.png" title="Views"></a></li>
+								</ul>
+							</div>
+							<div class="video-watch">
+								<a href="<?php echo node_link('video', $video);?>">Xem ngay</a>
+							</div>
+							<div class="clear"> </div>
+							<div class="lables">
+								<p>By:<a href="#"><?php echo $video['u']['name'];?></a></p>
+							</div>
+						</div>
+					</div>
+				<?php endforeach;?>
+			<?php endif;?>
+			</div>
+		</div>
+	<?php endif;?>
+	<div class="clear"> </div>
+</div>
+<div class="right-content">
+	<div class="clear"> </div>
+	<?php echo $this->render('/widget/box-like-facebook.phtml');?>
+	<div class="clear"> </div>
+	<?php echo $this->render('/widget/support-fan.phtml');?>
+	<div style='min-height: 10px;'></div>
+	<?php echo $this->render('/widget/button-upload-video.phtml');?>
+	<div style='min-height: 10px;'></div>
+	<div class="clear"> </div>
+    <?php echo $this->render('/video/ori-video.phtml');?>
+    <div class="clear"> </div>
+    <?php /*
+	<?php echo $this->render('/video/hot-videos.phtml');?>
+	<div class="clear"> </div>
+    <?php echo $this->render('/widget/topuser.phtml');?>
+	<div style='min-height: 10px;'></div>
+	<div class="clear"> </div>
+    */?>
+	<?php echo $this->render('/video/new-videos.phtml');?>
+</div>
+<div class="clear"> </div>
+<?php $this->inlineScript()->captureStart();?>
+      // 2. This code loads the IFrame Player API code asynchronously.
+	var tag = document.createElement('script');
+      var playMode = '';
+      tag.src = "https://www.youtube.com/iframe_api";
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+      // 3. This function creates an <iframe> (and YouTube player)
+      //    after the API code downloads.
+      var player;
+      function onYouTubeIframeAPIReady() {
+        player = new YT.Player('player', {
+          height: '500',
+          width: '100%',
+          videoId: '<?php echo $row['ytid'];?>',
+          events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+          }
+        });
+      }
+
+      // 4. The API will call this function when the video player is ready.
+      function onPlayerReady(event) {
+        event.target.playVideo();
+      }
+
+      // 5. The API calls this function when the player's state changes.
+      //    The function indicates that when playing a video (state=1),
+      //    the player should play for six seconds and then stop.
+      var done = false;
+      function onPlayerStateChange(event) {
+    	  if(player.getPlayerState() == 0 && playMode == 'replay'){
+    		  player.playVideo();
+    	  }
+      }
+      function stopVideo() {
+        player.stopVideo();
+      }
+	$('.replay-video').on('click', function(){
+		var _this = $(this);
+		var mode_replay = _this.attr('data-replay');
+
+		if(typeof mode_replay == 'undefined' || mode_replay == 0){
+			_this.attr('data-replay', 1);
+			_this.attr('title', 'Hủy chức năng replay');
+			
+			playMode = 'replay';
+			player.playVideo();
+		}else{
+			_this.attr('data-replay', 0);
+			_this.attr('title', 'Luôn replay khi clip kết thúc');
+			
+			playMode = 'notReplay';
+			player.playVideo();
+		}
+	});
+	
+<?php $this->inlineScript()->captureEnd();?>
+	
+<?php $this->inlineScript()->captureStart();?>
+	$(".vd-button").mouseover(function(){
+		var _this = $(this);
+		if(_this.hasClass('vd-button-active')){
+			if(_this.hasClass('sub-button')){
+					_this.find(".sub-label").attr('aria-label', "Hủy đăng ký").html("Hủy đăng ký");
+				}
+		}else{
+			if(_this.hasClass('sub-button')){
+				_this.find(".sub-label").attr('aria-label', "Đăng ký").html("Đăng ký");
+			}
+		}
+	});
+	
+	$(".vd-button").mouseout(function(){
+		var _this = $(this);
+		if(_this.hasClass('vd-button-active')){
+			if(_this.hasClass('sub-button')){
+					_this.find(".sub-label").attr('aria-label', "Đã đăng ký").html("Đã đăng ký");
+				}
+		}else{
+			if(_this.hasClass('sub-button')){
+				_this.find(".sub-label").attr('aria-label', "Chưa đăng ký").html("Chưa đăng ký");
+			}
+		}
+	});
+	
+	$(".vd-button").on('click', function(){
+		var _this = $(this);
+		
+		if(_this.hasClass('vd-button-active')){
+			_this.removeClass('vd-button-active');
+			
+			if(_this.hasClass('sub-button')){
+				_this.find(".sub-label").attr('aria-label', "Chưa đăng ký").html("Chưa đăng ký");
+				//$(".sublink").attr('href', "<?php echo $subLink;?>");
+			}else if(_this.hasClass('btn-replay')){
+				_this.find(".subscribe-label").attr('aria-label', "Replay").html("Replay");
+			}else if(_this.hasClass('btn-favourite')){
+				_this.find(".subscribe-label").attr('aria-label', "Ưa thích").html("Ưa thích");
+			}
+		}else{
+			_this.addClass('vd-button-active');
+			
+			if(_this.hasClass('sub-button')){
+				_this.find(".sub-label").attr('aria-label', "Hủy đăng ký").html("Đã đăng ký");
+				//$(".sublink").attr('href', "<?php echo $unsubLink;?>");
+			}else if(_this.hasClass('btn-replay')){
+				_this.find(".subscribe-label").attr('aria-label', "Hủy replay").html("Hủy replay");
+			}else if(_this.hasClass('btn-favourite')){
+				_this.find(".subscribe-label").attr('aria-label', "BỎ thích").html("Bỏ thích");
+			}
+		}
+	});
+<?php $this->inlineScript()->captureEnd();?>	
