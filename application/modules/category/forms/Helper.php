@@ -3,20 +3,34 @@ class Category_Form_Helper extends Cl_Form_NodeHelper
 {
     public function getStatus()
     {
-    	$ret = array('approved' => 'approved', 'queued' => 'queued');
+    	$ret = array('approved' => 'Đã duyệt', 'queued' => 'Đang chờ');
     	return array('success' =>true, 'result' => $ret);
     }
     
-    public function getOriginal()
+    public function getLevel()
     {
-    	$ret = array('cover' => 'Cover', 'original' => 'Bản gốc');
+    	$ret = array(1 => 'Level 1', 2 => 'Level 2');
     	return array('success' =>true, 'result' => $ret);
     }
     
-    public function getCountry()
-    {
-    	$ret = array('domestic' => 'Trong nước', 'foreign' => 'Nước ngoài');
-    	return array('success' =>true, 'result' => $ret);
+    public function getParentCategory(){
+    	$where = array('level' => 1);
+    	$cond['where'] = $where;
+    	$r = Dao_Node_Category::getInstance()->findAll($cond);
+    	//v($r);
+    	$cates = array();
+    	if($r['success']){
+    		foreach ($r['result'] as $ca){
+    			$cate = array($ca['id'] => $ca['name']);
+    			
+    			$cates = array_merge($cate,$cates);
+    		}
+    		
+    		$cates = array_merge(array(''=> 'Không chọn'),$cates);
+    		return array('success' =>true, 'result' => $cates);
+    	}else{
+    		return array('success' =>true, 'result' => array());
+    	}
     }
     
     /*

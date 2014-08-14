@@ -1,16 +1,16 @@
 <?php 
 class Category_Form_Comment extends Cl_Form_CommentNode
 {
-    public $nodeType = "category";
+    public $nodeType = "samx";
 
     /*
     public $attributes = array(
     		'id' => "comment_form",
     		'method' => "POST",
-    		'action' => "/category/comment",
+    		'action' => "/samx/comment",
     		'class' => "cl_ajax",
-            'new_url' => "/category/comment",
-            'update_url' => "/category/update-comment"
+            'new_url' => "/samx/comment",
+            'update_url' => "/samx/update-comment"
     );
     */
     

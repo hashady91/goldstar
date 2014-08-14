@@ -1,63 +1,23 @@
+<div class='row'>
 <?php echo sand_dev_info_phtml(__FILE__);?>
-<?php if(has_perm($perm, null, '', $u)):?>
-	<div class='row'>
-	<?php echo sand_dev_info_phtml(__FILE__);?>
-	
-	<?php $page = Zend_Registry::get('page');
-	?>
-	<div class='col-md-12'>
-	<?php echo $this->render('index/navbar.phtml');?>
-	</div>
-	<div class='col-md-6'>
-	<?php if ($page == 'category/index/new'):?>
-	<h1> Thêm category mới</h1>
-	<?php else:?>
-	<h1> Cập nhật category</h1>
-	<?php endif;?>
-	<?php $this->form->setAttrib('class', 'cl_ajax');?>
-		<div id='vd_form'>
-			<?php echo $this->form;?>
-		</div>
-	</div>
-	<div class='col-md-6'>
-	<a href="#" id="preview_post_btn" class='btn btn-primary'>Xem trước</a>
-	    <hr/>
-	    <div id='preview_area'>
-	    </div>
-	</div>
-	</div>
+
+<?php $page = Zend_Registry::get('page');?>
+<div class='col-md-12'>
+<?php echo $this->render('index/navbar.phtml');?>
+</div>
+<div class='col-md-6'>
+<?php if ($page == 'category/index/new'):?>
+<h1> Tạo chuyên mục mới</h1>
 <?php else:?>
-	<?php 
-	    $row = $this->row;
-	    $user = Zend_Registry::isRegistered('viewuser') ? Zend_Registry::get('viewuser') : array();
-	    $newCategorys = isset($this->newCategorys) ? $this->newCategorys : array();
-	    $hotCategorys = isset($this->hotCategorys) ? $this->hotCategorys : array();
-		$this->form->setAttrib('class', 'cl_ajax');
-	    $lu = $this->row;
-	    $step = get_value('_cl_step', '');
-	?>
-	<script type="text/javascript">
-	CL.NID = "<?php echo $row['id']; ?>";
-	</script>
-	<?php echo $this->render('/widget/user_menu.phtml');?>
-	<div class="inner-page" style='margin-left: 212px; width: 54%;'>
-		<div class="searchbar">
-			<div class="search-left">
-				<?php echo $this->render('/widget/search-box.phtml');?>
-			</div>
-			<div class="search-right">
-				<p>Thêm category mới</p>
-			</div>
-			<div class="clear"> </div>
-		</div>
-		<div id='vd_form'>
-			<?php echo $this->form;?>
-		</div>
-	</div>
-	<div class="right-content">
-		<?php echo $this->render('/category/hot-categorys.phtml');?>
-		<div class="clear"> </div>
-		<?php echo $this->render('/category/new-categorys.phtml');?>
-	</div>
-	<div class="clear"> </div>
+<h1> Cập nhật chuyên mục mới</h1>
 <?php endif;?>
+<?php $this->form->setAttrib('class', 'cl_ajax');?>
+<?php echo $this->form;?>
+</div>
+<div class='col-md-6'>
+<a href="#" id="preview_post_btn" class='btn btn-primary'>Xem trước</a>
+    <hr/>
+    <div id='preview_area'>
+    </div>
+</div>
+</div>

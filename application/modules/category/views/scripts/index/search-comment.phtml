@@ -41,22 +41,22 @@
         		<tr id="<?php echo $row['id'];?>">
         			<td><input type="checkbox" value="<?php echo $row['id'];?>" class="check-item" /></td>
         			<td><?php echo Cl_Utility::charBreadcumb($row['id'], 8);?>...</td>
-                    <td><a href="/category/<?php echo $row['node']['id'];?>"><?php echo $row['node']['name'];?></a></td>
-                    <td><?php echo word_breadcumb($row['content'],80);?><br/><a href="/category/<?php echo $row['node']['id'];?>#<?php echo $row['id'];?>">View more...</a></td>
+                    <td><a href="/samx/<?php echo $row['node']['id'];?>"><?php echo $row['node']['name'];?></a></td>
+                    <td><?php echo word_breadcumb($row['content'],80);?><br/><a href="/samx/<?php echo $row['node']['id'];?>#<?php echo $row['id'];?>">View more...</a></td>
         			<td>
         			    <div class="btn-group">
-        			    	<a href="/category/update-comment?nid=<?php echo $row['node']['id'];?>&id=<?php echo $row['id'];?>&status=queued&_cl_step=status"
+        			    	<a href="/samx/update-comment?nid=<?php echo $row['node']['id'];?>&id=<?php echo $row['id'];?>&status=queued&_cl_step=status"
         			    	class="btn btn-primary btn-xs <?php if($row['status']=='queued') echo 'active';?> cl_ajax" 
         			    	_cl_get_metadata="active_button_group"> Queued </a>
-        			    	<a href="/category/update-comment?nid=<?php echo $row['node']['id'];?>&id=<?php echo $row['id'];?>&status=approved&_cl_step=status"
+        			    	<a href="/samx/update-comment?nid=<?php echo $row['node']['id'];?>&id=<?php echo $row['id'];?>&status=approved&_cl_step=status"
         			    	class="btn btn-primary btn-xs <?php if($row['status']=='approved') echo 'active';?> cl_ajax" _cl_get_metadata="active_button_group"> Approved</a>
         			    </div>     
         			</td>
         			
         			<td>
-        				<a href="/category/<?php echo $row['node']['id'];?>#<?php echo $row['id']?>" class="btn btn-default btn-xs"><i class="icon-edit"></i>Edit</a>
-                        <a href="/category/update-comment?nid=<?php echo $row['node']['id'];?>&id=<?php echo $row['id']?>&_cl_step=is_spam" class="btn btn-xs cl_ajax"><i class="icon-edit"></i>Spam</a>
-        				<a href="/category/del-comment?nid=<?php echo $row['node']['id'];?>&id=<?php echo $row['id']?>" 
+        				<a href="/samx/<?php echo $row['node']['id'];?>#<?php echo $row['id']?>" class="btn btn-default btn-xs"><i class="icon-edit"></i>Edit</a>
+                        <a href="/samx/update-comment?nid=<?php echo $row['node']['id'];?>&id=<?php echo $row['id']?>&_cl_step=is_spam" class="btn btn-xs cl_ajax"><i class="icon-edit"></i>Spam</a>
+        				<a href="/samx/del-comment?nid=<?php echo $row['node']['id'];?>&id=<?php echo $row['id']?>" 
         					class="btn btn-xs btn-danger cl_ajax" _cl_get_metadata="remove_my_parent:2">
         					<i class="icon-remove"></i>Delete
         				</a>

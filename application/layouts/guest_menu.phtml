@@ -5,160 +5,199 @@
         $page = $_REQUEST['page'];
     if (Zend_Registry::isRegistered('page'))
         $page = Zend_Registry::get('page');
-
+	$categories = Dao_Node_Category::getInstance()->getCategoryLevelOne();
+	//v($categories);
 ?>
 <div class="navbar" id='user_menu'>
-         <div class="navbar-header">
-	        </div>
-	        <div class="navbar-collapse collapse" style='padding: 0;'>
-	          <div id='top-menu'>
-	          	<a href="http://gss.local/" style='text-decoration:none;font-size: 14px;'>
-	          		<span class='header-log'>GoldStar</span>.com.vn
-	          		<!-- 
-					<img class="logo-top fl" 
-						src="http://gss.local/images/logo-top.jpg" width="196px;" height="52px;" itemprop="url">
-	          		 -->
-					</a>
-          	<ul class='nav navbar-nav pull-right'>
-			    <li class="last-menu"><a href="#">
-			    	<i class="fa fa-clock-o" style='color: green;'></i> 10:52:09 PM-5/8/2014</a></li>
-	    <li><a target="_blank" href="/cong-tac-vien.html">
-	    	<i class='fa fa-users'></i> Cộng tác viên</a></li>
-	    <li><a href="/nha-phan-phoi.html"><span style="color:red;  ">Nhà phân phối</span></a></li>
-	    <li><a href="/dat-hang.html"><span style="color:red;  ">Đặt hàng</span></a></li>
-	    <li><a href="/ho-tro-truc-tuyen.html"> <i class='fa fa-comments'></i>  Hỗ trợ trực tuyến</a></li>
-	    <li><a href="#"><span style="color:red;">HOTLINE :04 2200 1100</span></a></li>
-				</ul>
-	          </div>
-	          <div id='ul-nav-menu'>
-		          <ul class="nav navbar-nav" id='left-main-menu' >
-                     <li>
-		                <a href="http://gss.local/" 
-		            		style='font-size: 24px;'>
+    <div class="navbar-header">
+	</div>
+	<div class="navbar-collapse collapse" style='padding: 0;'>
+		<div id='top-menu'>
+	    	<a href="/" style='text-decoration:none;font-size: 14px;'>
+	        	<span class='header-log'>GoldStar</span>.com.vn
+          		<!-- 
+				<img class="logo-top fl" 
+					src="http://gss.local/images/logo-top.jpg" width="196px;" height="52px;" itemprop="url">
+          		 -->
+				</a>
+       <ul class='nav navbar-nav pull-right'>
+			<li class="last-menu"><a href="#">
+				<i class="fa fa-clock-o" style='color: green;'></i> 10:52:09 PM-5/8/2014</a></li>
+		    <li><a target="_blank" href="/site/cong-tac-vien">
+		    	<i class='fa fa-users'></i> Cộng tác viên</a></li>
+		    <li><a href="/site/nha-phan-phoi"><span style="color:red;  ">Nhà phân phối</span></a></li>
+		    <li><a href="/site/dat-hang"><span style="color:red;  ">Đặt hàng</span></a></li>
+		    <li><a href="/ho-tro-truc-tuyen"> <i class='fa fa-comments'></i>  Hỗ trợ trực tuyến</a></li>
+		    <li><a href="#"><span style="color:red;">HOTLINE :04 2200 1100</span></a></li>
+		</ul>
+	   </div>
+	    <div id='ul-nav-menu'>
+	    
+	     <ul class="nav navbar-nav" id='left-main-menu' >
+	     	<li>
+		       	<a href="/" 
+            		style='font-size: 24px;'>
             		<i class='fa fa-home'></i>
             	</a>
-            </li> 
-            <li class='dropdown hover '>
-            	<a data-toggle="dropdown" 
-            	class="dropdown-toggle" 
-            		role="button" href="#" 
-            	>
-                <i class='fa fa-check'></i>
-                Giới thiệu
-            	<span class="caret"></span></a>
-                <ul class="dropdown-menu" role="menu">
-    	           <li style='width:100%;'>
-        	               <a href='/tam-nhin-muc-tieu.html'>
-        	               	Tầm nhìn, mục tiêu
-        	               </a>
-    	           </li>
-    	           <li style='width:100%;'>
-        	               <a href='/gia-tri-cot-loi.html'>
-        	               	Giá trị cốt lõi
-        	               </a>
-    	           </li>
-    	           <li style='width:100%;'>
-        	               <a href='/hinh-anh-hoat-dong.html'>
-        	               	Hình ảnh hoạt động
-        	               </a>
-    	           </li>
-	           </ul>
-	           
             </li>
-            
-            <li>
-                <a href="/doi-tac-va-khach-hang.html" >
-            		<i class="fa fa-user"></i> Đối tác & Khách hàng</a>
-            </li>          
-
-	       <li class='dropdown hover '>
-	           <a data-toggle="dropdown" 
-            		class="dropdown-toggle" 
-            			role="button" href="#">
-            			Sản phẩm & dịch vụ
-	           <span class="caret"></span>
-	           </a>
-	           <ul class="dropdown-menu" role="menu">
-    	           <li style='width:100%;'>
-        	               <a href='/phan-mem-ke-toan.html'>
-        	               	Phần mềm kế toán
-        	               </a>
-    	           </li>
-    	           <li style='width:100%;'>
-        	               <a href='/giai-phap-nganh-xay-dung.html'>
-        	               	Giải pháp ngành xây dựng
-        	               </a>
-    	           </li>
-    	           <li style='width:100%;'>
-        	               <a href='/giai-phap-quan-ly-thiet-bi-truong-hoc.html'>
-        	               	Giải pháp quản lý thiết bị trường học
-        	               </a>
-    	           </li>
-    	           <li style='width:100%;'>
-        	               <a href='/giai-phap-quan-ly-khach-san.html'>
-        	               	Giải pháp quản lý khách sạn
-        	               </a>
-    	           </li>
-    	           <li style='width:100%;'>
-        	               <a href='/giai-phap-quan-ly-duoc-pham.html'>
-        	               	Giải pháp ngành dược phẩm
-        	               </a>
-    	           </li>
-    	           <li style='width:100%;'>
-        	               <a href='/giai-phap-nganh-thoi-trang.html'>
-        	               	Giải pháp ngành thời trang
-        	               </a>
-    	           </li>
-    	           <li style='width:100%;'>
-		        	               <a href='/giai-phap-ERP.html'>
-		        	               	Giải pháp ERP
-		        	               	</a>
-        	               	</li>
-       	               	</ul>
-       	               	 </li>
-		
-			       <li class='dropdown hover '>
-			           <a href="/huong-dan-va-download.html" >
-		            			<i class="fa fa-download"></i> Hướng dẫn & Download</a>
-			       </li>
-			       
-			       <li class='dropdown hover '>
-			           <a data-toggle="dropdown" 
-		            	class="dropdown-toggle" 
-		            		role="button" href="#" >Video
-		            		<span class='caret'></span></a>
-		            		
-		            		<ul class="dropdown-menu" role="menu">
-		            		<li style='width:100%;'>
-        	               <a href='/clip-hai.html'>
-        	               	Clip hài
-        	               </a>
-    	           </li>
-    	           <li style='width:100%;'>
-		        	               <a href='/clip-huong-dan-phan-mem.html'>
-		        	               	Hướng dẫn phần mềm
-		        	               	</a>
-        	               	</li>
-       	               	</ul>
-			       </li>
-		
+            <?php if(isset($categories)):?>
+          	    <?php foreach ($categories as $ca):?>
+     		          <?php $count_child = (isset($ca['child_category']) && count($ca['child_category']) > 0) ? count($ca['child_category']) : 0;?>
+ 		              <li class='<?php if($count_child > 0):?>dropdown hover <?php endif;?>'>
+ 		              	<?php if($count_child > 0):?>
+		            	<a data-toggle="dropdown" 
+			            	class="dropdown-toggle" 
+			            		role="button" href="#" 
+			            	>
+		            	<?php else:?>
+		            	  <a href="<?php echo category_link($ca);?>">
+		            	<?php endif;?>
+     		      		     <?php echo $ca['name']?>
+     		      		     <?php if($count_child > 0):?>
+     		      		     	<b class="caret-right"></b>
+     		      		     <?php endif;?>
+ 		      		     </a>
+ 		      		     <?php if($count_child >0): ?>
+	 		      		      <ul class="dropdown-menu" role="menu">
+	 		      		           <?php foreach ($ca['child_category'] as $key => $val):?>
+	         						<li style='width:100%;'>
+	         							<a href="<?php echo category_link($val);?>">
+	         							<?php echo $val['name']?></a></li>
+	         					   <?php endforeach; ?>
+	         			     </ul>
+ 					     <?php endif;?>
+	      		     </li>
+            	<?php endforeach;?>
+            <?php endif;?>
+	     </ul>
+	    <?php /*
+		   <ul class="nav navbar-nav" id='left-main-menu' >
+           	   <li>
+			       	<a href="/" 
+			            		style='font-size: 24px;'>
+	            		<i class='fa fa-home'></i>
+	            	</a>
+            	</li> 
+	            <li class='dropdown hover '>
+	            	<a data-toggle="dropdown" 
+	            	class="dropdown-toggle" 
+	            		role="button" href="#" 
+	            	>
+	                <i class='fa fa-check'></i>
+	                Giới thiệu
+	            	<span class="caret"></span></a>
+	                <ul class="dropdown-menu" role="menu">
+	    	           <li style='width:100%;'>
+	        	               <a href='/category/tam-nhin-muc-tieu'>
+	        	               	Tầm nhìn, mục tiêu
+	        	               </a>
+	    	           </li>
+	    	           <li style='width:100%;'>
+	        	               <a href='/site/gia-tri-cot-loi'>
+	        	               	Giá trị cốt lõi
+	        	               </a>
+	    	           </li>
+	    	           <li style='width:100%;'>
+	        	               <a href='/site/hinh-anh-hoat-dong'>
+	        	               	Hình ảnh hoạt động
+	        	               </a>
+	    	           </li>
+		           </ul>
+		           
+	            </li>
+	            
+	            <li>
+	                <a href="/site/doi-tac-va-khach-hang" >
+	            		<i class="fa fa-user"></i> Đối tác & Khách hàng</a>
+	            </li>          
+	
+		       <li class='dropdown hover '>
+		           <a data-toggle="dropdown" 
+	            		class="dropdown-toggle" 
+	            			role="button" href="#">
+	            			Sản phẩm & dịch vụ
+		           <span class="caret"></span>
+		           </a>
+		           <ul class="dropdown-menu" role="menu">
+	    	           <li style='width:100%;'>
+	        	               <a href='/phan-mem-ke-toan.html'>
+	        	               	Phần mềm kế toán
+	        	               </a>
+	    	           </li>
+	    	           <li style='width:100%;'>
+	        	               <a href='/giai-phap-nganh-xay-dung.html'>
+	        	               	Giải pháp ngành xây dựng
+	        	               </a>
+	    	           </li>
+	    	           <li style='width:100%;'>
+	        	               <a href='/giai-phap-quan-ly-thiet-bi-truong-hoc.html'>
+	        	               	Giải pháp quản lý thiết bị trường học
+	        	               </a>
+	    	           </li>
+	    	           <li style='width:100%;'>
+	        	               <a href='/giai-phap-quan-ly-khach-san.html'>
+	        	               	Giải pháp quản lý khách sạn
+	        	               </a>
+	    	           </li>
+	    	           <li style='width:100%;'>
+	        	               <a href='/giai-phap-quan-ly-duoc-pham.html'>
+	        	               	Giải pháp ngành dược phẩm
+	        	               </a>
+	    	           </li>
+	    	           <li style='width:100%;'>
+	        	               <a href='/giai-phap-nganh-thoi-trang.html'>
+	        	               	Giải pháp ngành thời trang
+	        	               </a>
+	    	           </li>
+	    	           <li style='width:100%;'>
+			        	               <a href='/giai-phap-ERP.html'>
+			        	               	Giải pháp ERP
+			        	               	</a>
+	        	               	</li>
+	       	               	</ul>
+	       	               	 </li>
+			
+				       <li class='dropdown hover '>
+				           <a href="/huong-dan-va-download.html" >
+			            			<i class="fa fa-download"></i> Hướng dẫn & Download</a>
+				       </li>
+				       
+				       <li class='dropdown hover '>
+				           <a data-toggle="dropdown" 
+			            	class="dropdown-toggle" 
+			            		role="button" href="#" >Video
+			            		<span class='caret'></span></a>
+			            		
+			            		<ul class="dropdown-menu" role="menu">
+			            		<li style='width:100%;'>
+	        	               <a href='/clip-hai.html'>
+	        	               	Clip hài
+	        	               </a>
+	    	           </li>
+	    	           <li style='width:100%;'>
+			        	               <a href='/clip-huong-dan-phan-mem.html'>
+			        	               	Hướng dẫn phần mềm
+			        	               	</a>
+	        	               	</li>
+	       	               	</ul>
+				       </li>
+			
 				  <?php if (has_perm('sudo')) :?>
-				  <li style="float:right">
-		            <i class='icon-off'></i> <a href="/user/logout">Log out</a>
-		            </li>
-		
-		            <li style="float:right">
-		            <a href='/user/<?php echo $lu['id'];?>'><i class="icon-user"></i> <?php echo $lu['name']?></a> 
-		            
-		            </li>
-						  
-		 			<li class="pull-right">
-						<a href="/site/admin"><i class='icon-legal' style="color:red"></i>Admin</a>
-		          	</li>
-		            <?php endif;?>
-		          </ul>
-	          </div>
-	          
-	          
-	        </div><!--/.nav-collapse -->	
+					  <li style="float:right">
+			            <i class='icon-off'></i> <a href="/user/logout">Log out</a>
+			            </li>
+			
+			            <li style="float:right">
+			            <a href='/user/<?php echo $lu['id'];?>'><i class="icon-user"></i> <?php echo $lu['name']?></a> 
+			            
+			            </li>
+							  
+			 			<li class="pull-right">
+							<a href="/site/admin"><i class='icon-legal' style="color:red"></i>Admin</a>
+			          	</li>
+	              <?php endif;?>
+	          </ul>
+	          */?>
+          </div>
+        </div><!--/.nav-collapse -->	
     </div>

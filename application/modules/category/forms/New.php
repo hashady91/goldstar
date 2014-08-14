@@ -4,8 +4,7 @@ class Category_Form_New extends Cl_Form
 	public function init()
 	{
 		parent::init();
-		$this->fieldList = array(/*'avatar',*/'name', 'content', 'status', 'url',
-					 'tags', 'is_original', 'country');
+		$this->fieldList = array('avatar', 'name', 'content', 'status', /*'parent_category',*/ 'slug');
 		$this->setCbHelper('Category_Form_Helper');
 		
 	}
@@ -20,21 +19,27 @@ class Category_Form_New extends Cl_Form
         	'name' => array(
         		'type' => 'Text',
         		'options' => array(
-        			'label' => "Tên Category",
+        			'label' => "Tên chuyên mục",
         			'required' => true,
     	    		'filters' => array('StringTrim', 'StripTags'),
                     'validators' => array('NotEmpty'),
         		),
                 //'permission' => 'update_task'
         	),
-        	'tags' => $this->generateFormElement('tags', 'Tags','', array(
-        		'data-url' => '/suggest.php?node=tag&addnew=1',
-        		'permission' => 'new_tag'
-        	)),
+        	'slug' => array(
+        			'type' => 'Text',
+       				'options' => array(
+       						'label' => "Slug eg: dien-lanh",
+       						'required' => true,
+       						'filters' => array('StringTrim', 'StripTags'),
+       						'validators' => array('NotEmpty'),
+       				),
+       				//'permission' => 'update_task'
+       		),
         	'content' => array(
         		'type' => 'Textarea',
         		'options' => array(
-        	        'label' => "Nội dung category",
+        	        'label' => "Nội dung",
         	        'class' => 'isEditor',
     	    		'filters' => array('StringTrim', 'NodePost'),
         			'prefixPath' => array(
@@ -46,29 +51,20 @@ class Category_Form_New extends Cl_Form
         	),
             'status' => array(
             		'type' => 'Select',
-            		'permission' => 'root',
             		'options' => array(
             				'label' => 'Trạng thái',
             				'required' => true,
             		),
             		'multiOptionsCallback' => array('getStatus')
             ),
-        	'is_original' => array(
-        		'type' => 'Select',
-        		'options' => array(
-        			'label' => 'Bản gốc?',
-        			'required' => true,
-        		),
-        		'multiOptionsCallback' => array('getOriginal')
-        	),
-        	'country' => array(
-        		'type' => 'Select',
-        		'options' => array(
-        			'label' => 'Quốc gia?',
-        			//'required' => true,
-        		),
-        		'multiOptionsCallback' => array('getCountry')
-        	),
+        	'level' => array(
+        			'type' => 'Select',
+       				'options' => array(
+       						'label' => 'Level',
+       						'required' => true,
+       				),
+        			'multiOptionsCallback' => array('getLevel')
+       		),
         	'avatar' => array(
         			'type' => 'Hidden',
         			'options' => array(
@@ -76,16 +72,14 @@ class Category_Form_New extends Cl_Form
         					'filters' => array('StringTrim', 'StripTags')
         			),
         	),
-        	'url' => array(
-        		'type' => 'Text',
-        		'options' => array(
-        			'label' => 'Url',
-        			'placeholder' => "E.g http://www.youtube.com/watch?v=fkm7eMqiuSw",
-        			'required' => true,
-        			'filters' => array('StringTrim', 'StripTags'),
-        			'validators' => array('NotEmpty'),
-        		),
-        	),
+        	'parent_category' => array(
+        			'type' => 'Select',
+       				'options' => array(
+       						'label' => 'Parent Category',
+       						//'required' => true,
+       				),
+       				'multiOptionsCallback' => array('getParentCategory')
+       		),
         );
         return $ret;
     }

@@ -1,5 +1,5 @@
 <?php 
-class Samx_Form_SearchComment extends Cl_Form_SearchCommentNode
+class Category_Form_SearchComment extends Cl_Form_SearchCommentNode
 {
 
 	public function init()
@@ -9,7 +9,7 @@ class Samx_Form_SearchComment extends Cl_Form_SearchCommentNode
 			$this->_formFieldsConfig = array_merge($this->_formFieldsConfig(), $this->_customFormFieldsConfig());
 	
 		$this->fieldList = array('status', 'is_spam');
-    	$this->setCbHelper('Samx_Form_Helper');
+    	$this->setCbHelper('Category_Form_Helper');
 	}
 	public function setStep($step, $currentRow = null)
 	{

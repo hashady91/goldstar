@@ -9,11 +9,15 @@ class Category_Form_Update extends Category_Form_New
     {
         if ($step == '' )
         {
-            //$this->fieldList = array('name', 'content', 'status');
+			$this->fieldList = array('avatar', 'name', 'content', 'status', 'parent_category', 'slug', 'level');
         }
         elseif ($step == 'status')
         {
             $this->fieldList = array('status');
+        }
+        elseif ($step == 'is_level')
+        {
+        	$this->fieldList = array('level');
         }
         $this->setCbHelper('Category_Form_Helper');
 	    parent::setStep($step, $currentRow);
@@ -31,7 +35,7 @@ class Category_Form_Update extends Category_Form_New
         $lu = Zend_Registry::get('user');
         if ($this->step == '') //a full update
         {
-            assure_perm('update_own_category');
+            assure_perm('sudo');
             return array('success' => true, 'err' => "Permission failed in Category");
         }
         
