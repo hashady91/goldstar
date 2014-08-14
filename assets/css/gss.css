@@ -27,6 +27,9 @@ a{
 #user_menu{
 	color: #FFF !important;
 }
+#top-menu .nav.navbar-nav.pull-right a {
+    padding: 10px;
+}
 #footer{
 	clear: both;
 	background-color: #29739D !important;
@@ -45,7 +48,7 @@ a{
     color: #ffffff;
     text-decoration: none;
 }
-.hot-news .heading, .top-news .heading{
+.hot-news .heading, .top-news .heading, .title-sidebar{
 	color: #ffffff;
     font-weight: bold;
     height: 29px;
@@ -86,6 +89,7 @@ h2.h2-header, h2.news-header {
 /*     border: 1px solid rgb(230, 230, 230); */
     margin-top: 10px;
     min-height: 69px;
+    clear: both;
     padding: 10px;
 }
 .video1 .thumb {
@@ -198,4 +202,35 @@ h2.tomtat-newsdetail {
     height: 410px;
     overflow: hidden;
     position: relative;
+}
+.boxes {
+    border: 1px solid #d1d1d1;
+    margin-bottom: 15px;
+    padding: 0;
+    width: 96%;
+}
+.boxes-content {
+    padding: 5px;
+    font-size: 12px;
+}
+.boxes-content a {
+    color: #142214;
+    text-decoration: none !important;
+}
+ul.news-flash {
+    margin: 0;
+    padding: 0;
+}
+ul.news-flash li {
+    clear: left;
+    display: block;
+    list-style: none outside none;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+ul.news-flash img {
+    border: 1px solid #d1d1d1;
+    float: left;
+    margin-right: 5px;
 }

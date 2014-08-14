@@ -8,15 +8,14 @@ class Dao_Node_New extends Dao_Node_Site
     		'name' => 'string',
     		'avatar' => 'string',
     		'counter' => 'mixed',
-    		'url' => 'string',
-        	'ytid' => 'string',
         	'slug' => 'string',
-        	'duration' => 'string',	
         	'ts' => 'int',
     		'ats' => 'int',
         	'status' => 'string',
-        	'country' => 'string', //domestic|foreign
-        	'is_original' => 'string',
+    		'content' => 'string',
+    		'description' => 'string',
+    		'source' => 'string',//vnepress.net
+    		'author' => 'string'
     		//add other stuff u want
     );
         
@@ -43,6 +42,10 @@ class Dao_Node_New extends Dao_Node_Site
         		'ac_name' => 'string',
         		'avatar' => 'string',
         		'content' => 'string',
+        		'status' => 'string',
+        		'description' => 'string',
+        		'source' => 'string',//vnepress.net
+        		'author' => 'string',
     	        'content_uf' => 'string', //unfiltered content where <span class='item'> is converted to proper item links 
         		'tags' => array( 
     	            $tag
@@ -59,15 +62,10 @@ class Dao_Node_New extends Dao_Node_Site
         			'hn'=> 'float',//hotness
         			'point' => 'float',
     	        ),
-        		'url' => 'string',
-        		'ytid' => 'string',
         		'slug' => 'string',
-        		'duration' => 'string',	
         		'ts' => 'int',
         		'ats' => 'int',
         		'status' => 'string',
-        		'country' => 'string', //domestic|foreign
-        		'is_original' => 'string',
         	)
     	);
 	}
@@ -102,22 +100,6 @@ class Dao_Node_New extends Dao_Node_Site
 			$data['iid'] = $redis->incr($this->nodeType . ":iid"); //unique node id
 		}
 		
-		$url = $data['url'];
-		parse_str( parse_url( $url, PHP_URL_QUERY ), $my_array_of_vars );
-		$data['ytid'] = $my_array_of_vars['v'];
-		
-		//Get duration
-		$url = "http://gdata.youtube.com/feeds/api/news/". $data['ytid'];
-		$doc = new DOMDocument;
-		$doc->load($url);
-		$title = $doc->getElementsByTagName("title")->item(0)->nodeValue;
-		$data['duration'] = $doc->getElementsByTagName('duration')->item(0)->getAttribute('seconds');
-		
-		//Get views
-		$JSON = file_get_contents("https://gdata.youtube.com/feeds/api/news/{$data['ytid']}?v=2&alt=json");
-		$JSON_Data = json_decode($JSON);
-		$views = $JSON_Data->{'entry'}->{'yt$statistics'}->{'viewCount'};
-		$data['counter']['vyt'] = $views;
 		
 		$data['ac_name'] = ac_item($data['name']); //accent name vietnamese
 		
@@ -308,80 +290,6 @@ class Dao_Node_New extends Dao_Node_Site
 		$ret['slug'] = $currentRow['slug'];
 		return $ret;
 		*/
-	}
-	
-	public function updateView()
-	{
-		//$cond = array('where' => array());
-		$cond['dao_class'] = 'Dao_New';
-		$this->doBatchJobs($cond, 0, array('updateViewForOneNew'));
-	}
-	
-	public function updateViewForOneNew($new){
-		$checkYtid = true;
-		if(!isset($new['ytid']) || $new['ytid'] == ''){
-			parse_str( parse_url( $new['url'], PHP_URL_QUERY ), $my_array_of_vars );
-			$new['ytid'] = $my_array_of_vars['v'];
-			$checkYtid = false;
-		}
-		 
-		//Get views
-		$JSON = file_get_contents("https://gdata.youtube.com/feeds/api/news/{$new['ytid']}?v=2&alt=json");
-		$JSON_Data = json_decode($JSON);
-		$views = $JSON_Data->{'entry'}->{'yt$statistics'}->{'viewCount'};
-		$where = array('id'=>$new['id']);
-		 
-		if($checkYtid){
-			$update = array('$set'=>array(
-						'counter.vyt' => $views,
-					)
-			);
-		}else{
-			$update = array('$set'=>array(
-						'counter.vyt' => $views,
-						'ytid' => $new['ytid'],
-					)
-			);
-		}
-		 
-		$this->update($where, $update);
-	}
-	
-	public function updateDuration()
-	{
-		//$cond = array('where' => array());
-		$cond['dao_class'] = 'Dao_New';
-		$this->doBatchJobs($cond, 0, array('updateDurationForOneNew'));
-	}
-	
-	public function updateDurationForOneNew($new){
-		$checkYtid = true;
-		if(!isset($new['ytid']) || $new['ytid'] == ''){
-			parse_str( parse_url( $new['url'], PHP_URL_QUERY ), $my_array_of_vars );
-			$new['ytid'] = $my_array_of_vars['v'];
-			$checkYtid = false;
-		}
-			
-		//Get duration
-		$url = "http://gdata.youtube.com/feeds/api/news/". $new['ytid'];
-		$doc = new DOMDocument;
-		$doc->load($url);
-		$duration = $doc->getElementsByTagName('duration')->item(0)->getAttribute('seconds');
-
-		if($checkYtid){
-			$update = array('$set'=>array(
-					'duration' => $duration,
-				)
-			);
-		}else{
-			$update = array('$set'=>array(
-					'duration' => $duration,
-					'ytid' => $new['ytid'],
-				)
-			);
-		}
-			
-		$r = $this->update($where, $update);
 	}
 	
 	public function getNewByType($type, $limit, $ts){

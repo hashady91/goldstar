@@ -1,19 +1,550 @@
-<?php if (is_guest()) :?>
-<?php echo $this->render('index/guest_home.phtml');?>
-<?php else:?>
-    <?php $lu = Zend_Registry::get('user');?>
-    <h2>List samx data</h2>
-    <?php if(isset($this->list)) :?>
-        <?php foreach($this->list as $row) :?>
-            <div class="row">
-                <div class="span12">
-                    <h3><a href="/samx/<?php echo $row['id'];?>"><?php echo $row['name'];?></a></h3>
-                    <article><?php echo $row['content'];?></article>
-                    <div class="clearfix"></div>
-                </div>
-            </div>
-        <?php endforeach;?>
-    <?php else:?>
-    Home for logged in user here. List of lessons and stuff here
-    <?php endif;?>
-<?php endif;?>
+<div style='min-height: 400px;'>
+		<div class='row'>
+			<div class='col-md-7'>
+				<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+				  <!-- Indicators -->
+				  <ol class="carousel-indicators">
+				    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+				    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+				    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+				  </ol>
+				
+				  <!-- Wrapper for slides -->
+				  <div class="carousel-inner">
+				    <div class="item active">
+				      <img src="http://goldstarassets.local//images/support-online1.jpg" width='100%' height='298px'>
+				      <div class="carousel-caption">
+				        kakak
+				      </div>
+				    </div>
+				    <div class="item">
+				       <img src="http://goldstarassets.local//images/support-online1.jpg" width='100%' height='298px'>
+				      <div class="carousel-caption">
+				        sokiu
+				      </div>
+				    </div>
+				  </div>
+				
+				  <!-- Controls -->
+				  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+				    <span class="glyphicon glyphicon-chevron-left"></span>
+				  </a>
+				  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+				    <span class="glyphicon glyphicon-chevron-right"></span>
+				  </a>
+				</div>
+				<div class='separator-high'></div>
+				<div class='product-news'>
+					<div class='heading'>
+						<h3 style="margin-top: 0;">
+						<i class='fa fa-home'></i>
+						Sản phẩm mới</h3>
+					</div>
+					
+					<div class='product-list'>
+						<div class='product'>
+							<div class='row'>
+								<div class='col-md-3'>
+									<a href="#" rỡ"="" rực="" công="" thành="" challenge"="" programming="" 3d="" title="Lễ trao giải cuộc thi ">
+								       <img width="128" height="128" src="http://sunnet.vn//images/users/images/poster.png">
+								    </a>
+								</div>
+								<div class='col-md-9'>
+									<div class="text-content">
+								       <a href="#" rỡ"="" rực="" công="" thành="" challenge"="" programming="" 3d="" title="Lễ trao giải cuộc thi ">
+								           <h2 class="h2-header">
+								           Lễ trao giải cuộc thi "3D Programming Challenge" thành công rực rỡ</h2>
+								        </a>
+								        <span class="date">11-10-2013</span>
+								        <div style="text-align: justify;">
+									Chiều ngày 10/10/2013, tại trụ sở SunNet số 120 Trường Chinh đã diễn ra lễ trao giải cuộc thi "3D Programming Challenge" với sự có mặt đông đủ...             <a href="/vi/index/index/?id=134&amp;type=3" rỡ"="" rực="" công="" thành="" challenge"="" programming="" 3d="" title="Lễ trao giải cuộc thi " class="read-more">Xem tiếp</a>
+								        </div>
+								             
+								        </div>
+								</div>
+							</div>
+						</div>
+						<div class='product'>
+							<div class='row'>
+								<div class='col-md-3'>
+									<a href="#" title="Sunnet đón Tết Trung thu bằng bữa tiệc ấm cúng">
+									       <img width="128" height="128" src="http://sunnet.vn//images/users/files/iconx128(1).png">
+									   </a>
+								</div>
+								<div class='col-md-9'>
+									<div class="text-content">
+								       <a href="#" title="Sunnet đón Tết Trung thu bằng bữa tiệc ấm cúng">
+								           <h2 class="h2-header">
+								           Sunnet đón Tết Trung thu bằng bữa tiệc ấm cúng</h2>
+								        </a>
+								        <span class="date">02-10-2013</span>
+								        <div style="text-align: justify;">
+									
+										
+								
+								
+									Sau những chuỗi ngày bận rộn trong công việc, tập thể thành viên SunNet đánh dấu thêm một mốc kỉ niệm bằng bữa tiệc đón rằm...             <a href="/vi/index/index/?id=133&amp;type=3" title="Sunnet đón Tết Trung thu bằng bữa tiệc ấm cúng" class="read-more">Xem tiếp</a>
+								        </div>
+								             
+								        </div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class='product-news'>
+					<div class='heading'>
+						<h3 style="margin-top: 0;">
+						<i class='fa fa-home'></i>
+						Sản phẩm nổi bật</h3>
+					</div>
+					
+					<div class='product-list'>
+						<div class='product'>
+							<div class='row'>
+								<div class='col-md-3'>
+									<a href="#" rỡ"="" rực="" công="" thành="" challenge"="" programming="" 3d="" title="Lễ trao giải cuộc thi ">
+								       <img width="128" height="128" src="http://sunnet.vn//images/users/images/poster.png">
+								    </a>
+								</div>
+								<div class='col-md-9'>
+									<div class="text-content">
+								       <a href="#" rỡ"="" rực="" công="" thành="" challenge"="" programming="" 3d="" title="Lễ trao giải cuộc thi ">
+								           <h2 class="h2-header">
+								           Lễ trao giải cuộc thi "3D Programming Challenge" thành công rực rỡ</h2>
+								        </a>
+								        <span class="date">11-10-2013</span>
+								        <div style="text-align: justify;">
+									Chiều ngày 10/10/2013, tại trụ sở SunNet số 120 Trường Chinh đã diễn ra lễ trao giải cuộc thi "3D Programming Challenge" với sự có mặt đông đủ...             <a href="/vi/index/index/?id=134&amp;type=3" rỡ"="" rực="" công="" thành="" challenge"="" programming="" 3d="" title="Lễ trao giải cuộc thi " class="read-more">Xem tiếp</a>
+								        </div>
+								             
+								        </div>
+								</div>
+							</div>
+						</div>
+						<div class='product'>
+							<div class='row'>
+								<div class='col-md-3'>
+									<a href="#" title="Sunnet đón Tết Trung thu bằng bữa tiệc ấm cúng">
+									       <img width="128" height="128" src="http://sunnet.vn//images/users/files/iconx128(1).png">
+									   </a>
+								</div>
+								<div class='col-md-9'>
+									<div class="text-content">
+								       <a href="#" title="Sunnet đón Tết Trung thu bằng bữa tiệc ấm cúng">
+								           <h2 class="h2-header">
+								           Sunnet đón Tết Trung thu bằng bữa tiệc ấm cúng</h2>
+								        </a>
+								        <span class="date">02-10-2013</span>
+								        <div style="text-align: justify;">
+									
+										
+								
+								
+									Sau những chuỗi ngày bận rộn trong công việc, tập thể thành viên SunNet đánh dấu thêm một mốc kỉ niệm bằng bữa tiệc đón rằm...             <a href="/vi/index/index/?id=133&amp;type=3" title="Sunnet đón Tết Trung thu bằng bữa tiệc ấm cúng" class="read-more">Xem tiếp</a>
+								        </div>
+								             
+								        </div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class='product-news'>
+					<div class='heading'>
+						<h3 style="margin-top: 0;">
+						<i class='fa fa-home'></i>
+						Phần mềm mới</h3>
+					</div>
+					
+					<div class='product-list'>
+						<div class='product'>
+							<div class='row'>
+								<div class='col-md-3'>
+									<a href="#" rỡ"="" rực="" công="" thành="" challenge"="" programming="" 3d="" title="Lễ trao giải cuộc thi ">
+								       <img width="128" height="128" src="http://sunnet.vn//images/users/images/poster.png">
+								    </a>
+								</div>
+								<div class='col-md-9'>
+									<div class="text-content">
+								       <a href="#" rỡ"="" rực="" công="" thành="" challenge"="" programming="" 3d="" title="Lễ trao giải cuộc thi ">
+								           <h2 class="h2-header">
+								           Lễ trao giải cuộc thi "3D Programming Challenge" thành công rực rỡ</h2>
+								        </a>
+								        <span class="date">11-10-2013</span>
+								        <div style="text-align: justify;">
+									Chiều ngày 10/10/2013, tại trụ sở SunNet số 120 Trường Chinh đã diễn ra lễ trao giải cuộc thi "3D Programming Challenge" với sự có mặt đông đủ...             <a href="/vi/index/index/?id=134&amp;type=3" rỡ"="" rực="" công="" thành="" challenge"="" programming="" 3d="" title="Lễ trao giải cuộc thi " class="read-more">Xem tiếp</a>
+								        </div>
+								             
+								        </div>
+								</div>
+							</div>
+						</div>
+						<div class='product'>
+							<div class='row'>
+								<div class='col-md-3'>
+									<a href="#" title="Sunnet đón Tết Trung thu bằng bữa tiệc ấm cúng">
+									       <img width="128" height="128" src="http://sunnet.vn//images/users/files/iconx128(1).png">
+									   </a>
+								</div>
+								<div class='col-md-9'>
+									<div class="text-content">
+								       <a href="#" title="Sunnet đón Tết Trung thu bằng bữa tiệc ấm cúng">
+								           <h2 class="h2-header">
+								           Sunnet đón Tết Trung thu bằng bữa tiệc ấm cúng</h2>
+								        </a>
+								        <span class="date">02-10-2013</span>
+								        <div style="text-align: justify;">
+									
+										
+								
+								
+									Sau những chuỗi ngày bận rộn trong công việc, tập thể thành viên SunNet đánh dấu thêm một mốc kỉ niệm bằng bữa tiệc đón rằm...             <a href="/vi/index/index/?id=133&amp;type=3" title="Sunnet đón Tết Trung thu bằng bữa tiệc ấm cúng" class="read-more">Xem tiếp</a>
+								        </div>
+								             
+								        </div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class='col-md-5'>
+				<div class='row'>
+					<div class='col-md-12' style='padding-left: 0px;'>
+						<div class="checkdomain pnlsupportonline">
+			                <h4 class="titleside titlesupportonline">
+			                	<i class='fa fa-comments' style="color: #29739d;"></i> Hỗ trợ trực tuyến</h4>
+			                <a href="javascript:openonline()">
+			                    <img src="<?php echo ASSETS_CDN?>/images/support-online1.jpg" alt="goldstarsoft" style="border: 0">
+			                </a>
+			            </div>
+					</div>
+				</div>
+				<div style="min-height: 10px;"></div>
+				<div class='clearfix'></div>
+				<div class='row'>
+					<div class='col-md-12'>
+						<div style="min-height: 10px;"></div>
+						<div class='row'>
+							<div class='col-md-6' style='padding: 0px'>
+								<div class="boxes">
+								    <div class="title-sidebar">Tin nhanh</div>
+								    <div class="boxes-content">
+								        <ul class="news-flash">
+								            <li><img align="middle" alt="Bạn nên làm gì với lương của mình?" src="http://hangngay.com.vn/wp-content/themes/goldstar/timthumb.php?src=http://hangngay.com.vn/wp-content/uploads/2013/10/giam-thue-tndn-doi-voi-dn-co-tong-doanh-thu-duoi-20-ty-dongnam.jpg&amp;h=40&amp;w=60&amp;q=100&amp;zc=1">                <a title="Bạn nên làm gì với lương của mình?" href="http://hangngay.com.vn/ban-nen-lam-gi-voi-luong-cua-minh/">Bạn nên làm gì với lương của mình?</a>
+								                <div class="clearfix"></div> 
+								
+								                </li><li><img align="middle" alt="Người thành công làm gì sau giờ làm việc?" src="http://hangngay.com.vn/wp-content/themes/goldstar/timthumb.php?src=http://hangngay.com.vn/wp-content/uploads/2013/11/00-49733.jpg&amp;h=40&amp;w=60&amp;q=100&amp;zc=1">                <a title="Người thành công làm gì sau giờ làm việc?" href="http://hangngay.com.vn/nguoi-thanh-cong-lam-gi-sau-gio-lam-viec/">Người thành công làm gì sau giờ làm việc?</a>
+								                <div class="clearfix"></div> 
+								
+								                </li><li><img align="middle" alt="Làm thế nào để “cứu” laptop khi bị nước vào?" src="http://hangngay.com.vn/wp-content/themes/goldstar/timthumb.php?src=http://hangngay.com.vn/wp-content/uploads/2013/11/nuoc-vao-may.jpg&amp;h=40&amp;w=60&amp;q=100&amp;zc=1">                <a title="Làm thế nào để “cứu” laptop khi bị nước vào?" href="http://hangngay.com.vn/lam-the-nao-de-cuu-laptop-khi-bi-nuoc-vao/">Làm thế nào để “cứu” laptop khi bị nước vào?</a>
+								                <div class="clearfix"></div> 
+								
+								                </li><li><img align="middle" alt="Tại sao nói :Lựa chọn một phần mềm &ndash; tức là lựa chọn một giải pháp!" src="http://hangngay.com.vn/wp-content/themes/goldstar/timthumb.php?src=http://hangngay.com.vn/wp-content/uploads/2013/10/cp.jpg&amp;h=40&amp;w=60&amp;q=100&amp;zc=1">                <a title="Tại sao nói :Lựa chọn một phần mềm &ndash; tức là lựa chọn một giải pháp!" href="http://hangngay.com.vn/tai-sao-noi-lua-chon-mot-phan-mem-tuc-la-lua-chon-mot-giai-phap/">Tại sao nói :Lựa chọn một phần mềm &ndash; tức là lựa chọn một giải pháp!</a>
+								                <div class="clearfix"></div> 
+								
+								                </li><li><img align="middle" alt="Tổng giá trị đầu tư phần mềm là bao nhiêu? để hợp lý ?" src="http://hangngay.com.vn/wp-content/themes/goldstar/timthumb.php?src=http://hangngay.com.vn/wp-content/uploads/2013/10/slide22.jpg&amp;h=40&amp;w=60&amp;q=100&amp;zc=1">                <a title="Tổng giá trị đầu tư phần mềm là bao nhiêu? để hợp lý ?" href="http://hangngay.com.vn/tong-gia-tri-dau-tu-phan-mem-la-bao-nhieu-de-hop-ly/">Tổng giá trị đầu tư phần mềm là bao nhiêu? để hợp lý ?</a>
+								                <div class="clearfix"></div> 
+								
+								                </li><li><img align="middle" alt="Có nên đóng: Chi phí bảo trì phần mềm kế toán ?" src="http://hangngay.com.vn/wp-content/themes/goldstar/timthumb.php?src=http://hangngay.com.vn/wp-content/uploads/2013/10/giam-thue-tndn-doi-voi-dn-co-tong-doanh-thu-duoi-20-ty-dongnam.jpg&amp;h=40&amp;w=60&amp;q=100&amp;zc=1">                <a title="Có nên đóng: Chi phí bảo trì phần mềm kế toán ?" href="http://hangngay.com.vn/co-nen-dong-chi-phi-bao-tri-phan-mem-ke-toan/">Có nên đóng: Chi phí bảo trì phần mềm kế toán ?</a>
+								                <div class="clearfix"></div> 
+								
+								                </li><li><img align="middle" alt="WEBSITE TRA CỨU THÔNG TIN HÓA ĐƠN HỢP PHÁP" src="http://hangngay.com.vn/wp-content/themes/goldstar/timthumb.php?src=http://hangngay.com.vn/wp-content/uploads/2013/10/dich-vu-ke-toan-thue.png&amp;h=40&amp;w=60&amp;q=100&amp;zc=1">                <a title="WEBSITE TRA CỨU THÔNG TIN HÓA ĐƠN HỢP PHÁP" href="http://hangngay.com.vn/website-tra-cuu-thong-tin-hoa-don-hop-phap/">WEBSITE TRA CỨU THÔNG TIN HÓA ĐƠN HỢP PHÁP</a>
+								                <div class="clearfix"></div> 
+								
+								                </li><li><img align="middle" alt="Hướng dẫn cách khai và nộp thuế" src="http://hangngay.com.vn/wp-content/themes/goldstar/timthumb.php?src=http://hangngay.com.vn/wp-content/uploads/2013/11/anhHoidap.jpg&amp;h=40&amp;w=60&amp;q=100&amp;zc=1">                <a title="Hướng dẫn cách khai và nộp thuế" href="http://hangngay.com.vn/huong-dan-cach-khai-va-nop-thue/">Hướng dẫn cách khai và nộp thuế</a>
+								                <div class="clearfix"></div> 
+								
+								                </li><li><img align="middle" alt="Phát hiện chip gián điệp trong hàng loạt bàn là, ấm nước Trung Quốc" src="http://hangngay.com.vn/wp-content/themes/goldstar/timthumb.php?src=http://hangngay.com.vn/wp-content/uploads/2013/11/gian-diep.jpg&amp;h=40&amp;w=60&amp;q=100&amp;zc=1">                <a title="Phát hiện chip gián điệp trong hàng loạt bàn là, ấm nước Trung Quốc" href="http://hangngay.com.vn/phat-hien-chip-gian-diep-trong-hang-loat-ban-la-am-nuoc-trung-quoc/">Phát hiện chip gián điệp trong hàng loạt bàn là, ấm nước Trung Quốc</a>
+								                <div class="clearfix"></div> 
+								
+								                </li><li><img align="middle" alt="Điện toán đám mây: cũ người, mới ta" src="http://hangngay.com.vn/wp-content/themes/goldstar/timthumb.php?src=http://hangngay.com.vn/wp-content/uploads/2013/11/1383239721-cloud-1.jpg&amp;h=40&amp;w=60&amp;q=100&amp;zc=1">                <a title="Điện toán đám mây: cũ người, mới ta" href="http://hangngay.com.vn/dien-toan-dam-may-cu-nguoi-moi-ta/">Điện toán đám mây: cũ người, mới ta</a>
+								                <div class="clearfix"></div> 
+								
+								                </li>        </ul>
+								    </div>
+								</div>
+							</div>
+							<div class='col-md-6' style='padding: 0px'>
+								<div class="boxes">
+								    <div class="title-sidebar">Hỗ trợ</div> 
+								    <div class="boxes-content">
+								        <div>			<div class="textwidget"><h3>Hỗ trợ 24/7</h3>
+										<p><span class="style1">ĐT : 0972 023 191 </span></p>
+										<p><span class="style1"><strong>Yahoo</strong> : </span> <a href="ymsgr:sendIM?noidocoem_thienduonghanhphuc"> <img border="0" src="http://presence.msg.yahoo.com/online?u=noidocoem_thienduonghanhphuc&amp;m=g&amp;t=1&amp;l=us" alt=""> </a></p>
+										<p><strong><span class="style1">Skype </span></strong></p>
+										<script src="http://www.skypeassets.com/i/scom/js/skype-uri.js" type="text/javascript"></script>
+										<div id="SkypeButton_Chat_lamdinhmy_1">
+										<script type="text/javascript">// &lt;![CDATA[
+										Skype.ui({
+										      "name": "chat",
+										      "element": "SkypeButton_Chat_lamdinhmy_1",
+										      "participants": ["lamdinhmy"],
+										      "imageSize": 15
+										    });
+										// ]]&gt;</script><p id="SkypeButton_Chat_lamdinhmy_1_paraElement" style="font-size:14px; color:#444444"><a href="skype:lamdinhmy?chat" onclick="Skype.tryAnalyzeSkypeUri('chat', '0');"><img src="http://www.skypeassets.com/i/scom/images/skype-buttons/chatbutton_16px.png" alt="Skype chat, instant message" role="Button" style="border:0; margin:16px; vertical-align:-20px;"></a></p>
+										</div></div>
+										</div>        
+								    </div>
+								</div>
+								
+								<div class="boxes">
+								    <div class="title-sidebar">Dịch vụ</div>
+								    <div class="boxes-content">
+								        <div class="boxes-content">
+									        <ul class="news-flash">
+									            <li><img align="middle" alt="Quyết toán thuế" src="http://hangngay.com.vn/wp-content/themes/goldstar/timthumb.php?src=http://hangngay.com.vn/wp-content/uploads/2013/10/thue.jpg&amp;h=40&amp;w=60&amp;q=100&amp;zc=1">            <a title="Quyết toán thuế" href="http://hangngay.com.vn/service/quyet-toan-thue/">Quyết toán thuế</a>
+									            <div class="clearfix"></div> 
+									                </li><li><img align="middle" alt="Kê khai thuế hàng tháng" src="http://hangngay.com.vn/wp-content/themes/goldstar/timthumb.php?src=http://hangngay.com.vn/wp-content/uploads/2013/10/ke-khai-thue.jpg&amp;h=40&amp;w=60&amp;q=100&amp;zc=1">            <a title="Kê khai thuế hàng tháng" href="http://hangngay.com.vn/service/ke-khai-thue-hang-thang/">Kê khai thuế hàng tháng</a>
+									            <div class="clearfix"></div> 
+									                </li><li><img align="middle" alt="Kế toán thuế trọn gói" src="http://hangngay.com.vn/wp-content/themes/goldstar/timthumb.php?src=http://hangngay.com.vn/wp-content/uploads/2013/10/dich-vu-ke-toan-thue.png&amp;h=40&amp;w=60&amp;q=100&amp;zc=1">            <a title="Kế toán thuế trọn gói" href="http://hangngay.com.vn/service/ke-toan-thue-tron-goi/">Kế toán thuế trọn gói</a>
+									            <div class="clearfix"></div> 
+									                </li><li><img align="middle" alt="Kế toán chuyên nghiệp &ndash; tư vấn miễn phí" src="http://hangngay.com.vn/wp-content/themes/goldstar/timthumb.php?src=http://hangngay.com.vn/wp-content/uploads/2013/10/tuvanketoan.jpg&amp;h=40&amp;w=60&amp;q=100&amp;zc=1">            <a title="Kế toán chuyên nghiệp &ndash; tư vấn miễn phí" href="http://hangngay.com.vn/service/ke-toan-chuyen-nghiep-tu-van-mien-phi/">Kế toán chuyên nghiệp &ndash; tư vấn miễn phí</a>
+									            <div class="clearfix"></div> 
+									                </li>        
+							                </ul>
+									    </div>
+								    </div>
+								</div>
+							</div>
+						</div>
+						<div class='row'>
+							<div class='col-md-12' style='padding: 0px;'>
+								<div class='top-news'>
+									<div class='heading'>
+										Chuyên mục hot
+										<i class='fa fa-chevron-down pull-right'
+										style='font-size: 16px;'></i>
+									</div>
+									<div class='separator'></div>
+									<!-- Nav tabs -->
+									<ul class="nav nav-tabs" role="tablist">
+									  <li class="active"><a href="#hot_tab_video" role="tab" data-toggle="tab">Video</a></li>
+									  <li>
+									  	<a href="#hot_tab_product" role="tab" data-toggle="tab">Sản phẩm</a></li>
+									  <li><a href="#hot_tab_new" role="tab" data-toggle="tab">Tin</a></li>
+									</ul>
+									
+									<!-- Tab panes -->
+									<div class="tab-content">
+									  <div class="tab-pane active" id="hot_tab_video">
+									  		<div class="video1">
+											  <a href="#">
+												  <div class="thumb">
+													<img title="Cô Gái Mở Đường - LEG Official" src="http://img.youtube.com/vi/U7V--PQreqo/0.jpg">
+														<div class="duration">
+																						00:03:41						</div>
+													</div>
+												<div class="info">
+														<span class="name_video">
+																					Cô Gái Mở Đường - LEG Official											</span>
+														<span class='view_video'><i class='fa fa-eye'></i> 359</span>
+												</div>
+												<div class="clear"> </div>
+											   	</a>
+											</div>
+										
+											<div class="video1">
+											  <a href="#">
+												  <div class="thumb">
+													<img title="Mình yêu nhau đi - phiên bản cô giáo TIẾNG ANH (X-Team)" src="http://img.youtube.com/vi/pswOI-HmVws/0.jpg">
+														<div class="duration">
+																						00:02:49						</div>
+													</div>
+												<div class="info">
+													<span class="name_video">
+																					Mình yêu nhau đi - phiên bản cô giáo TIẾNG ANH .....											</span>
+														<span class='view_video'><i class='fa fa-eye'></i> 359</span>
+												</div>
+												<div class="clear"> </div>
+											   	</a>
+											</div>
+											
+											<div class="video1">
+											  <a href="#">
+												  <div class="thumb">
+													<img title="Như Hexi - Mình yêu nhau đi - Cover Bựa" src="http://img.youtube.com/vi/sxElEUzoKBQ/0.jpg">
+														<div class="duration">
+																						00:03:38						</div>
+													</div>
+												<div class="info">
+													<span class="name_video">
+																					Như Hexi - Mình yêu nhau đi - Cover Bựa											</span>
+														   <span class='view_video'><i class='fa fa-eye'></i> 359</span>
+												</div>
+												<div class="clear"> </div>
+											   	</a>
+											</div>
+											
+											<div class="video1">
+											  <a href="#">
+												  <div class="thumb">
+													<img title="Mình Yêu Nhau Đi Thái Tuyết Trâm Cover Hot" src="http://img.youtube.com/vi/ndFSzoUkb60/0.jpg">
+														<div class="duration">
+																						00:03:05						</div>
+													</div>
+												<div class="info">
+													<span class="name_video">
+																					Mình Yêu Nhau Đi Thái Tuyết Trâm Cover Hot .....											</span>
+												 	  <span class='view_video'><i class='fa fa-eye'></i> 359</span>	
+												</div>
+												<div class="clear"> </div>
+											   	</a>
+											</div>
+											
+											<div class="video1">
+											  <a href="#">
+												  <div class="thumb">
+													<img title="[Cover] Mình yêu nhau đi - Hương Ly ft Quỳnh Anh" src="http://img.youtube.com/vi/-HoaXwJQA-0/0.jpg">
+														<div class="duration">
+																						00:03:22						</div>
+													</div>
+												<div class="info">
+													<span class="name_video">
+																					[Cover] Mình yêu nhau đi - Hương Ly ft Quỳnh A .....											</span>
+		
+														<span class='view_video'><i class='fa fa-eye'></i> 359</span>										    	
+												</div>
+												<div class="clear"> </div>
+											   	</a>
+											</div>
+									  	</div>
+									  <div class="tab-pane" id="hot_tab_product">
+											<div class='new-list'>
+												<div class='item'>
+													<div class='row'>
+														<div class='col-md-4'>
+															<img 
+																alt="Banks warned about exchange rate dangers in 2009" 
+																src="http://joomlatemplates.youjoomla.info/dailynews/media/k2/items/cache/184b7cb84d7b456c96a0bdfbbeaa5f14_L.jpg" width="100%">
+														</div>
+														<div class='col-md-8'>
+															<span> Banks warned about exchange rate dangers in 2009 </span></br>
+															<span> 24<br><b> October</b>  </span></br>
+														</div>
+													</div>
+												</div>
+												
+												<div class='item'>
+													<div class='row'>
+														<div class='col-md-4'>
+															<img 
+																alt="Banks warned about exchange rate dangers in 2009" 
+																src="http://joomlatemplates.youjoomla.info/dailynews/media/k2/items/cache/184b7cb84d7b456c96a0bdfbbeaa5f14_L.jpg" width="100%">
+														</div>
+														<div class='col-md-8'>
+															<span> Banks warned about exchange rate dangers in 2009 </span></br>
+															<span> 24<br><b> October</b>  </span></br>
+														</div>
+													</div>
+												</div>
+												
+												<div class='item'>
+													<div class='row'>
+														<div class='col-md-4'>
+															<img alt="Putin frees his enemies as part of Sochi spin" 
+																src="http://joomlatemplates.youjoomla.info/dailynews/media/k2/items/cache/e0a70f72bdae9885bfc32d7cd19a26a1_L.jpg" width="100%">
+														</div>
+														<div class='col-md-8'>
+															<span> Banks warned about exchange rate dangers in 2009 </span></br>
+															<span> 24<br><b> October</b>  </span></br>
+														</div>
+													</div>
+												</div>
+												
+												<div class='item'>
+													<div class='row'>
+														<div class='col-md-4'>
+															<img 
+																alt="Banks warned about exchange rate dangers in 2009" 
+																src="http://joomlatemplates.youjoomla.info/dailynews/media/k2/items/cache/2ff2ba0051687eef5ca0459cf942940c_L.jpg" width="100%">
+														</div>
+														<div class='col-md-8'>
+															<span> Banks warned about exchange rate dangers in 2009 </span></br>
+															<span> 24<br><b> October</b>  </span></br>
+														</div>
+													</div>
+												</div>
+												
+												<div class='item'>
+													<div class='row'>
+														<div class='col-md-4'>
+															<img 
+																alt="Banks warned about exchange rate dangers in 2009" 
+																src="http://joomlatemplates.youjoomla.info/dailynews/media/k2/items/cache/ffee2447b152494b43d9816faaea83c8_L.jpg" width="100%">
+														</div>
+														<div class='col-md-8'>
+															<span> Banks warned about exchange rate dangers in 2009 </span></br>
+															<span> 24<br><b> October</b>  </span></br>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									  <div class="tab-pane" id="hot_tab_new">
+											<ul class='new-list'>
+												<li class='item'>
+													<a href="#">
+														<span class="title">
+															Công văn số 9456/TCHQ-QLRR ngày 29/7/2014 của Tổng cục 
+																Hải quan v/v áp dụng bộ tiêu chí theo Quyết định 279/QĐ-BTC 
+														</span>
+													</a>
+												</li>
+												<li class='item'>
+													<a href="#">
+														<span class="title">
+															Công văn số 9509/TCHQ-KTSTQ ngày 29/7/2014 của Tổng cục Hải quan v/v 
+																trả lời Công văn 1606/2014/CV-ABTEL về việc yêu cầu tạm đình 
+																	chỉ việc thi hành quyết định hành chính  
+														</span>
+													</a>
+												</li>
+												<li class='item'>
+													<a href="#">
+														<span class="title">
+															Công văn số 9504/TCHQ-TXNK ngày 29/7/2014 của Tổng cục Hải quan v/v xử lý 
+																nợ thuế về việc xem xét dừng áp
+																 dụng biện pháp cưỡng chế và xóa phạt chậm nộp (8/8/2014)
+														</span>
+													</a>
+												</li>
+												<li class='item'>
+													<a href="#">
+														<span class="title">
+															Công văn số 9502/TCHQ-GSQL ngày 29/7/2014 của Tổng cục Hải quan v/v 
+																hàng hóa xuất khẩu qua cửa khẩu phụ nằm ngoài khu Kinh tế cửa khẩu (
+														</span>
+													</a>
+												</li>
+												<li class='item'>
+													<a href="#">
+														<span class="title">
+															Công văn số 9515/TCHQ-VNACCS ngày 29/7/2014 của Tổng cục Hải quan v/v
+																 số lượng số thập phân của trị giá và đơn vị hàng hóa nhập khẩu 
+														</span>
+													</a>
+												</li>
+												<li class='item'>
+													<a href="#">
+														<span class="title">
+															Công văn số 2888/TCT-CS ngày 29/7/2014 của Tổng cục Thuế v/v 
+																chính sách thuế Thu nhập doanh nghiệp 
+														</span>
+													</a>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<hr>

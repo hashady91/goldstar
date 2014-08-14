@@ -4,8 +4,8 @@ class New_Form_New extends Cl_Form
 	public function init()
 	{
 		parent::init();
-		$this->fieldList = array(/*'avatar',*/'name', 'content', 'status', 'url',
-					 'tags', 'is_original', 'country');
+		$this->fieldList = array('avatar','name', 'content', 'status', 'description',
+					 'tags', 'author', 'source');
 		$this->setCbHelper('New_Form_Helper');
 		
 	}
@@ -34,14 +34,45 @@ class New_Form_New extends Cl_Form
         	'content' => array(
         		'type' => 'Textarea',
         		'options' => array(
-        	        'label' => "Nội dung new",
+        	        'label' => "Nội dung tin",
         	        'class' => 'isEditor',
-    	    		'filters' => array('StringTrim', 'NodePost'),
+    	    		'filters' => array('StringTrim', 'StoryPost'),
         			'prefixPath' => array(
         				"filter" => array (
         					"Filter" => "Filter/"
         				)
         			)
+        		),
+        	),
+        	'description' => array(
+        		'type' => 'Textarea',
+        		'options' => array(
+        			'label' => "Mô tả tin",
+        			'class' => 'isEditor',
+        			'filters' => array('StringTrim', 'StoryPost'),
+        			'prefixPath' => array(
+        				"filter" => array (
+        					"Filter" => "Filter/"
+        				)
+        			)
+        		),
+        	),
+        	'source' => array(
+        		'type' => 'Text',
+        		'options' => array(
+        			'label' => "Nguồn",
+        			'required' => true,
+    	    		'filters' => array('StringTrim', 'StripTags'),
+                    'validators' => array('NotEmpty'),
+        		),
+        	),
+        	'author' => array(
+        		'type' => 'Text',
+        		'options' => array(
+        			'label' => "Tác giả",
+        			'required' => true,
+    	    		'filters' => array('StringTrim', 'StripTags'),
+                    'validators' => array('NotEmpty'),
         		),
         	),
             'status' => array(
@@ -61,30 +92,12 @@ class New_Form_New extends Cl_Form
         		),
         		'multiOptionsCallback' => array('getOriginal')
         	),
-        	'country' => array(
-        		'type' => 'Select',
-        		'options' => array(
-        			'label' => 'Quốc gia?',
-        			//'required' => true,
-        		),
-        		'multiOptionsCallback' => array('getCountry')
-        	),
         	'avatar' => array(
         			'type' => 'Hidden',
         			'options' => array(
         					'class' => 'cl_upload',
         					'filters' => array('StringTrim', 'StripTags')
         			),
-        	),
-        	'url' => array(
-        		'type' => 'Text',
-        		'options' => array(
-        			'label' => 'Url',
-        			'placeholder' => "E.g http://www.youtube.com/watch?v=fkm7eMqiuSw",
-        			'required' => true,
-        			'filters' => array('StringTrim', 'StripTags'),
-        			'validators' => array('NotEmpty'),
-        		),
         	),
         );
         return $ret;

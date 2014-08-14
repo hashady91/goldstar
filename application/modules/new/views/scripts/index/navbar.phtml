@@ -1,14 +1,21 @@
 <?php echo sand_dev_info_phtml(__FILE__);?>
 <?php $page = Zend_Registry::get('page');?>
 <ul class='nav nav-pills'>
-	<li <?php if ($page == 'new/index/new') echo "class='active';"?>><a href="/new/new">New</a></li>
+	<li <?php if ($page == 'new/index/new') echo "class='active';"?>>
+		<a href="/new/new">Thêm mới</a></li>
 	<? if (isset($this->row)) :?>    
-	<li <?php if ($page == 'new/index/update') echo "class='active';"?>><a href="/new/update<?php if (isset($this->row['id'])) echo "?id=" . $this->row['id'];?>"">Update</a></li>
+	<li <?php if ($page == 'new/index/update') echo "class='active';"?>>
+		<a href="/new/update<?php if (isset($this->row['id'])) echo "?id=" . $this->row['id'];?>"">
+		Cập nhật</a></li>
 	<?php endif;?>    
-	<li <?php if ($page == 'new/index/search') echo "class='active';"?>><a href="/new/search">Search</a></li>
-    <li <?php if ($page == 'new/index/search-comment') echo "class='active';"?>><a href="/new/search-comment">Search Comment</a></li>
+	<li <?php if ($page == 'new/index/search') echo "class='active';"?>>
+		<a href="/new/search">Tìm kiếm</a></li>
+    <li <?php if ($page == 'new/index/search-comment') echo "class='active';"?>>
+    	<a href="/new/search-comment">Tìm kiếm bình luận</a></li>
 	<? if (isset($this->row)) :?>    
-	<li <?php if ($page == 'new/index/view') echo "class='active';"?>><a href="/new/<?php if (isset($this->row['id'])) echo "" . $this->row['id'];?>">View</a></li>
+	<li <?php if ($page == 'new/index/view') echo "class='active';"?>>
+		<a href="/new/<?php if (isset($this->row['id'])) echo "" . $this->row['id'];?>">
+			Xem chi tiết</a></li>
 	<?php endif;?>
 </ul>
 <div class='separator'></div>
