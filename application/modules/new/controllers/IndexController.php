@@ -78,8 +78,6 @@ class New_IndexController extends Cl_Controller_Action_NodeIndex
     	$lu = Zend_Registry::get('user');
     	
     	$id = $this->getStrippedParam('id');
-    	if(!has_role_new($lu, $id))	
-    		assure_perm('sudo');
     	
     	if(has_role('sudo'))
     		$this->setLayout("admin");

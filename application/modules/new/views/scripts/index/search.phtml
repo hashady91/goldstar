@@ -43,9 +43,8 @@
         		<?php foreach($this->list as $row) :?>
         		<tr id="<?php echo $row['id'];?>">
         			<td><input type="checkbox" value="<?php echo $row['id'];?>" class="check-item" /></td>
-        			<?php $imgLink = "http://img.youtube.com/vi/{$row['ytid']}/1.jpg";?>
         			<td><a href="<?php echo node_link('new',$row);?>">
-        				<img src="<?php echo $imgLink;?>" title="new-name"
+        				<img src="<?php echo $row['avatar'];?>" title="new-name"
 							style='width: 143px;height: 92px;'>
 					</a></td>
         			<td><a href="<?php echo node_link('new',$row);?>"><?php echo $row['name'];?></a></td>

@@ -142,6 +142,18 @@ class Category_IndexController extends Cl_Controller_Action_NodeIndex
     			}
     		}
     	}
+    	
+    	//TODO: lay thong tin tu chuyen muc do
+    	//Get news
+    	$where = array();
+    	$cond['where'] = $where;//TODO: is_hot = hot
+    	$cond['ts'] = -1;
+    	$r = Dao_Node_New::getInstance()->findAll($cond);
+    	if($r['success']){
+    		$news = $r['result'];
+    	}
+    	$this->setViewParam('news', $news);
+    	
         //TODO Your permission here
         //parent::viewAction();//no permission yet
         Bootstrap::$pageTitle = 'Chuyên mục - ' . $cate_name;

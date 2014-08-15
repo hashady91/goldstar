@@ -5,7 +5,7 @@ class New_Form_New extends Cl_Form
 	{
 		parent::init();
 		$this->fieldList = array('avatar','name', 'content', 'status', 'description',
-					 'tags', 'author', 'source');
+					 'tags', 'author', 'source','parent_category_iid', 'is_hot');
 		$this->setCbHelper('New_Form_Helper');
 		
 	}
@@ -57,6 +57,20 @@ class New_Form_New extends Cl_Form
         			)
         		),
         	),
+        		'parent_category_iid' => array(
+        				'type' => 'Select',
+        				'options' => array(
+        						'label' => "Chuyên mục cha",
+        						'filters' => array('StringTrim','StripTags'),
+        						'prefixPath' => array(
+        								"filter" => array (
+        										"Filter" => "Filter/"
+        								)
+        						),
+        				),
+        				'multiOptionsCallback' => array('getParentCategoryList'),
+        				'defaultValue' => 'NoParent'
+        		),
         	'source' => array(
         		'type' => 'Text',
         		'options' => array(
@@ -84,6 +98,16 @@ class New_Form_New extends Cl_Form
             		),
             		'multiOptionsCallback' => array('getStatus')
             ),
+        	'is_hot' => array(
+        			'type' => 'Select',
+        			'permission' => 'root',
+        			'options' => array(
+        				'label' => 'Có là hot không?(hot, best, new, normal)',
+        				'required' => true,
+        			),
+        			'multiOptionsCallback' => array('getHotStatus'),
+        			'defaultValue' => 'normal'
+        	),
         	'is_original' => array(
         		'type' => 'Select',
         		'options' => array(

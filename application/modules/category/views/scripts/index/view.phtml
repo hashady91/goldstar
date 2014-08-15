@@ -6,98 +6,12 @@
 <div style='min-height: 400px;'>
 		<div class='row'>
 			<div class='col-md-7'>
-				<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-				  <!-- Indicators -->
-				  <ol class="carousel-indicators">
-				    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-				    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-				    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-				  </ol>
+				<?php echo $this->render('/widget/slide-product.phtml');?>
 				
-				  <!-- Wrapper for slides -->
-				  <div class="carousel-inner">
-				    <div class="item active">
-				      <img src="http://goldstarassets.local//images/support-online1.jpg" width='100%' height='298px'>
-				      <div class="carousel-caption">
-				        kakak
-				      </div>
-				    </div>
-				    <div class="item">
-				       <img src="http://goldstarassets.local//images/support-online1.jpg" width='100%' height='298px'>
-				      <div class="carousel-caption">
-				        sokiu
-				      </div>
-				    </div>
-				  </div>
-				
-				  <!-- Controls -->
-				  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-				    <span class="glyphicon glyphicon-chevron-left"></span>
-				  </a>
-				  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-				    <span class="glyphicon glyphicon-chevron-right"></span>
-				  </a>
-				</div>
 				<div class='separator-high'></div>
+				<?php $this->title = $row['name'];?>
+				<?php echo $this->render('/widget/tin-tuc-moi.phtml');?>
 				
-				<div class='product-news'>
-					<div class='heading'>
-						<h3 style="margin-top: 0;">
-						<i class='glyphicon glyphicon-home'></i>
-						<?php echo $row['name'];?></h3>
-					</div>
-					
-					<div class='product-list'>
-						<div class='product'>
-							<div class='row'>
-								<div class='col-md-3'>
-									<a href="#" rỡ"="" rực="" công="" thành="" challenge"="" programming="" 3d="" title="Lễ trao giải cuộc thi ">
-								       <img width="128" height="128" src="http://sunnet.vn//images/users/images/poster.png">
-								    </a>
-								</div>
-								<div class='col-md-9'>
-									<div class="text-content">
-								       <a href="#" rỡ"="" rực="" công="" thành="" challenge"="" programming="" 3d="" title="Lễ trao giải cuộc thi ">
-								           <h2 class="h2-header">
-								           Lễ trao giải cuộc thi "3D Programming Challenge" thành công rực rỡ</h2>
-								        </a>
-								        <span class="date">11-10-2013</span>
-								        <div style="text-align: justify;">
-									Chiều ngày 10/10/2013, tại trụ sở SunNet số 120 Trường Chinh đã diễn ra lễ trao giải cuộc thi "3D Programming Challenge" với sự có mặt đông đủ...             <a href="/vi/index/index/?id=134&amp;type=3" rỡ"="" rực="" công="" thành="" challenge"="" programming="" 3d="" title="Lễ trao giải cuộc thi " class="read-more">Xem tiếp</a>
-								        </div>
-								             
-								        </div>
-								</div>
-							</div>
-						</div>
-						<div class='product'>
-							<div class='row'>
-								<div class='col-md-3'>
-									<a href="#" title="Sunnet đón Tết Trung thu bằng bữa tiệc ấm cúng">
-									       <img width="128" height="128" src="http://sunnet.vn//images/users/files/iconx128(1).png">
-									   </a>
-								</div>
-								<div class='col-md-9'>
-									<div class="text-content">
-								       <a href="#" title="Sunnet đón Tết Trung thu bằng bữa tiệc ấm cúng">
-								           <h2 class="h2-header">
-								           Sunnet đón Tết Trung thu bằng bữa tiệc ấm cúng</h2>
-								        </a>
-								        <span class="date">02-10-2013</span>
-								        <div style="text-align: justify;">
-									
-										
-								
-								
-									Sau những chuỗi ngày bận rộn trong công việc, tập thể thành viên SunNet đánh dấu thêm một mốc kỉ niệm bằng bữa tiệc đón rằm...             <a href="/vi/index/index/?id=133&amp;type=3" title="Sunnet đón Tết Trung thu bằng bữa tiệc ấm cúng" class="read-more">Xem tiếp</a>
-								        </div>
-								             
-								        </div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
 			</div>
 			<div class='col-md-5'>
 				<?php echo $this->render('/widget/ho-tro-truc-tuyen.phtml');?>

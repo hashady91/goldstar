@@ -15,7 +15,8 @@ class Dao_Node_New extends Dao_Node_Site
     		'content' => 'string',
     		'description' => 'string',
     		'source' => 'string',//vnepress.net
-    		'author' => 'string'
+    		'author' => 'string',
+    		'is_hot' => 'string',//hot, new, best, 'normal
     		//add other stuff u want
     );
         
@@ -46,6 +47,7 @@ class Dao_Node_New extends Dao_Node_Site
         		'description' => 'string',
         		'source' => 'string',//vnepress.net
         		'author' => 'string',
+        		'is_hot' => 'string',//hot, new, best, normal
     	        'content_uf' => 'string', //unfiltered content where <span class='item'> is converted to proper item links 
         		'tags' => array( 
     	            $tag

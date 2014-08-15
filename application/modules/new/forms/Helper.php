@@ -6,7 +6,11 @@ class New_Form_Helper extends Cl_Form_NodeHelper
     	$ret = array('approved' => 'approved', 'queued' => 'queued');
     	return array('success' =>true, 'result' => $ret);
     }
-    
+    public function getHotStatus()
+    {
+    	$ret = array('hot' => 'Hot', 'best' => 'Best', 'new' => 'New', 'normal' => 'Normal');
+    	return array('success' =>true, 'result' => $ret);
+    }
     public function getOriginal()
     {
     	$ret = array('cover' => 'Cover', 'original' => 'Bản gốc');
@@ -17,6 +21,24 @@ class New_Form_Helper extends Cl_Form_NodeHelper
     {
     	$ret = array('domestic' => 'Trong nước', 'foreign' => 'Nước ngoài');
     	return array('success' =>true, 'result' => $ret);
+    }
+    
+    public function getParentCategoryList()
+    {
+    	$where = array('level' => 2);
+    	$cond['where'] = $where;
+    	$r = Dao_Node_Category::getInstance()->findAll($cond);
+    	$cates = array();
+    	if($r['success']){
+    		foreach ($r['result'] as $ca){
+    			$cate = array($ca['iid'] => $ca['name']);
+    			array_push($cates, $cate);
+    		}
+    		 
+    		return array('success' =>true, 'result' => $cates);
+    	}else{
+    		return array('success' =>true, 'result' => array());
+    	}
     }
     
     /*
