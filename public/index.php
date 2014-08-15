@@ -6,7 +6,7 @@ defined('PUBLIC_PATH')
 
 // Define path to application directory
 defined('SAND_ROOT')
-|| define('SAND_ROOT', realpath(dirname(__FILE__) . '/../../../sand-core'));
+|| define('SAND_ROOT', realpath(dirname(__FILE__) . '/../../sand-core'));
 
 require_once(SAND_ROOT . '/library/init.php');
 require_once(SAND_ROOT . '/library/common.php');

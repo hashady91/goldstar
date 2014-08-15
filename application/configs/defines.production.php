@@ -3,14 +3,16 @@
  * SITE specifics
  */
 //define('POST_PAGE_SIZE', 30);
-define('SITE_URL', 'http://demo.sandphp.com');
+define('SITE_URL', 'http://goldstar.com.vn');
+define('SITE_NAME', 'Goldstar');
 //define('SITE_URL', 'http://www.oakq.com');
-define('SAND_ASSETS_CDN', 'http://bao30.com/');
-define('ASSETS_CDN', 'http://demo.sandphp.com/assets/');
+define('SAND_ASSETS_CDN', 'http://sandassets.goldstar.com.vn/');
+define('ASSETS_CDN', 'http://assets.goldstar.com.vn/');
+define('STATIC_GT', 'http://static.goldstar.com.vn/');
 
-define('NOREPLY_EMAIL', 'noreply@sandphp.com');
-define('DOMAIN', 'x.codersquare.com');
-define('CONTACT_EMAIL', 'contact@demo.com');
+define('NOREPLY_EMAIL', 'noreply@goldstar.com.vn');
+define('DOMAIN', 'goldstar.com.vn');
+define('CONTACT_EMAIL', 'contact@goldstar.com.vn');
 define('USE_AMAZON_SES', false); // true => send mail with amazon SES
 define('FILES_UPLOAD_PATH', realpath(APPLICATION_PATH . "/../") . "/hidden/");
 define('JSVERSION', '1340447153');
@@ -20,16 +22,16 @@ define('PAGE_RANGES', 7);//numbers pagination links at a time
  * DB connections
  */
 //include_once('functions.php');
-define('MONGO_HOST', 'localhost');
+define('MONGO_HOST', '127.0.0.1');
 //define('DICT_BACKEND', 'mongo');
 define('DICT_BACKEND', 'redis');
 define('REDIS_PORT', 6379);
 define('REDIS_HOST','127.0.0.1');
 define('REDIS_PASS', '');
 
-define('RDB_DICT_DB', 30); //[0,1,2] is kept for eekip, [3,4,5] for edx,, [6,7,8] for taxi
-define('RDB_CACHE_DB', 31);
-define('RDB_QUEUE_DB', 32);
+define('RDB_DICT_DB', 33); //[0,1,2] is kept for eekip, [3,4,5] for edx,, [6,7,8] for taxi
+define('RDB_CACHE_DB', 34);
+define('RDB_QUEUE_DB', 35);
 
 define('RDB_DICT_PREFIX', 'd:'); //dict
 
