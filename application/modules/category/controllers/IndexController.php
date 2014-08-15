@@ -105,7 +105,8 @@ class Category_IndexController extends Cl_Controller_Action_NodeIndex
     	$r = Dao_Node_Category::getInstance()->findOne($where);
     	if($r['success']){
     	   $cate_name = $r['result']['name'];
-    		$cate = $r['result'];
+    	   $cate = $r['result'];
+    	   $this->setViewParam('row', $cate);
 			if(!isset($cate['level']))
     		    $cate['level'] = 1;
     		if($cate['level'] == 2){
@@ -113,46 +114,34 @@ class Category_IndexController extends Cl_Controller_Action_NodeIndex
     			$where = array('parent_category_iid' => $cate['iid']);
     			//$where = array();
     			$cond['where'] = $where;
-    			$r = Dao_Node_Product::getInstance()->findAll($cond);
+    			$r = Dao_Node_New::getInstance()->findAll($cond);
     			if($r['success']){
-    				$products = $r['result'];
-    				$this->setViewParam('products', $products);
-    				$this->setViewParam('row', $cate);
+    				$news = $r['result'];
+    				$this->setViewParam('news', $news);
     			}
     			
     			$this->setViewParam('is_level', 2);
     		}elseif($cate['level'] == 1){
     			//show child categories
     			$child_cate = isset($cate['child_category']) ? $cate['child_category'] : array();
-    			$categories = array();
     			if(count($child_cate) > 0){
+    				$cate_ids = array();
     				foreach ($child_cate as $ca){
-    					$where = array('parent_category_iid' => $ca['iid']);
-    					//$where = array();
-    					$cond['where'] = $where;
-    					$cond['limit'] = 3;
-    					$r = Dao_Node_Product::getInstance()->findAll($cond);
-    					if($r['success'])
-    					   $cateNew['products'] = $r['result'];
-    					$cateNew['detail'] = $ca;
-    					$categories[] = $cateNew;
+    					$cate_iids[] = $ca['iid'];
     				}
+    				
+    				$cate_iids[] = $iid;
+    				
+    				$where = array('parent_category_iid' => array('$in' => $cate_iids));
+    				$cond['where'] = $where;
+    				$r = Dao_Node_New::getInstance()->findAll($cond);
+	    			if($r['success']){
+	    				$news = $r['result'];
+	    				$this->setViewParam('news', $news);
+	    			}
     			}
-    			
-    			$iid = get_conf('home_page_product_iid', 1);
-    			$hp_product = Dao_Node_Product::getInstance()->getHomePageProduct($iid);
-    			 
-    			$this->setViewParam('hp_product', $hp_product);
-    			
-    			//TODO:: Get product was recommended
-    			$this->setViewParam('categories', $categories);
-    			$this->setViewParam('row', $cate);
-    		    $this->_helper->viewRenderer->setNoRender(true);
-    			echo $this->view->render('index/categories.phtml');
-    			$this->setViewParam('is_level', 1);
     		}
     	}
-
         //TODO Your permission here
         //parent::viewAction();//no permission yet
         Bootstrap::$pageTitle = 'Chuyên mục - ' . $cate_name;

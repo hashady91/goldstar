@@ -39,4 +39,17 @@ class Site_IndexController extends Cl_Controller_Action_Index
         $this->setLayout("admin");
         Bootstrap::$pageTitle = "Admin Panel";
     }
+    
+	public function giaTriCotLoiAction(){
+		Bootstrap::$pageTitle = "Giá trị cốt lõi";
+	}
+	
+	public function tamNhinMucTieuAction(){
+		Bootstrap::$pageTitle = "Tầm nhìn mục tiêu";
+	}
+	
+	public function hinhAnhHoatDongAction(){
+		Bootstrap::$pageTitle = "Hình ảnh hoạt động";
+	}
+    
 }

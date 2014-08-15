@@ -17,6 +17,7 @@ a{
 }
 #left-main-menu li > a{
 	color: #FFF !important;
+	padding-left: 8px;
 }
 #left-main-menu ul.dropdown-menu li > a{
 	color: #333 !important;

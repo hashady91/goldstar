@@ -33,7 +33,7 @@
 	   </div>
 	    <div id='ul-nav-menu'>
 	    
-	    <?php /*
+	
 	     <ul class="nav navbar-nav" id='left-main-menu' >
 	     	<li>
 		       	<a href="/" 
@@ -41,9 +41,47 @@
             		<i class='glyphicon glyphicon-home'></i>
             	</a>
             </li>
+            
+            <li class='dropdown hover '>
+	            	<a data-toggle="dropdown" 
+	            	class="dropdown-toggle" 
+	            		role="button" href="#" 
+	            	>
+	                <i class='glyphicon glyphicon-ok'></i>
+	                Giới thiệu
+	            	<span class="caret"></span></a>
+	                <ul class="dropdown-menu" role="menu">
+	    	           <li style='width:100%;'>
+	        	               <a href='/site/tam-nhin-muc-tieu'>
+	        	               	Tầm nhìn, mục tiêu
+	        	               </a>
+	    	           </li>
+	    	           <li style='width:100%;'>
+	        	               <a href='/site/gia-tri-cot-loi'>
+	        	               	Giá trị cốt lõi
+	        	               </a>
+	    	           </li>
+	    	           <li style='width:100%;'>
+	        	               <a href='/site/hinh-anh-hoat-dong'>
+	        	               	Hình ảnh hoạt động
+	        	               </a>
+	    	           </li>
+		           </ul>
+		           
+	            </li>
             <?php if(isset($categories)):?>
           	    <?php foreach ($categories as $ca):?>
-     		          <?php $count_child = (isset($ca['child_category']) && count($ca['child_category']) > 0) ? count($ca['child_category']) : 0;?>
+          	    	  <?php 
+          	    	  	//TODO: xem la viec tin toan child_category
+          	    	  	$where = array('parent_id' => $ca['id']);
+          	    	  	$cond['where'] = $where;
+          	    	  	$r = Dao_Node_Category::getInstance()->find($cond);
+          	    	  	$child_cate = array();
+          	    	  	if($r['success']){
+							$child_cate = $r['result'];
+						}
+						$count_child = count($child_cate);
+          	    	  ?>
  		              <li class='<?php if($count_child > 0):?>dropdown hover <?php endif;?>'>
  		              	<?php if($count_child > 0):?>
 		            	<a data-toggle="dropdown" 
@@ -55,23 +93,39 @@
 		            	<?php endif;?>
      		      		     <?php echo $ca['name']?>
      		      		     <?php if($count_child > 0):?>
-     		      		     	<b class="caret-right"></b>
+     		      		     	<b class="caret" style='color: white;'></b>
      		      		     <?php endif;?>
  		      		     </a>
  		      		     <?php if($count_child >0): ?>
 	 		      		      <ul class="dropdown-menu" role="menu">
-	 		      		           <?php foreach ($ca['child_category'] as $key => $val):?>
+	 		      		           <?php foreach ($child_cate as $c):?>
 	         						<li style='width:100%;'>
-	         							<a href="<?php echo category_link($val);?>">
-	         							<?php echo $val['name']?></a></li>
+	         							<a href="<?php echo category_link($c);?>">
+	         							<?php echo $c['name']?></a></li>
 	         					   <?php endforeach; ?>
 	         			     </ul>
  					     <?php endif;?>
 	      		     </li>
             	<?php endforeach;?>
             <?php endif;?>
+             <?php if (has_perm('sudo')) :?>
+				  <li style="float:right">
+		            <i class='icon-off'></i> <a href="/user/logout">Log out</a>
+		            </li>
+		
+		            <li style="float:right">
+		            <a href='/user/<?php echo $lu['id'];?>'><i class="icon-user"></i> <?php echo $lu['name']?></a> 
+		            
+		            </li>
+						  
+		 			<li class="pull-right">
+						<a href="/site/admin"><i class='icon-legal' style="color:red"></i>Admin</a>
+		          	</li>
+              <?php endif;?>
 	     </ul>
+	         <?php /*
 	     */?>
+	     <?php /*
 		   <ul class="nav navbar-nav" id='left-main-menu' >
            	   <li>
 			       	<a href="/" 
@@ -94,12 +148,12 @@
 	        	               </a>
 	    	           </li>
 	    	           <li style='width:100%;'>
-	        	               <a href='/site/gia-tri-cot-loi'>
+	        	               <a href='/category/gia-tri-cot-loi'>
 	        	               	Giá trị cốt lõi
 	        	               </a>
 	    	           </li>
 	    	           <li style='width:100%;'>
-	        	               <a href='/site/hinh-anh-hoat-dong'>
+	        	               <a href='/category/hinh-anh-hoat-dong'>
 	        	               	Hình ảnh hoạt động
 	        	               </a>
 	    	           </li>
@@ -108,7 +162,7 @@
 	            </li>
 	            
 	            <li>
-	                <a href="/site/doi-tac-va-khach-hang" >
+	                <a href="/category/doi-tac-va-khach-hang" >
 	            		<i class="glyphicon glyphicon-user"></i> Đối tác & Khách hàng</a>
 	            </li>          
 	
@@ -198,6 +252,7 @@
 			          	</li>
 	              <?php endif;?>
 	          </ul>
+	          */?>
           </div>
         </div><!--/.nav-collapse -->	
     </div>
