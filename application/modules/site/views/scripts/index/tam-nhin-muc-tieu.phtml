@@ -1,0 +1,51 @@
+<?php 
+	$lu = Zend_Registry::get('user');
+	$news = $this->news;
+	$bestNews = $this->bestNews;
+	$videos = $this->videos;
+	$tinNhanh = $this->tinNhanh;
+?>
+<div style='min-height: 400px;'>
+		<div class='row'>
+			<div class='col-md-7'>
+				<div id="content-main">
+                      <h1 title="Tầm nhìn">Tầm nhìn</h1>
+						<p><img width="100%" height="252" src="http://tncsoft.com/userfiles/quang%20cao.jpg" alt="" class="aligncenter"></p>
+						<p style="text-align: justify;">Việt nam đang đổi mới và phát triển mạnh mẽ, mong muốn được đóng góp vào quá trình phát triển của dân tộc là khát vọng của mỗi cá nhân, tổ chức. <strong>WEEKEND&nbsp;</strong>đã Chọn con đường phát triển hệ thống phần mềm quản trị tài chính kế toán nhằm “<strong>Nâng cao năng lực tài chính</strong>” cho khách hàng.</p>
+						<p style="text-align: justify;">Với định hướng kinh doanh “<strong>Chất lượng &ndash; </strong><strong>Chuyên nghiệp </strong><strong>- Đổi mới và hoàn thiện</strong>”, <strong>WEEKEND&nbsp;</strong>đã và đang không ngừng nỗ lực phấn đấu trở thành “<strong>Sự lựa chọn hoàn hảo cho doanh nghiệp</strong>” của họ. Chiến lược phát triển dài hạn của công ty được thể hiện qua các định hướng sau:</p>
+						<ul>
+						<li><strong>&nbsp;&nbsp;&nbsp;&nbsp;</strong><b><strong>&nbsp;</strong></b>&nbsp;Chất lượng sản phẩm và dịch vụ là yếu tố quyết định thương hiệu của công ty.</li>
+						<li><strong>&nbsp; &nbsp; </strong><b><strong>&nbsp;</strong></b>&nbsp;Mở rộng đầu tư vào lĩnh vực công nghệ thông tin, tư vấn tài chính.</li>
+						<li><strong>&nbsp;&nbsp;&nbsp;&nbsp;</strong><b><strong>&nbsp;</strong></b>&nbsp;Nâng cao năng lực cạnh tranh bằng cách áp dụng công nghệ hiện đại và biện pháp quản lý tiên tiến khoa</li>
+						<li><strong>&nbsp;&nbsp;&nbsp; </strong><b><strong>&nbsp;</strong></b>&nbsp;Phát triển nguồn nhân lực bền vững với nhân tố con người là trọng tâm.</li>
+						</ul>
+                </div>
+			</div>
+			<div class='col-md-5'>
+				<?php echo $this->render('/widget/ho-tro-truc-tuyen.phtml');?>
+				<div style="min-height: 10px;"></div>
+				<div class='clearfix'></div>
+				<div class='row'>
+					<div class='col-md-12'>
+						<div style="min-height: 10px;"></div>
+						<div class='row'>
+							<div class='col-md-6' style='padding: 0px'>
+								<?php echo $this->render('/widget/tin-nhanh.phtml');?>
+							</div>
+							<div class='col-md-6' style='padding: 0px'>
+								<?php echo $this->render('/widget/box-ho-tro.phtml');?>
+								
+								<?php echo $this->render('/widget/dich-vu.phtml');?>
+							</div>
+						</div>
+						<div class='row'>
+							<div class='col-md-12' style='padding: 0px;'>
+								<?php echo $this->render('/widget/chuyen-muc-hot.phtml');?>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<hr>
