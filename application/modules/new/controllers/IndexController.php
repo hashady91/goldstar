@@ -182,66 +182,8 @@ class New_IndexController extends Cl_Controller_Action_NodeIndex
     	}
 
         if ($row = $this->getViewParam('row')){
-	        //Get list related new 5.9.2013
-	        $list = array();
-	        $tags = array();
-	         
-	        if(isset($row['tags'])){
-	        	foreach ($row['tags'] as $tag){
-	        		$tags[] = $tag['id'];
-	        	}
-	        	
-	        	$where = array(
-	        			'status' => 'approved',
-	        			'tags.id' => array('$in' => $tags),
-	        			'iid' => array('$ne' => $row['iid'])
-	        	);
-	        
-	        	$cond['where'] = $where;
-	        	$cond['limit'] = 8;
-	        	$order= array('ts'=>-1);
-	        	$cond['order'] = $order;
-	        
-	        	$list = Dao_Node_New::getInstance()->find($cond);
-	        	if($list){
-	        		$this->setViewParam('related', $list['result']);
-	        	}
-	        }
         	Bootstrap::$pageTitle = $row['name'];
         	
-        	//TODO: if wasn't original new => get original new, have to upload by admin 
-        	$ori_viddeo = array();
-        	if(!isset($row['is_original']) || $row['is_original'] == 'cover'){
-        		$where = array(
-        				'status' => 'approved',
-        				'tags.id' => array('$in' => $tags),
-        				'is_original' => 'original'
-        		);
-        		
-        		$r = Dao_Node_New::getInstance()->findOne($where);
-        		if($r['success'] && count($r['result']) > 0){
-        			$ori_viddeo = $r['result'];
-        		}
-        	}
-        	
-        	$this->setViewParam('ori_new', $ori_viddeo);
-        	
-        	//Get new new
-			$list = Dao_Node_New::getInstance()->getNewByType('new', 15, $row['ts']);
-			$this->setViewParam('newNews', $list);
-        	
-        	//Get popular new
-        	$list = Dao_Node_New::getInstance()->getNewByType('hot', 1, $row['ts']);
-        	$this->setViewParam('hotNews', $list);
-        	
-        	//Increase count view new
-        	$whereUpdate = array('id'=>$row['id']);
-        	$update = array('$inc'=>array('counter.v' => 1));
-        	
-        	//Get top user limit 10;
-        	$list = Dao_User::getInstance()->getTopUser();
-        	$this->setViewParam('topuser', $list);
-        	Dao_Node_New::getInstance()->update($whereUpdate, $update);
         }else 
         	Bootstrap::$pageTitle = 'Chi tiết new';
     }

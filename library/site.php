@@ -16,8 +16,28 @@ function show_money($money)
 }
 function node_link($type, $node)
 {
-    return "/{$type}/view?id={$node['id']}";
-	//return "/{$type}/views/{$node['iid']}";
+   
+	if ($type == 'video')
+	{
+		if($type_redirect == 'upload'){
+			$link = '/video/view?id='. $node['id'];
+		}else{
+			$link = '/video/'. $node['iid'].'-' . $node['slug'] .'.html';
+		}
+	}elseif ($type == 'new')
+	{
+		if($type_redirect == 'upload'){
+			$link = '/new/view?id='. $node['id'];
+		}else{
+			$link = '/new/'. $node['iid'].'-' . $node['slug'] .'.html';
+		}
+	}
+	
+	elseif ($type == 'tag')
+		$link = "/tagged/" . $node['slug'];
+	else
+		$link = "/$type/{$node['id']}";
+	return $link;
 }
 
 function category_link($category){
