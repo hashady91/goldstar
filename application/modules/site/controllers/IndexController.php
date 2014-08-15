@@ -57,7 +57,7 @@ class Site_IndexController extends Cl_Controller_Action_Index
 		$this->setViewParam('news', $news);
 		$this->setViewParam('dichvu', $dichvu);
 		
-        Bootstrap::$pageTitle = "Site";
+        Bootstrap::$pageTitle = "Công ty cổ phần Goldstar";
     }
 	public function errorAction()
 	{
