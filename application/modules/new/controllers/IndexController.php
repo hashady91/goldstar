@@ -70,7 +70,7 @@ class New_IndexController extends Cl_Controller_Action_NodeIndex
             }
         }
         
-        Bootstrap::$pageTitle = 'Thêm new mới';
+        Bootstrap::$pageTitle = 'Thêm tin tức mới';
     }
 
     public function updateAction()
@@ -97,7 +97,7 @@ class New_IndexController extends Cl_Controller_Action_NodeIndex
          * @NOTE: object is already filtered in Index.php, done in Cl_Dao_Node::filterUpdatedObjectForAjax()
          */
         $this->genericUpdate("New_Form_Update", $this->daoClass ,"", "Node");
-        Bootstrap::$pageTitle = 'Cập nhật new';
+        Bootstrap::$pageTitle = 'Cập nhật tin tức';
     }
 
     public function searchAction()
@@ -106,7 +106,7 @@ class New_IndexController extends Cl_Controller_Action_NodeIndex
     	$this->setLayout("admin");
         assure_perm("search_new");//by default
         $this->genericSearch("New_Form_Search", $this->daoClass, "Node");
-        Bootstrap::$pageTitle = 'Quản lý new';        
+        Bootstrap::$pageTitle = 'Quản lý tin tức';        
     }
     
     public function searchNewsAction()
@@ -150,7 +150,7 @@ class New_IndexController extends Cl_Controller_Action_NodeIndex
     	$list = Dao_Node_New::getInstance()->getNewByType('hot', 1);
     	$this->setViewParam('hotNews', $list);
     	
-    	Bootstrap::$pageTitle = 'Tìm kiếm cover new - ' . $name;
+    	Bootstrap::$pageTitle = 'Tìm kiếm cover tin tức - ' . $name;
     }
     
     public function searchCommentAction()
@@ -185,7 +185,7 @@ class New_IndexController extends Cl_Controller_Action_NodeIndex
         	Bootstrap::$pageTitle = $row['name'];
         	
         }else 
-        	Bootstrap::$pageTitle = 'Chi tiết new';
+        	Bootstrap::$pageTitle = 'Chi tiết tin tức';
     }
     
     public function deleteNodePermissionCheck($row)

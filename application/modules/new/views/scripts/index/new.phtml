@@ -1,7 +1,7 @@
 <?php echo sand_dev_info_phtml(__FILE__);?>
-<?php if(has_perm($perm, null, '', $u)):?>
+<?php $u = Zend_Registry::get('user');?>
+<?php if(has_perm('sudo')):?>
 	<div class='row'>
-	<?php echo sand_dev_info_phtml(__FILE__);?>
 	
 	<?php $page = Zend_Registry::get('page');
 	?>
@@ -10,9 +10,9 @@
 	</div>
 	<div class='col-md-6'>
 	<?php if ($page == 'new/index/new'):?>
-	<h1> Thêm new mới</h1>
+	<h1> Thêm tin tức mới</h1>
 	<?php else:?>
-	<h1> Cập nhật new</h1>
+	<h1> Cập nhật tin tức</h1>
 	<?php endif;?>
 	<?php $this->form->setAttrib('class', 'cl_ajax');?>
 		<div id='vd_form'>

@@ -67,7 +67,7 @@ define('CACHED_COMMENT_TITLE_WORD_LENGTH', 20); //number of words
 /**
  * File upload & path
  */
-define('DEFAULT_AVATAR_URL','http://d17yofrdipd1db.cloudfront.net/images/avatar.gif');
+define('DEFAULT_AVATAR_URL','https://www.drupal.org/files/styles/drupalorg_user_picture/public/default-avatar.png');
 define('SYSTEM_AVATAR_URL', 'http://d17yofrdipd1db.cloudfront.net/images/warning.jpg');
 //define('AVATAR_PREFIX', 'http://d3syq05o3krv6a.cloudfront.net');
 define('AVATAR_PREFIX', '/ufiles');

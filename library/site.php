@@ -14,7 +14,7 @@ function show_money($money)
 	else 
 		return number_format($money, 1);
 }
-function node_link($type, $node)
+function node_link($type, $node,$type_redirect=null)
 {
    
 	if ($type == 'video')

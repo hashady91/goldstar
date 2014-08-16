@@ -91,3 +91,7 @@ div.voteWrapper a
     margin: 0px;
     padding: 0px;
 }
+.border_green
+{
+	border: 2px solid #76a045;
+}
