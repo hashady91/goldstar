@@ -71,7 +71,10 @@
           	    <?php foreach ($categories as $ca):?>
           	    	  <?php 
           	    	  	//TODO: xem la viec tin toan child_category
-          	    	  	$where = array('parent_id' => $ca['id']);
+          	    	  	$where = array(
+							'parent_id' => $ca['id'],
+          	    	  		'is_menu' => 'show'
+          	    	  	);
           	    	  	$cond['where'] = $where;
           	    	  	$r = Dao_Node_Category::getInstance()->find($cond);
           	    	  	$child_cate = array();

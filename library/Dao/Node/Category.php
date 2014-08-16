@@ -9,6 +9,7 @@ class Dao_Node_Category extends Cl_Dao_Node
     		'slug' => 'string',
     		'description' => 'string',
     		'avatar' => 'string',
+    		'is_menu' => 'string',//show|not show on menu
     		//add other stuff u want
     );
 
@@ -37,6 +38,7 @@ class Dao_Node_Category extends Cl_Dao_Node
     		'slug' => 'string',
     		'description' => 'string',
     		'avatar' => 'string',
+    		'is_menu' => 'string',//show|not show on menu
 	    );
 	    
     	return array(
@@ -49,6 +51,7 @@ class Dao_Node_Category extends Cl_Dao_Node
         		 'slug' => 'string',//eg: Điện lạnh => slug :: dienlanh
     	         "name" => 'string',
         		 'avatar' => 'string',
+        		 'is_menu' => 'string',//show|not show on menu
     	         "description" => 'string',
     	         "meta_description" => 'string',
 			     "category_image" => 'string',
@@ -337,7 +340,8 @@ class Dao_Node_Category extends Cl_Dao_Node
 	
 	public function getCategoryLevelOne(){
 		$where = array('level' => 1,
-					   'status' => 'approved'
+					   'status' => 'approved',
+					   'is_menu' => 'show'
 		);
 		$cond['where'] = $where;
 		$r = $this->findAll($cond);

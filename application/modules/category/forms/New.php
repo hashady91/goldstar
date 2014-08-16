@@ -4,7 +4,7 @@ class Category_Form_New extends Cl_Form
 	public function init()
 	{
 		parent::init();
-		$this->fieldList = array('avatar', 'name', 'content', 'status', /*'parent_category',*/ 'slug');
+		$this->fieldList = array('avatar', 'name', 'content', 'status', /*'parent_category',*/ 'slug','is_menu');
 		$this->setCbHelper('Category_Form_Helper');
 		
 	}
@@ -57,6 +57,14 @@ class Category_Form_New extends Cl_Form
             		),
             		'multiOptionsCallback' => array('getStatus')
             ),
+        	'is_menu' => array(
+        		'type' => 'Select',
+        		'options' => array(
+        			'label' => 'Hiển thị trên menu(show|not show)',
+        			'required' => true,
+        		),
+        		'multiOptionsCallback' => array('getIsMenu')
+        	),
         	'level' => array(
         			'type' => 'Select',
        				'options' => array(
