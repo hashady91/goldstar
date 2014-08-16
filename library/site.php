@@ -14,6 +14,17 @@ function show_money($money)
 	else 
 		return number_format($money, 1);
 }
+
+function _wordwrap($text)   {
+    $split = explode(" ", $text);
+    foreach($split as $key=>$value)   {
+        if (strlen($value) > 10)    {
+            $split[$key] = chunk_split($value, 5, "&#8203;");
+        }
+    }
+    return implode(" ", $split);
+}
+
 function node_link($type, $node,$type_redirect=null)
 {
    

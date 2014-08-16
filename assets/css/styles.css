@@ -23,6 +23,7 @@
     /*height: 275px;*/
 	height: 370px;
     margin: 0 1em;
+    margin-left: 20px;
     position: relative;
     text-align: center;
     width: 1px;
@@ -45,6 +46,11 @@
 	display: inline-block;
 	height: 275px;
 	vertical-align: top;
+}
+.loginForm
+{
+    margin-left: 105px;
+    position: absolute;
 }
 #login_form {
 	margin: 0 0 0 18px;
@@ -94,4 +100,22 @@ div.voteWrapper a
 .border_green
 {
 	border: 2px solid #76a045;
+}
+.title_news{
+	padding: 0 0 5px;
+}
+.title_news a {
+    color: #333;
+    font: 700 14px arial;
+    text-decoration: none;
+    outline: medium none;
+}
+.title_news a:HOVER a:HOVER {
+    color: ##004f8b;
+}
+.news_desc
+{
+	text-overflow:ellipsis;
+	word-wrap: break-word;
+}
 }

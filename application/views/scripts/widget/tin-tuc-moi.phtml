@@ -3,39 +3,43 @@
 	$title = $this->title;
 ?>
 <?php if(count($news) > 0):?>
-<div class='product-news'>
-	<div class='heading'>
+<div class='col-md-12'>
+	<div class='row heading'>
 		<h3 style="margin-top: 0;">
 		<i class='glyphicon glyphicon-home'></i>
 		<?php echo $title;?></h3>
 	</div>
-	
-		<div class='product-list'>
-			<?php foreach ($news as $new):?>
-				<div class='product'>
-					<div class='row'>
-						<div class='col-md-3'>
-							<a href="<?php echo node_link('new', $new);?>" title="<?php echo $new['name'];?>">
-						       <img width="128" height="128"
-						       	 src="<?php echo $new['avatar'];?>">
-						    </a>
-						</div>
-						<div class='col-md-9'>
-							<div class="text-content">
-						       <a href="<?php echo node_link('new', $new);?>" title='<?php echo $new['name'];?>'>
-						           <h2 class="h2-header">
-						           <?php echo $new['name'];?>
-						        </a>
-						        <span class="date">11-10-2013</span>
-						        <div style="text-align: justify;">
-							        <?php echo $new['description'];?>
-						        </div>
-						             
-						        </div>
-						</div>
-					</div>
-				</div>
-			<?php endforeach;?>
-		</div>
+	<?php foreach ($news as $new):?>
+	<div class="row">
+    	<div class="col-md-12 title_news">
+    	   <a href="<?php echo node_link('new', $new);?>" class="txt_link"><?php echo $new['name'];?></a>
+	    </div>
+    	<div class="col-md-12">
+			<div class='col-md-3'>
+				<a href="<?php echo node_link('new', $new);?>" title="<?php echo $new['name'];?>">
+			       <img class="img-responsive img-thumbnail" src="<?php echo $new['avatar'];?>">
+			    </a>
+			</div>
+			<div class='col-md-9'>
+				<div class="text-content">
+			        <div style="text-align: justify;">
+				        <p class="news_desc"><?php echo _wordwrap($new['description']);?></p>
+			        </div>
+		        </div>
+			</div>
+    	</div>
+	</div>
+	<hr>
+	<?php endforeach;?>
+</div>
+<?php else:?>
+<div class="no-news">
+    <div class='heading'>
+		<h3 style="margin-top: 0;">
+		<i class='glyphicon glyphicon-home'></i>
+		<?php echo $title;?></h3>
+	</div>
+	<div class="clear-fix clear"></div>
+	<div class="alert alert-info" role="alert">Chưa có bài đăng nào trong chuyên mục này.</div>
 </div>
 <?php endif;?>
