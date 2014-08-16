@@ -9,6 +9,7 @@ class Dao_Node_New extends Dao_Node_Site
     		'avatar' => 'string',
     		'counter' => 'mixed',
         	'slug' => 'string',
+            'parent_category_iid' => 'string',
         	'ts' => 'int',
     		'ats' => 'int',
         	'status' => 'string',
@@ -54,6 +55,7 @@ class Dao_Node_New extends Dao_Node_Site
         		'tags' => array( 
     	            $tag
     	        ),
+    	        'parent_category_iid' => 'string', // chuyen muc cha
         		'type' => 'int', // 1 => want item, 2 => own item, 3 => had item (reviews). If  9 => "uploaded photo"
         		'u' => $user, //who posted this	
         		'category' => $category,
@@ -348,6 +350,14 @@ class Dao_Node_New extends Dao_Node_Site
 		}
 		
 		return $list;
+	}
+	public function getNewsListByCategory($categoryiid)
+	{
+	    $where = array('parent_category_iid' => $categoryiid);
+	    $cond['where'] = $where;
+	    $r = $this->findAll($cond);
+	    return $r;
+	     
 	}
 	
 	public function getNewList($page, $filter){

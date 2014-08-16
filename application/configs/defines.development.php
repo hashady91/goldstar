@@ -4,6 +4,7 @@
  */
 //define('POST_PAGE_SIZE', 30);
 define('SITE_URL', 'http://goldstar.local');
+define('SITE_NAME', 'Goldstar');
 //define('SITE_URL', 'http://www.oakq.com');
 define('SAND_ASSETS_CDN', 'http://sandassets.local/');
 define('ASSETS_CDN', 'http://goldstarassets.local/');

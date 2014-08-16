@@ -69,20 +69,20 @@ class New_Form_New extends Cl_Form
         			)
         		),
         	),
-        		'parent_category_iid' => array(
-        				'type' => 'Select',
-        				'options' => array(
-        						'label' => "Chuyên mục cha",
-        						'filters' => array('StringTrim','StripTags'),
-        						'prefixPath' => array(
-        								"filter" => array (
-        										"Filter" => "Filter/"
-        								)
-        						),
-        				),
-        				'multiOptionsCallback' => array('getParentCategoryList'),
-        				'defaultValue' => 'NoParent'
-        		),
+    		'parent_category_iid' => array(
+    				'type' => 'Select',
+    				'options' => array(
+    						'label' => "Chuyên mục cha",
+    						'filters' => array('StringTrim','StripTags'),
+    						'prefixPath' => array(
+    								"filter" => array (
+    										"Filter" => "Filter/"
+    								)
+    						),
+    				),
+    				'multiOptionsCallback' => array('getParentCategoryList'),
+    				'defaultValue' => 'NoParent'
+    		),
         	'source' => array(
         		'type' => 'Text',
         		'options' => array(
