@@ -17,6 +17,7 @@ class Dao_Node_New extends Dao_Node_Site
     		'source' => 'string',//vnepress.net
     		'author' => 'string',
     		'is_hot' => 'string',//hot, new, best, 'normal
+    		'parent_category_iid' => 'string',
     		//add other stuff u want
     );
         
@@ -35,6 +36,7 @@ class Dao_Node_New extends Dao_Node_Site
 	protected function _configs(){
 	    $user = Cl_Dao_Util::getUserDao()->cSchema;
 	    $tag = Dao_Node_Tag::getInstance()->cSchema;
+	    $category = Dao_Node_Category::getInstance()->cSchema;
     	return array(
     		'collectionName' => 'new',
         	'documentSchemaArray' => array(
@@ -54,6 +56,7 @@ class Dao_Node_New extends Dao_Node_Site
     	        ),
         		'type' => 'int', // 1 => want item, 2 => own item, 3 => had item (reviews). If  9 => "uploaded photo"
         		'u' => $user, //who posted this	
+        		'category' => $category,
         		'counter'	=>	array(
         			'c' => 'int', //comment
     	            'f' => 'int', //follow
@@ -68,6 +71,7 @@ class Dao_Node_New extends Dao_Node_Site
         		'ts' => 'int',
         		'ats' => 'int',
         		'status' => 'string',
+        		'parent_category_iid' => 'string',
         	)
     	);
 	}
@@ -127,6 +131,15 @@ class Dao_Node_New extends Dao_Node_Site
 			$tempSlug = Cl_Utility::getInstance()->generateSlug($data['name']);
 			$data['slug'] = $this->generateUniqueSlug(explode('-', $tempSlug));
 		}
+		
+		$where = array('iid' => $data['parent_category_iid']);
+		$r = Dao_Node_Category::getInstance()->findOne($where);
+		$category = array();
+		if($r['success']){
+			$category = $r['result'];
+			$data['category'] = $category;
+		}
+		
         return array('success' => true, 'result' => $data);
 	}
 	
@@ -145,6 +158,16 @@ class Dao_Node_New extends Dao_Node_Site
     	
     	if(isset($data['$set']['name']) && $data['$set']['name'] != $currentRow['name']){
     		$data['$set']['ac_name'] = ac_item($data['$set']['name']); //accent name vietnamese    		
+    	}
+    	
+    	if($data['$set']['parent_category_iid'] != $currentRow['parent_category_iid']){
+    		$where = array('iid' => $data['$set']['parent_category_iid']);
+    		$r = Dao_Node_Category::getInstance()->findOne($where);
+    		$category = array();
+    		if($r['success']){
+    			$category = $r['result'];
+    			$data['$set']['category'] = $category;
+    		}
     	}
         /*
          * You have $data['$set']['_cl_step'] and $data['$set']['_u'] available

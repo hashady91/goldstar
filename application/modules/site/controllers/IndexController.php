@@ -4,9 +4,10 @@ class Site_IndexController extends Cl_Controller_Action_Index
     public function indexAction()
     {
     	//Lay tin nhanh
-    	$where = array();
+    	$where = array('is_hot' => 'new');
     	$cond['where'] = $where;
     	$cond['ts'] = -1;
+    	$cond['limit'] = 8;
 		$r = Dao_Node_New::getInstance()->findAll($cond);
 		$tinNhanh = array();
 		if($r['success']){
@@ -43,8 +44,11 @@ class Site_IndexController extends Cl_Controller_Action_Index
 		}
 		
 		//Lay tin dich vu
-    	$where = array();
-		$cond['where'] = $where;//TODO: is_hot = hot
+    	$dich_vu_iid = get_conf('dich_vu_iid','37');
+    	$where = array('parent_category_iid' => $dich_vu_iid);
+    	//$where = array();
+    	$cond['where'] = $where;
+    	$cond['limit'] = 5;
 		$cond['ts'] = -1;
 		$r = Dao_Node_New::getInstance()->findAll($cond);
 		if($r['success']){

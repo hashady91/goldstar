@@ -44,6 +44,18 @@ class New_Form_New extends Cl_Form
         			)
         		),
         	),
+        		'category' => array(
+        				'type' => 'Select',
+        				'options' => array(
+        						'label' => "Chuyên mục",
+        						'filters' => array('StringTrim', 'StripTags'),
+        						'prefixPath' => array(
+        								"filter" => array (
+        										"Filter" => "Filter/"
+        								)
+        						)
+        				),
+        		),
         	'description' => array(
         		'type' => 'Textarea',
         		'options' => array(

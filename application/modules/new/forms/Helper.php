@@ -26,7 +26,8 @@ class New_Form_Helper extends Cl_Form_NodeHelper
     public function getParentCategoryList()
     {
     	$where = array('level' => 2);
-    	$cond['where'] = $where;
+    	$isMenuWhere = array('is_menu' => 'not_show');
+    	$cond['where'] = array('$or' => array($where, $isMenuWhere));
     	$r = Dao_Node_Category::getInstance()->findAll($cond);
     	$cates = array();
     	if($r['success']){
