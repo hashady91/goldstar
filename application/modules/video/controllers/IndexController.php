@@ -184,6 +184,53 @@ class Video_IndexController extends Cl_Controller_Action_NodeIndex
     	}
 
         if ($row = $this->getViewParam('row')){
+        	//Lay tin nhanh
+        	$where = array('is_hot' => 'new');
+        	$cond['where'] = $where;
+        	$cond['ts'] = -1;
+        	$cond['limit'] = 8;
+        	$r = Dao_Node_New::getInstance()->findAll($cond);
+        	$tinNhanh = array();
+        	if($r['success']){
+        		$tinNhanh = $r['result'];
+        	}
+        	 
+        	//Lay tin dich vu
+        	$dich_vu_iid = get_conf('dich_vu_iid','37');
+        	$where = array('parent_category_iid' => $dich_vu_iid);
+        	//$where = array();
+        	$cond['where'] = $where;
+        	$cond['limit'] = 5;
+        	$cond['ts'] = -1;
+        	$r = Dao_Node_New::getInstance()->findAll($cond);
+        	if($r['success']){
+        		$dichvu = $r['result'];
+        	}
+        	
+        	//Lay video
+        	$where = array();
+        	$cond['where'] = $where;//TODO: is_hot = hot
+        	$cond['ts'] = -1;
+        	$r = Dao_Node_Video::getInstance()->findAll($cond);
+        	$videos = array();
+        	if($r['success']){
+        		$videos = $r['result'];
+        	}
+        	 
+        	//Get news
+        	$where = array();
+        	$cond['where'] = $where;//TODO: is_hot = hot
+        	$cond['ts'] = -1;
+        	$r = Dao_Node_New::getInstance()->findAll($cond);
+        	if($r['success']){
+        		$news = $r['result'];
+        	}
+        	
+        	$this->setViewParam('tinNhanh', $tinNhanh);
+        	$this->setViewParam('news', $news);
+        	$this->setViewParam('videos', $videos);
+        	$this->setViewParam('dichvu', $dichvu);
+        	
 	        //Get list related video 5.9.2013
 	        $list = array();
 	        $tags = array();
@@ -211,39 +258,6 @@ class Video_IndexController extends Cl_Controller_Action_NodeIndex
 	        }
         	Bootstrap::$pageTitle = $row['name'];
         	
-        	//TODO: if wasn't original video => get original video, have to upload by admin 
-        	$ori_viddeo = array();
-        	if(!isset($row['is_original']) || $row['is_original'] == 'cover'){
-        		$where = array(
-        				'status' => 'approved',
-        				'tags.id' => array('$in' => $tags),
-        				'is_original' => 'original'
-        		);
-        		
-        		$r = Dao_Node_Video::getInstance()->findOne($where);
-        		if($r['success'] && count($r['result']) > 0){
-        			$ori_viddeo = $r['result'];
-        		}
-        	}
-        	
-        	$this->setViewParam('ori_video', $ori_viddeo);
-        	
-        	//Get new video
-			$list = Dao_Node_Video::getInstance()->getVideoByType('new', 15, $row['ts']);
-			$this->setViewParam('newVideos', $list);
-        	
-        	//Get popular video
-        	$list = Dao_Node_Video::getInstance()->getVideoByType('hot', 1, $row['ts']);
-        	$this->setViewParam('hotVideos', $list);
-        	
-        	//Increase count view video
-        	$whereUpdate = array('id'=>$row['id']);
-        	$update = array('$inc'=>array('counter.v' => 1));
-        	
-        	//Get top user limit 10;
-        	$list = Dao_User::getInstance()->getTopUser();
-        	$this->setViewParam('topuser', $list);
-        	Dao_Node_Video::getInstance()->update($whereUpdate, $update);
         }else 
         	Bootstrap::$pageTitle = 'Chi tiết video';
     }

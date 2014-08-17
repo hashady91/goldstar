@@ -5,7 +5,7 @@ class Video_Form_New extends Cl_Form
 	{
 		parent::init();
 		$this->fieldList = array(/*'avatar',*/'name', 'content', 'status', 'url',
-					 'tags', 'is_original', 'country');
+					 'tags','parent_category_iid');
 		$this->setCbHelper('Video_Form_Helper');
 		
 	}
@@ -44,6 +44,20 @@ class Video_Form_New extends Cl_Form
         			)
         		),
         	),
+        		'parent_category_iid' => array(
+        				'type' => 'Select',
+        				'options' => array(
+        						'label' => "Chuyên mục cha",
+        						'filters' => array('StringTrim','StripTags'),
+        						'prefixPath' => array(
+        								"filter" => array (
+        										"Filter" => "Filter/"
+        								)
+        						),
+        				),
+        				'multiOptionsCallback' => array('getParentCategoryList'),
+        				'defaultValue' => 'NoParent'
+        		),
             'status' => array(
             		'type' => 'Select',
             		'permission' => 'root',
@@ -53,22 +67,6 @@ class Video_Form_New extends Cl_Form
             		),
             		'multiOptionsCallback' => array('getStatus')
             ),
-        	'is_original' => array(
-        		'type' => 'Select',
-        		'options' => array(
-        			'label' => 'Bản gốc?',
-        			'required' => true,
-        		),
-        		'multiOptionsCallback' => array('getOriginal')
-        	),
-        	'country' => array(
-        		'type' => 'Select',
-        		'options' => array(
-        			'label' => 'Quốc gia?',
-        			//'required' => true,
-        		),
-        		'multiOptionsCallback' => array('getCountry')
-        	),
         	'avatar' => array(
         			'type' => 'Hidden',
         			'options' => array(

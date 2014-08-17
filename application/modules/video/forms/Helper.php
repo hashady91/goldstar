@@ -13,6 +13,25 @@ class Video_Form_Helper extends Cl_Form_NodeHelper
     	return array('success' =>true, 'result' => $ret);
     }
     
+    public function getParentCategoryList()
+    {
+    	$where = array('level' => 2);
+    	$isMenuWhere = array('is_menu' => 'not_show');
+    	$cond['where'] = array('$or' => array($where, $isMenuWhere));
+    	$r = Dao_Node_Category::getInstance()->findAll($cond);
+    	$cates = array();
+    	if($r['success']){
+    		foreach ($r['result'] as $ca){
+    			$cate = array($ca['iid'] => $ca['name']);
+    			array_push($cates, $cate);
+    		}
+    		 
+    		return array('success' =>true, 'result' => $cates);
+    	}else{
+    		return array('success' =>true, 'result' => array());
+    	}
+    }
+    
     public function getCountry()
     {
     	$ret = array('domestic' => 'Trong nước', 'foreign' => 'Nước ngoài');

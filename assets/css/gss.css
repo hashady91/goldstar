@@ -88,15 +88,15 @@ h2.h2-header, h2.news-header {
 }
 .video1 {
 /*     border: 1px solid rgb(230, 230, 230); */
-    margin-top: 10px;
-    min-height: 69px;
     clear: both;
-    padding: 10px;
+    margin-top: 5px;
+    min-height: 69px;
+    margin-bottom: 3px;
 }
 .video1 .thumb {
     float: left;
     position: relative;
-    width: 30%;
+    width: 50%;
 }
 .video1 img {
     cursor: pointer;
@@ -127,7 +127,25 @@ h2.h2-header, h2.news-header {
     font-size: 14px;
     padding-bottom: 4px;
     padding-top: 4px;
-    width: 67%;
+    width: 45%;
+}
+.video1 span {
+    color: #1e5dad;
+    float: right;
+    font-family: 'Ropa Sans',sans-serif;
+    font-size: 14px;
+    padding-bottom: 4px;
+    padding-top: 4px;
+    width: 45%;
+}
+.video-inner {
+    position: relative;
+    width: 97.3%;
+}
+.videoview {
+    background: none repeat scroll 0 0 #fff;
+    box-shadow: 0 0 10px rgb(228, 228, 228);
+    padding: 10px 10px 6px 11px;
 }
 .video1 span.view_video{
 	color: #333;

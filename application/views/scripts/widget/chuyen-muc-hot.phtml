@@ -1,3 +1,6 @@
+<?php 
+	$videos = isset($this->videos) ? $this->videos : array();
+?>
 <div class='top-news'>
 	<div class='heading'>
 		Chuyên mục hot
@@ -16,86 +19,33 @@
 	<!-- Tab panes -->
 	<div class="tab-content">
 	  <div class="tab-pane active" id="hot_tab_video">
-	  		<div class="video1">
-			  <a href="#">
-				  <div class="thumb">
-					<img title="Cô Gái Mở Đường - LEG Official" src="http://img.youtube.com/vi/U7V--PQreqo/0.jpg">
-						<div class="duration">
-														00:03:41						</div>
+			<?php if(count($videos) > 0):?>
+				<?php foreach ($videos as $video):?>
+				<?php $avatar = "http://img.youtube.com/vi/{$video['ytid']}/0.jpg";?>
+					<div class="video1">
+					  <a href="<?php echo node_link('video', $video);?>">
+						  <div class="thumb">
+							<img src="<?php echo $avatar;?>" 
+								title="<?php echo $video['name'];?>" />
+								<div class="duration">
+									<?php $video['duration'] = isset($video['duration']) ? $video['duration'] : 0;?>
+									<?php echo gmdate("H:i:s", (int)$video['duration']);?>
+								</div>
+							</div>
+						<div class='info'>
+							<span>
+								<?php if(strlen($video['name']) > 46):?>
+									<?php echo char_breadcumb($video['name'], 46) . ' .....';?>
+								<?php else:?>
+									<?php echo $video['name'];?>
+								<?php endif;?>
+							</span>
+						</div>
+						<div class="clear"> </div>
+					   	</a>
 					</div>
-				<div class="info">
-						<span class="name_video">
-													Cô Gái Mở Đường - LEG Official											</span>
-						<span class='view_video'><i class='glyphicon glyphicon-eye'></i> 359</span>
-				</div>
-				<div class="clear"> </div>
-			   	</a>
-			</div>
-		
-			<div class="video1">
-			  <a href="#">
-				  <div class="thumb">
-					<img title="Mình yêu nhau đi - phiên bản cô giáo TIẾNG ANH (X-Team)" src="http://img.youtube.com/vi/pswOI-HmVws/0.jpg">
-						<div class="duration">
-														00:02:49						</div>
-					</div>
-				<div class="info">
-					<span class="name_video">
-													Mình yêu nhau đi - phiên bản cô giáo TIẾNG ANH .....											</span>
-						<span class='view_video'><i class='glyphicon glyphicon-eye'></i> 359</span>
-				</div>
-				<div class="clear"> </div>
-			   	</a>
-			</div>
-			
-			<div class="video1">
-			  <a href="#">
-				  <div class="thumb">
-					<img title="Như Hexi - Mình yêu nhau đi - Cover Bựa" src="http://img.youtube.com/vi/sxElEUzoKBQ/0.jpg">
-						<div class="duration">
-														00:03:38						</div>
-					</div>
-				<div class="info">
-					<span class="name_video">
-													Như Hexi - Mình yêu nhau đi - Cover Bựa											</span>
-						   <span class='view_video'><i class='glyphicon glyphicon-eye'></i> 359</span>
-				</div>
-				<div class="clear"> </div>
-			   	</a>
-			</div>
-			
-			<div class="video1">
-			  <a href="#">
-				  <div class="thumb">
-					<img title="Mình Yêu Nhau Đi Thái Tuyết Trâm Cover Hot" src="http://img.youtube.com/vi/ndFSzoUkb60/0.jpg">
-						<div class="duration">
-														00:03:05						</div>
-					</div>
-				<div class="info">
-					<span class="name_video">
-													Mình Yêu Nhau Đi Thái Tuyết Trâm Cover Hot .....											</span>
-				 	  <span class='view_video'><i class='glyphicon glyphicon-eye'></i> 359</span>	
-				</div>
-				<div class="clear"> </div>
-			   	</a>
-			</div>
-			
-			<div class="video1">
-			  <a href="#">
-				  <div class="thumb">
-					<img title="[Cover] Mình yêu nhau đi - Hương Ly ft Quỳnh Anh" src="http://img.youtube.com/vi/-HoaXwJQA-0/0.jpg">
-						<div class="duration">
-														00:03:22						</div>
-					</div>
-				<div class="info">
-					<span class="name_video">
-													[Cover] Mình yêu nhau đi - Hương Ly ft Quỳnh A .....											</span>
-
-						<span class='view_video'><i class='glyphicon glyphicon-eye'></i> 359</span>										    	
-				</div>
-				<div class="clear"> </div>
-			   	</a>
-			</div>
+				<?php endforeach;?>
+			<?php endif;?>
 	  	</div>
 	  <div class="tab-pane" id="hot_tab_product">
 			<div class='new-list'>

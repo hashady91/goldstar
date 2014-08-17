@@ -15,8 +15,6 @@ class Dao_Node_Video extends Dao_Node_Site
         	'ts' => 'int',
     		'ats' => 'int',
         	'status' => 'string',
-        	'country' => 'string', //domestic|foreign
-        	'is_original' => 'string',
     		//add other stuff u want
     );
         
@@ -35,6 +33,7 @@ class Dao_Node_Video extends Dao_Node_Site
 	protected function _configs(){
 	    $user = Cl_Dao_Util::getUserDao()->cSchema;
 	    $tag = Dao_Node_Tag::getInstance()->cSchema;
+	    $category = Dao_Node_Category::getInstance()->cSchema;
     	return array(
     		'collectionName' => 'video',
         	'documentSchemaArray' => array(
@@ -49,6 +48,7 @@ class Dao_Node_Video extends Dao_Node_Site
     	        ),
         		'type' => 'int', // 1 => want item, 2 => own item, 3 => had item (reviews). If  9 => "uploaded photo"
         		'u' => $user, //who posted this	
+        		'category' => $category,
         		'counter'	=>	array(
         			'c' => 'int', //comment
     	            'f' => 'int', //follow
@@ -66,8 +66,6 @@ class Dao_Node_Video extends Dao_Node_Site
         		'ts' => 'int',
         		'ats' => 'int',
         		'status' => 'string',
-        		'country' => 'string', //domestic|foreign
-        		'is_original' => 'string',
         	)
     	);
 	}
@@ -137,6 +135,14 @@ class Dao_Node_Video extends Dao_Node_Site
 				$data['tags'] = $r['result'];
 		}
 		
+		$where = array('iid' => $data['parent_category_iid']);
+		$r = Dao_Node_Category::getInstance()->findOne($where);
+		$category = array();
+		if($r['success']){
+			$category = $r['result'];
+			$data['category'] = $category;
+		}
+		
 		//set slug for video
 		if (!isset($data['slug']))
 		{
@@ -154,6 +160,15 @@ class Dao_Node_Video extends Dao_Node_Site
     /******************************UPDATE****************************/
     public function beforeUpdateNode($where, $data, $currentRow)
     {
+    	if($data['$set']['parent_category_iid'] != $currentRow['parent_category_iid']){
+    		$where = array('iid' => $data['$set']['parent_category_iid']);
+    		$r = Dao_Node_Category::getInstance()->findOne($where);
+    		$category = array();
+    		if($r['success']){
+    			$category = $r['result'];
+    			$data['$set']['category'] = $category;
+    		}
+    	}
     	//set approved timestamp
     	if ($data['$set']['_cl_step'] == 'status' && $data['$set']['status'] == 'approved'){
     		$data['$set']['ats'] = time();
