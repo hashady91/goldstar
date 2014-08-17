@@ -1,5 +1,14 @@
 <?php 
-	$tinNhanh = isset($this->tinNhanh) ? $this->tinNhanh : array();
+	   //Lay tin nhanh
+    	$where = array('is_hot' => 'new');
+    	$cond['where'] = $where;
+    	$cond['ts'] = -1;
+    	$cond['limit'] = 8;
+		$r = Dao_Node_New::getInstance()->findAll($cond);
+		$tinNhanh = array();
+		if($r['success']){
+			$tinNhanh = $r['result'];
+		}
 ?>
 <?php if(count($tinNhanh) > 0) :?>
 	<div class="boxes">
@@ -8,13 +17,13 @@
 	        <ul class="news-flash">
 	        	<?php foreach ($tinNhanh as $new):?>
 	        	    <li>
+	        	    <a title="<?php echo $new['name'];?>" 
+        	    				href="<?php echo node_link('new', $new);?>">
 	        	    	<img align="middle"
 	        	    		width='62px'
 	        	    		height='42px' 
 	        	    		alt="<?php echo $new['name']?>" 
         	    			src="<?php echo $new['avatar'];?>">                
-        	    			<a title="<?php echo $new['name'];?>" 
-        	    				href="<?php echo node_link('new', $new);?>">
 	        	    			<?php echo $new['name'];?></a>
 	                	<div class="clearfix"></div> 
 	                </li>

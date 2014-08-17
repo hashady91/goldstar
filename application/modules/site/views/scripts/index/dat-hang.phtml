@@ -1,0 +1,309 @@
+<?php 
+	$lu = Zend_Registry::get('user');
+	$news = $this->news;
+	$bestNews = $this->bestNews;
+	$videos = $this->videos;
+	$tinNhanh = $this->tinNhanh;
+?>
+<div style='min-height: 400px;'>
+		<div class='row'>
+			<div class='col-md-7'>
+				<div id="content-main">
+					<div class="title-newsdetail " style="text-align:center; font-size:18px;">ĐẶT HÀNG</div>
+					    
+					<p><b><font face="Tahoma">I. Người đặt hàng (</font></b><b><font color="#FF0000" face="Tahoma">Lưu ý: (*) là ô bắt buộc điền đúng, đủ thông tin</font></b><b><font face="Tahoma">):</font></b><br>
+					<br>
+					
+					</p><table cellspacing="0" cellpadding="0" border="0">
+					<tbody><tr valign="top"><td width="171">Họ và tên <font color="#FF0000">(*)</font></td><td width="171">
+					<input name="hoten" value="" style="width:200px; margin:5px 5px;"></td><td width="171">Email <font color="#FF0000">(*)</font></td><td width="171">
+					<input name="Email" value="" style="width:200px; margin:5px 5px;"></td></tr>
+					
+					<tr valign="top"><td width="171">Chức vụ</td><td width="171">
+					<input type="hidden" name="%%Surrogate_ChucVu" value="1">
+					<select name="ChucVu" style="width:200px; margin:5px 5px;">
+					<option value="_a8dk187n741q187mbcdk20i06q58l8_">Chủ tịch HĐQT
+					</option><option value="_7aga1tlbecsg6eqd0dkg0dk0k3r8m6_">Tổng giám đốc
+					</option><option value="_j8tkq0r900r8187mhcc_">Giám đốc
+					</option><option value="_e9ca1tfp0ehnq0rh0ehp180dg2gfdurj7_">Kế toán trưởng
+					</option><option value="_b9ca1tfp0ehnq0rh0ehk7a50uns_">Kế toán thuế
+					</option><option value="_t9ca1tfp0ehnq0rh0epkogrg_">Kế toán viên
+					</option><option value="_q9ca1tfp0ehnq0rh0ega1ts90chng_">Kế toán tự do
+					</option><option value="_q9dka0oo_">Khác</option></select>
+					</td><td width="171">Nick Yahoo</td><td width="171">
+					<input name="Yahoo" value="" style="width:200px; margin:5px 5px;"></td></tr>
+					
+					<tr valign="top"><td width="171">Di Động <font color="#FF0000">(*)</font></td><td width="171">
+					<input name="dienthoai" value="" style="width:200px; margin:5px 5px;"></td><td width="171">Nick Skype</td><td width="171">
+					<input name="Skype" value="" style="width:200px; margin:5px 5px;"></td></tr>
+					
+					<tr valign="top"><td width="171">Cố định </td><td width="171">
+					<input name="dienthoai_1" value="" style="width:200px; margin:5px 5px;"></td><td width="171"><img border="0" width="1" height="1" src="/icons/ecblank.gif" alt=""></td><td width="171"><img border="0" width="1" height="1" src="/icons/ecblank.gif" alt=""></td></tr>
+					</tbody></table>
+					<b><font face="Tahoma">II.Thông tin doanh nghiệp mua phần mềm &amp; dịch vụ:</font></b><br>
+					<br>
+					
+					<table cellspacing="0" cellpadding="0" border="0">
+					<tbody><tr valign="top"><td width="171">Tên đơn vị</td><td width="171">
+					<input name="CongTy" value="" style="width:200px; margin:5px 5px;"></td><td width="171">Nghành nghề</td><td width="171">
+					<input type="hidden" name="%%Surrogate_NganhNghe" value="1">
+					<select name="NganhNghe" style="width:210px; margin:5px 5px;">
+					<option value="_460ois82kglki0or8k5n6gb10dca1tfp0ehnq0rhc41lmi50uodmi0t3fk1n0_">01. Tài chính, kế toán, kiểm toán
+					</option><option value="_060p2s8242g0r050usdhio83kd1kh87lvegg6450upcg7i83k2gfbub10c8a1thred0g7cq8k3r3msbhe5o_">02. Dược, thiết bị y tế, bệnh viện...
+					</option><option value="_v60pis82d2gffi83gd0a1tabd5gg78sj1dpji0sok3rkm6b10di2mq806q0a1tebg5on2s_">03. Mỹ phẩm, trang sức, làm đẹp...
+					</option><option value="_660q2s82k2g0r083m2gfaarhc403d050uktqi0t0k06o2o833d0a1tqbecsg6mq3fk1n0_">04. Tư vấn, đầu tư, chứng khoán
+					</option><option value="_e60qis8222gfaat100r8187mpdpji0sok3qhms_">05. Bất động sản
+					</option><option value="_r60r2s82bd2gi0osjdpji0rj7d1kh87m7e0_">06. Khí công nghiệp
+					</option><option value="_160ris806q4a1tkp0eka1tkbecsm20sgk06o187n3ekg64qb141n180dg2gfdmop0ctkh87l3d4g6mq50eg_">07. Đồ uống, rượu bia nước giải khát
+					</option><option value="_n60s2s829dog187l5dog7650ukdn20u3l2gfaat10c9gmu832hk_">08. In ấn sản xuất bao bì
+					</option><option value="_i60sis82jk1hmg83mgkg78q392gfbut10c8a1tip0ctkq0rp0cga1tpb3_">09. Sách và thiết bị giáo dục
+					</option><option value="_p64o2s82bd1gmi83kd2g66b10ce9mspp0ehp8qrj841q6gt8k3rrg_">10. Khai thác, công trình thuỷ
+					</option><option value="_j64ois82ogdsi0p0k3romspo_">11. Xây dựng
+					</option><option value="_p64p2s82m2gfaqt10dhkh87m7ekg7h0rp41i187nhdpjg_">12. Vật liệu xây dựng
+					</option><option value="_q64pis82kd2170b109dkmq82bd2gg_">13. Thép, Kim Khí
+					</option><option value="_g64q2s82e2gfdiq90ehk187l5egg0dk0k3r9i0pok3rbg_">14. Nội thất đồ gỗ
+					</option><option value="_764qis8242gfcet10dlgnib10chgi0pr92gfaeu8_">15. Dệt may, da giầy
+					</option><option value="_b64r2s8232g0q283bd2gg_">16. Cơ khí
+					</option><option value="_j64ris87241q96b10f1ii0rd0f4_">17. Ô tô, xe máy
+					</option><option value="_764s2s806q5kh87m7dom201mgd4a1thre41i86rh0cga1tpbecsm201mgd4a1thre41hp6rj741n6eq392gfces0_">18. Điện, điện dân dụng, điện công nghiệp
+					</option><option value="_264sis82kd5n20q0k3r6m6b108e9mspp0dpjmg50uos_">19. Tin học, Công nghệ
+					</option><option value="_m68o2s82heka1t8recsg6783f5gg78sjlf4a1tgbe41q6h4recs_">20. Quảng cáo, truyền thông
+					</option><option value="_u68ois82kd0a1tpp08e9mspp0dka1tu90dpjmg50uos_">21. Thủ Công mỹ nghệ
+					</option><option value="_q68p2s82ed0a1tsb15gg7650ukdn20u3l2gfaat10dpk187nhc4_">22. Nhựa, sản xuất nhựa
+					</option><option value="_s68pis82o0r3mspp0cga1t9rl5gg6850uktqi0qr8k4_">23. Xăng dầu, dầu khí
+					</option><option value="_268q2s82kd0a1tqb3403cerh0ctkm283jkdhio82kd1qh87mhccg78q5341sg_">24. Thức ăn gia súc, Thuốc thú y
+					</option><option value="_e68qis82jd647a83kd0a1tipc41q6g501m0a038becsg6q50uk5kio8342gfcmor841r187n55gg5gjib_">25. Siêu thị, thương mại, dịch vụ, XNK
+					</option><option value="_868r2s82ed22i0q45dpjio83bd2g66q10eca1t8be5gg68t90dga1tir3d0_">26. Nhà hàng, khách sạn, du lịch
+					</option><option value="_268ris82bd1gmi83kd2g66_">27. Khai thác
+					</option><option value="_r68s2s82m2gfaqrh0ega1t8r95gg6mq3f41r187lddo_">28. Vận tải, kho vận
+					</option><option value="_j68si0jd0f4g6r8j340m20t38d4a1tfrk41h187mb41hp6rj741n6eq392gfces0_">29 Máy móc , thiết bị công nghiệp
+					</option><option value="_76co2s823k1hi0rj7gln6g83bd2g66_">30. Các ngành khác</option></select>
+					</td></tr>
+					
+					<tr valign="top"><td width="171">Địa chỉ giao dịch</td><td width="171">
+					<input name="DiaChiGiaoDich" value="" style="width:200px; margin:5px 5px;"></td><td width="171">Tỉnh</td><td width="171"><font face="Times New Roman"><a name="_RefreshKW_dcTCTruSoTinh"></a>
+					<input type="hidden" name="%%Surrogate_dcTCTruSoTinh" value="1">
+					<select name="dcTCTruSoTinh" style="width:200px; margin:5px 5px;" title="Job title" onchange="_doClick('$Refresh', this, '_self', '#_RefreshKW_dcTCTruSoTinh')">
+					<option selected="" value="_s922i0jgk3rcmi_">Hà Nội
+					</option><option>TP HCM
+					</option><option value="_m0r8oa82e2gfbarj7_">Đà Nẵng
+					</option><option value="_f90a1t8r94186h5becs_">Hải Phòng
+					</option><option>An Giang
+					</option><option value="_q8a2i0kgk3r5m2bam0ojmspp0ai2na_">Bà Rịa-Vũng Tàu
+					</option><option value="_18a6msq108ga03c0k06gmspo_">Bình Dương
+					</option><option value="_o8a6msq10a1k180dg2gfdmoo_">Bình Phước
+					</option><option value="_r8a6msq10ahk7a50ulln0_">Bình Thuận
+					</option><option value="_58a6msq100r8h87mbdpk0_">Bình Định
+					</option><option value="_k88a1t8b34166j23l_">Bạc Liêu
+					</option><option value="_a88a1tbr3413miobecs_">Bắc Giang
+					</option><option value="_q88a1tbr3415h87l1do_">Bắc Kạn
+					</option><option value="_j88a1tbr34176irj8_">Bắc Ninh
+					</option><option value="_h88a1tfre41a74p8_">Bến Tre
+					</option><option value="_e8dgmu8222gfb2rj7_">Cao Bằng
+					</option><option value="_l8e2i0jb1ek_">Cà Mau
+					</option><option value="_38ca1t9re41a6g501k4_">Cần Thơ
+					</option><option>Gia Lai
+					</option><option value="_e922i0hr9c5n6e_">Hà Giang
+					</option><option value="_3922i0jj1dk_">Hà Nam
+					</option><option value="_6922i0l062dn6g_">Hà Tĩnh
+					</option><option value="_o92am2822hln6g_">Hòa Bình
+					</option><option value="_190a03c3ecsg5j23e40t0_">Hưng Yên :
+					</option><option value="_j90a1t8r9412180dg2g0q2rj7_">Hải Dương
+					</option><option value="_590a1tbbl413miobecs_">Hậu Giang
+					</option><option value="_89dka0rj84149ao8_">Khánh Hòa
+					</option><option value="_89dkogrh08tkm2rj7_">Kiên Giang
+					</option><option>Kon Tum
+					</option><option value="_m9hgmi823d21na_">Lai Châu
+					</option><option value="_l9i2mu823c5kg_">Lào Cai
+					</option><option value="_19i1mq806q4a1tkrecs_">Lâm Đồng
+					</option><option>Long An
+					</option><option value="_39ga1t8becsg56501k5n0_">Lạng Sơn
+					</option><option value="_09pgmq806q4a1tired0_">Nam Định
+					</option><option value="_79pjmg50uosg42rg_">Nghệ An
+					</option><option value="_19pkmsq108a6msq0_">Ninh Bình
+					</option><option value="_r9pkmsq10ahk7a50ulln0_">Ninh Thuận
+					</option><option value="_7a1ka682ph1n0_">Phú Yên
+					</option><option value="_1a5qh87l3dpji0gkddpk0_">Quảng Bình
+					</option><option value="_ga5qh87l3dpji0jj1dk_">Quảng Nam
+					</option><option value="_1a5qh87l3dpji0jj9dpk0_">Quảng Ninh
+					</option><option value="_ba5qh87l3dpji0l3i2gfcm_">Quảng Trị
+					</option><option value="_3aeh6682ke83cerj7_">Sóc Trăng
+					</option><option value="_5aca038be41662_">Sơn La
+					</option><option value="_hai1ni82ed5n6g_">Tây Ninh
+					</option><option value="_kahk62rj8414a4o8_">Thanh Hóa
+					</option><option value="_2ahka0q908a6msq0_">Thái Bình
+					</option><option value="_gahk8arj841o6g50uq4g4gt8k3qvg_">Thành phố Huế
+					</option><option value="_mahk8arj841o6g50uq4g52t8k3qhmspp09pjscq8_">Thành phố Quảng Ngãi
+					</option><option value="_0ahk8arj841o6g50uq4g58q50d4g4sprlf646s_">Thành phố Thái Nguyên
+					</option><option value="_kahk8arj841o6g50uq4g5cq8k3r3n882kea6g_">Thành phố Việt Trì
+					</option><option value="_eahkh87m1dog4eqb1dpjg_">Tiền Giang
+					</option><option value="_lahp8a82md5n6g_">Trà Vinh
+					</option><option value="_2ao316rj84166urj7_">Vĩnh Long
+					</option><option value="_sao316rj84186h8r3_">Vĩnh Phúc
+					</option><option value="_ab646s822k1kg_">Yên Bái
+					</option><option value="_h0r8mi50uotn20gj9h1n0_">Điện Biên
+					</option><option value="_c0r8h87lfdcg4o50ultlg_">Đắk Lắk
+					</option><option value="_u0r8h87lfdcg4t4recs_">Đắk Nông
+					</option><option value="_l0r8h87mjdpji0jj1d4_">Đồng Nai
+					</option><option value="_e0r8h87mjdpji0l38k1o0_">Đồng Tháp</option></select>
+					</font></td></tr>
+					
+					<tr valign="top"><td width="171">Đ/C đăng ký thuế</td><td width="171">
+					<input name="DiaChiThue" value="" style="width:200px; margin:5px 5px;"></td><td width="171">Tỉnh</td><td width="171"><font face="Times New Roman"><a name="_RefreshKW_dcTCTruSoTinh_1"></a>
+					<input type="hidden" name="%%Surrogate_dcTCTruSoTinh_1" value="1">
+					<select name="dcTCTruSoTinh_1" style="width:200px; margin:5px 5px;" title="Job title" onchange="_doClick('$Refresh', this, '_self', '#_RefreshKW_dcTCTruSoTinh_1')">
+					<option selected="" value="_s922i0jgk3rcmi_">Hà Nội
+					</option><option>TP HCM
+					</option><option value="_m0r8oa82e2gfbarj7_">Đà Nẵng
+					</option><option value="_f90a1t8r94186h5becs_">Hải Phòng
+					</option><option>An Giang
+					</option><option value="_q8a2i0kgk3r5m2bam0ojmspp0ai2na_">Bà Rịa-Vũng Tàu
+					</option><option value="_18a6msq108ga03c0k06gmspo_">Bình Dương
+					</option><option value="_o8a6msq10a1k180dg2gfdmoo_">Bình Phước
+					</option><option value="_r8a6msq10ahk7a50ulln0_">Bình Thuận
+					</option><option value="_58a6msq100r8h87mbdpk0_">Bình Định
+					</option><option value="_k88a1t8b34166j23l_">Bạc Liêu
+					</option><option value="_a88a1tbr3413miobecs_">Bắc Giang
+					</option><option value="_q88a1tbr3415h87l1do_">Bắc Kạn
+					</option><option value="_j88a1tbr34176irj8_">Bắc Ninh
+					</option><option value="_h88a1tfre41a74p8_">Bến Tre
+					</option><option value="_e8dgmu8222gfb2rj7_">Cao Bằng
+					</option><option value="_l8e2i0jb1ek_">Cà Mau
+					</option><option value="_38ca1t9re41a6g501k4_">Cần Thơ
+					</option><option>Gia Lai
+					</option><option value="_e922i0hr9c5n6e_">Hà Giang
+					</option><option value="_3922i0jj1dk_">Hà Nam
+					</option><option value="_6922i0l062dn6g_">Hà Tĩnh
+					</option><option value="_o92am2822hln6g_">Hòa Bình
+					</option><option value="_190a03c3ecsg5j23e40t0_">Hưng Yên :
+					</option><option value="_j90a1t8r9412180dg2g0q2rj7_">Hải Dương
+					</option><option value="_590a1tbbl413miobecs_">Hậu Giang
+					</option><option value="_89dka0rj84149ao8_">Khánh Hòa
+					</option><option value="_89dkogrh08tkm2rj7_">Kiên Giang
+					</option><option>Kon Tum
+					</option><option value="_m9hgmi823d21na_">Lai Châu
+					</option><option value="_l9i2mu823c5kg_">Lào Cai
+					</option><option value="_19i1mq806q4a1tkrecs_">Lâm Đồng
+					</option><option>Long An
+					</option><option value="_39ga1t8becsg56501k5n0_">Lạng Sơn
+					</option><option value="_09pgmq806q4a1tired0_">Nam Định
+					</option><option value="_79pjmg50uosg42rg_">Nghệ An
+					</option><option value="_19pkmsq108a6msq0_">Ninh Bình
+					</option><option value="_r9pkmsq10ahk7a50ulln0_">Ninh Thuận
+					</option><option value="_7a1ka682ph1n0_">Phú Yên
+					</option><option value="_1a5qh87l3dpji0gkddpk0_">Quảng Bình
+					</option><option value="_ga5qh87l3dpji0jj1dk_">Quảng Nam
+					</option><option value="_1a5qh87l3dpji0jj9dpk0_">Quảng Ninh
+					</option><option value="_ba5qh87l3dpji0l3i2gfcm_">Quảng Trị
+					</option><option value="_3aeh6682ke83cerj7_">Sóc Trăng
+					</option><option value="_5aca038be41662_">Sơn La
+					</option><option value="_hai1ni82ed5n6g_">Tây Ninh
+					</option><option value="_kahk62rj8414a4o8_">Thanh Hóa
+					</option><option value="_2ahka0q908a6msq0_">Thái Bình
+					</option><option value="_gahk8arj841o6g50uq4g4gt8k3qvg_">Thành phố Huế
+					</option><option value="_mahk8arj841o6g50uq4g52t8k3qhmspp09pjscq8_">Thành phố Quảng Ngãi
+					</option><option value="_0ahk8arj841o6g50uq4g58q50d4g4sprlf646s_">Thành phố Thái Nguyên
+					</option><option value="_kahk8arj841o6g50uq4g5cq8k3r3n882kea6g_">Thành phố Việt Trì
+					</option><option value="_eahkh87m1dog4eqb1dpjg_">Tiền Giang
+					</option><option value="_lahp8a82md5n6g_">Trà Vinh
+					</option><option value="_2ao316rj84166urj7_">Vĩnh Long
+					</option><option value="_sao316rj84186h8r3_">Vĩnh Phúc
+					</option><option value="_ab646s822k1kg_">Yên Bái
+					</option><option value="_h0r8mi50uotn20gj9h1n0_">Điện Biên
+					</option><option value="_c0r8h87lfdcg4o50ultlg_">Đắk Lắk
+					</option><option value="_u0r8h87lfdcg4t4recs_">Đắk Nông
+					</option><option value="_l0r8h87mjdpji0jj1d4_">Đồng Nai
+					</option><option value="_e0r8h87mjdpji0l38k1o0_">Đồng Tháp</option></select>
+					</font></td></tr>
+					
+					<tr valign="top"><td width="171">Loại hình DN</td><td width="171">
+					<input type="hidden" name="%%Surrogate_LoaiDoanhNghiep" value="1">
+					<select name="LoaiDoanhNghiep" style="width:200px; margin:5px 5px;">
+					<option>CP
+					</option><option>TNHH
+					</option><option>DNTN
+					</option><option>CH
+					</option><option>LD
+					</option><option>FDI
+					</option><option>HTX
+					</option><option value="_q9dka0oo_">Khác</option></select>
+					</td><td width="171">MST</td><td width="171">
+					<input name="MST" value="" style="width:200px; margin:5px 5px;"></td></tr>
+					
+					<tr valign="top"><td width="171">Tel</td><td width="171">
+					<input name="DienThoaiCongTy" value="" style="width:200px; margin:5px 5px;"></td><td width="171">Fax</td><td width="171">
+					<input name="Fax" value="" style="width:200px; margin:5px 5px;"></td></tr>
+					
+					<tr valign="top"><td width="171"><img border="0" width="1" height="1" src="/icons/ecblank.gif" alt=""></td><td width="171"><img border="0" width="1" height="1" src="/icons/ecblank.gif" alt=""></td><td width="171"><img border="0" width="1" height="1" src="/icons/ecblank.gif" alt=""></td><td width="171"><img border="0" width="1" height="1" src="/icons/ecblank.gif" alt=""></td></tr>
+					</tbody></table>
+					<b><font face="Tahoma">III.Phần mềm dịch vụ cần mua:</font></b><br>
+					<br>
+					
+					<table cellspacing="0" cellpadding="0" border="0" width="100%">
+					<tbody><tr valign="top"><td width="22%">Loại phần mềm KT<br>
+					<br>
+					<font color="#FF0000">Nếu mọi người đặt phần mềm đặc thù thì ghi rõ phần ghi chú !</font></td><td width="26%">
+					<input type="hidden" name="%%Surrogate_LoaiPMDV" value="1">
+					<select name="LoaiPMDV">
+					<option value="_j9hnh87l1d4g70q0k3qjms83d2gfc2r8_">Loại phần mềm
+					</option><option>SASINNOVA 6.8.1
+					</option><option>SASINNOVA 6.8.1 STD
+					</option><option>SASINNOVA 8.0
+					</option><option>SASINNOVA 8.0 ONLINE
+					</option><option>SAS ERP 8.0
+					</option><option value="_9a1k187l7dog6q50uo5mi0sbl2gfa6rh0djm20pr92gfbet10di2g_">Phần mềm quản lý giặt là
+					</option><option value="_sa1k187l7dog6q50uo5mi0sbl2gfa6rh0djm20u43f4g6o50ulto0_">Phần mềm quản lý xây lắp
+					</option><option value="_2a1k187l7dog6q50uo5mi0sbl2gfa6rh0djm20p0k06o187n3cc_">Phần mềm quản lý dược</option></select>
+					</td><td width="26%">Dịch vụ thuế</td><td width="26%">
+					<input type="hidden" name="%%Surrogate_LoaiDinhVu" value="1">
+					<select name="LoaiDinhVu">
+					<option value="_o9hnh87l1d4g6850updn6g83m2gfea_">Loại dịnh vụ
+					</option><option value="_b8ga1tir3d0g7c50uskg78q3l2gfbu8332g0q28322gfa6rg_">Dịch vụ thuế cơ bản
+					</option><option value="_r8ga1tir3d0g7c50uskg78q3l2gfbu83egdn6e833c5ng_">Dịch vụ thuế nâng cao
+					</option><option value="_f8ga1tir3d0g7c50uskg66q3lf646s83ecu2msq0_">Dịch vụ chuyên ngành</option></select>
+					</td></tr>
+					
+					<tr valign="top"><td width="100%" colspan="4">Ghi chú thêm</td></tr>
+					
+					<tr valign="top"><td width="100%" colspan="4">
+					<textarea name="Body" style="width:580px; margin:5px 5px; height:50px;" rows="7" cols="50"></textarea>
+					</td></tr>
+					
+					<tr valign="top"><td width="22%"><div style="width:120px;">Gửi file đính kèm</div></td><td width="26%">
+					<input type="file" name="%%File.472578860010311c.00835f593c853a5247257a9500289005.$Body.0.3F94"></td><td width="26%"><img border="0" width="1" height="1" src="/icons/ecblank.gif" alt=""></td><td width="26%"><img border="0" width="1" height="1" src="/icons/ecblank.gif" alt=""></td></tr>
+					
+					<tr valign="top"><td width="22%"><img border="0" width="1" height="1" src="/icons/ecblank.gif" alt=""></td><td width="26%">
+					<input type="button" value="ĐẶT HÀNG" class="Submit" style="background:red; padding:5px 5px; color:#FFF; font-weight:bold; margin-top:10px;" onclick="return _doClick('472578860010311C.00835f593c853a5247257a9500289005/$Body/0.40A0', this, null)"></td><td width="26%"><img border="0" width="1" height="1" src="/icons/ecblank.gif" alt=""></td><td width="26%"><img border="0" width="1" height="1" src="/icons/ecblank.gif" alt=""></td></tr>
+					</tbody></table>
+                </div>
+			</div>
+			<div class='col-md-5'>
+				<?php echo $this->render('/widget/ho-tro-truc-tuyen.phtml');?>
+				<div style="min-height: 10px;"></div>
+				<div class='clearfix'></div>
+				<div class='row'>
+					<div class='col-md-12'>
+						<div style="min-height: 10px;"></div>
+						<div class='row'>
+							<div class='col-md-6' style='padding: 0px'>
+								<?php echo $this->render('/widget/new-videos.phtml');?>
+								
+								<?php echo $this->render('/widget/tin-nhanh.phtml');?>
+							</div>
+							<div class='col-md-6' style='padding: 0px'>
+								<?php echo $this->render('/widget/box-ho-tro.phtml');?>
+								
+								<?php echo $this->render('/widget/dich-vu.phtml');?>
+							</div>
+						</div>
+						<div class='row'>
+							<div class='col-md-12' style='padding: 0px;'>
+								<?php //echo $this->render('/widget/chuyen-muc-hot.phtml');?>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<hr>

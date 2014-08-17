@@ -1,5 +1,13 @@
 <?php 
-	$videos = isset($this->videos) ? $this->videos : array();
+		//Lay video
+    	$where = array();
+    	$cond['where'] = $where;//TODO: is_hot = hot
+    	$cond['ts'] = -1;
+    	$r = Dao_Node_Video::getInstance()->findAll($cond);
+    	$videos = array();
+    	if($r['success']){
+    		$videos = $r['result'];
+    	}
 ?>
 <?php if(count($videos) > 0):?>
 <div class="boxes">

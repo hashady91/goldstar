@@ -96,5 +96,16 @@ class Site_IndexController extends Cl_Controller_Action_Index
 	public function hinhAnhHoatDongAction(){
 		Bootstrap::$pageTitle = "Hình ảnh hoạt động";
 	}
-    
+	
+	public function congTacVienAction(){
+		Bootstrap::$pageTitle = "Cộng tác viên";
+	}
+	
+	public function nhaPhanPhoiAction(){
+		Bootstrap::$pageTitle = "Nhà phân phối";
+	}
+	
+	public function datHangAction(){
+		Bootstrap::$pageTitle = "Đặt hàng";
+	}
 }
