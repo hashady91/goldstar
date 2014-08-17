@@ -2,6 +2,7 @@
 	$lu = Zend_Registry::get('user');
 	$news = isset($this->news) ? $this->news : array();
 	$row = isset($this->row) ? $this->row : array();
+	$videos = $this->videos;
 ?>
 <div style='min-height: 400px;'>
 		<div class='row'>
@@ -23,6 +24,8 @@
 						<div class='row'>
 							<div class='col-md-6' style='padding: 0px'>
 								<?php echo $this->render('/widget/tin-nhanh.phtml');?>
+								
+								<?php echo $this->render('/widget/new-videos.phtml');?>
 							</div>
 							<div class='col-md-6' style='padding: 0px'>
 								<?php echo $this->render('/widget/box-ho-tro.phtml');?>
@@ -32,7 +35,7 @@
 						</div>
 						<div class='row'>
 							<div class='col-md-12' style='padding: 0px;'>
-								<?php echo $this->render('/widget/chuyen-muc-hot.phtml');?>
+								<?php //echo $this->render('/widget/chuyen-muc-hot.phtml');?>
 							</div>
 						</div>
 					</div>

@@ -103,6 +103,44 @@ class Category_IndexController extends Cl_Controller_Action_NodeIndex
     	$slug = $this->getStrippedParam('slug');
     	$where = array('iid' => $iid);
     	$r = Dao_Node_Category::getInstance()->findOne($where);
+    	
+    	//Lay tin nhanh
+    	$where = array('is_hot' => 'new');
+    	$cond['where'] = $where;
+    	$cond['ts'] = -1;
+    	$cond['limit'] = 8;
+    	$r = Dao_Node_New::getInstance()->findAll($cond);
+    	$tinNhanh = array();
+    	if($r['success']){
+    		$tinNhanh = $r['result'];
+    	}
+    	 
+    	//Lay tin dich vu
+    	$dich_vu_iid = get_conf('dich_vu_iid','37');
+    	$where = array('parent_category_iid' => $dich_vu_iid);
+    	//$where = array();
+    	$cond['where'] = $where;
+    	$cond['limit'] = 5;
+    	$cond['ts'] = -1;
+    	$r = Dao_Node_New::getInstance()->findAll($cond);
+    	if($r['success']){
+    		$dichvu = $r['result'];
+    	}
+    	 
+    	//Lay video
+    	$where = array();
+    	$cond['where'] = $where;//TODO: is_hot = hot
+    	$cond['ts'] = -1;
+    	$r = Dao_Node_Video::getInstance()->findAll($cond);
+    	$videos = array();
+    	if($r['success']){
+    		$videos = $r['result'];
+    	}
+    	
+    	$this->setViewParam('tinNhanh', $tinNhanh);
+    	$this->setViewParam('dichvu', $dichvu);
+    	$this->setViewParam('videos', $videos);
+    	
     	if($r['success']){
     	   $cate_name = $r['result']['name'];
     	   $cate = $r['result'];
