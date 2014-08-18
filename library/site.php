@@ -1,4 +1,8 @@
 <?
+function per_page()
+{
+	return 10;
+}
 function url_exists($url) {
 	$hdrs = @get_headers($url);
 

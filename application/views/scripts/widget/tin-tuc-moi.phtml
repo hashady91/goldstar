@@ -1,6 +1,7 @@
 <?php 
 	$news = $this->news;
 	$title = $this->title;
+	$is_home_page = isset($this->is_home_page) ? true : false;
 ?>
 <?php if(count($news) > 0):?>
 <div class='col-md-12'>
@@ -31,6 +32,19 @@
 	</div>
 	<hr>
 	<?php endforeach;?>
+	<?php if($is_home_page):?>
+		<div class='pull-right'>
+			<a href='/new/tin-moi'>
+				<i class='glyphicon glyphicon-chevron-right' 
+					style='color: green; text-decoration: none !important;'></i>
+				Xem tất cả
+			</a>
+		</div>
+	<?php else:?>
+		<?php if($this->total > 0) :?>
+	        <?php echo $this->render("widget/gold-pagination.phtml");?>
+	    <?php endif;?>
+	<?php endif;?>
 </div>
 <?php else:?>
 <div class="no-news">

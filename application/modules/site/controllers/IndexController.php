@@ -38,7 +38,8 @@ class Site_IndexController extends Cl_Controller_Action_Index
 		$where = array();
 		$cond['where'] = $where;//TODO: is_hot = hot
 		$cond['ts'] = -1;
-		$r = Dao_Node_New::getInstance()->findAll($cond);
+		$cond['limit'] = 10;
+		$r = Dao_Node_New::getInstance()->find($cond);
 		if($r['success']){
 			$news = $r['result'];
 		}
@@ -55,6 +56,7 @@ class Site_IndexController extends Cl_Controller_Action_Index
 			$dichvu = $r['result'];
 		}
 		
+		$this->setViewParam('is_home_page', 1);
 		$this->setViewParam('tinNhanh', $tinNhanh);
 		$this->setViewParam('bestNews', $bestNews);
 		$this->setViewParam('videos', $videos);

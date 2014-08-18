@@ -1,19 +1,13 @@
 <?php 
 	$lu = Zend_Registry::get('user');
-	$news = isset($this->news) ? $this->news : array();
-	$row = isset($this->row) ? $this->row : array();
-	$videos = $this->videos;
 ?>
 <div style='min-height: 400px;'>
 		<div class='row'>
 			<div class='col-md-7'>
-				<?php echo $this->render('/widget/slide-product.phtml');?>
-				
 				<div class='separator-high'></div>
-				<?php $this->title = $row['name'];?>
+				<?php $this->title = 'Tin mới';?>
 				<?php $this->url = '/new/tin-moi'?>
 				<?php echo $this->render('/widget/tin-tuc-moi.phtml');?>
-				
 			</div>
 			<div class='col-md-5'>
 				<?php echo $this->render('/widget/ho-tro-truc-tuyen.phtml');?>

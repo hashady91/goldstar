@@ -153,6 +153,34 @@ class New_IndexController extends Cl_Controller_Action_NodeIndex
     	Bootstrap::$pageTitle = 'Tìm kiếm cover tin tức - ' . $name;
     }
     
+    public function tinMoiAction(){
+    	$page = $this->getStrippedParam('page',1);
+    	$data = array();
+    	$form = new New_Form_Search();
+    	
+    	$form->build($data);
+    	$conditions = $form->buildSearchConditions();
+    	
+    	$conditions['page'] = $page;
+    	$conditions['limit'] = per_page();
+    	$conditions['total'] = 1;
+    	
+    	$dao = Dao_Node_New::getInstance();
+    	$r = $dao->findNode($conditions, true);
+    	
+    	if($r['success'] && $r['total'] > 0){
+    		$news = $r['result'];
+    	}else{
+    		$news = array();
+    	}
+    	 
+    	$this->setViewParam('news', $news);
+    	$total = $r['total'];
+    	$this->setViewParam('total', $total);
+    	$this->setViewParam('page', $page);
+    	Bootstrap::$pageTitle = "Tin tức mới";
+    }
+    
     public function searchCommentAction()
     {
         assure_perm("search_new");//by default
