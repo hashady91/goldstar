@@ -193,7 +193,7 @@ h2.tomtat-newsdetail {
     text-align: justify;
 }
 .title-newsdetail {
-    color: #293890;
+    color: #29739d !important;
     font-size: 14px;
     font-weight: bold;
     line-height: 150%;
@@ -252,4 +252,7 @@ ul.news-flash img {
     border: 1px solid #d1d1d1;
     float: left;
     margin-right: 5px;
+}
+.dieukhoan .title{
+	font-weight: bold;
 }

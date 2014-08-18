@@ -108,4 +108,16 @@ class Site_IndexController extends Cl_Controller_Action_Index
 	public function datHangAction(){
 		Bootstrap::$pageTitle = "Đặt hàng";
 	}
+	
+	public function lienHeAction(){
+		Bootstrap::$pageTitle = "Liên hệ";
+	}
+	
+	public function dieuKhoanAction(){
+		Bootstrap::$pageTitle = "Điều khoản";
+	}
+	
+	public function tuyenDungAction(){
+		Bootstrap::$pageTitle = "Tuyển dụng";
+	}
 }
