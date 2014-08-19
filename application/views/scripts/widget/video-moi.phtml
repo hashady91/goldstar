@@ -1,0 +1,64 @@
+<?php 
+	$videos = $this->cate_videos;
+	$title = $this->title;
+	$is_home_page = isset($this->is_home_page) ? true : false;
+?>
+<?php if(count($videos) > 0):?>
+<div class='col-md-12' style='padding: 0px;'>
+	<div class='row heading'>
+		<h3 style="margin-top: 0;">
+		<i class='glyphicon glyphicon-home'></i>
+		<?php echo $title;?></h3>
+	</div>
+	<div class='cate_videos'>
+		<?php foreach ($videos as $video):?>
+           <?php $imgLink = "http://img.youtube.com/vi/{$video['ytid']}/0.jpg";?>
+           <div class="box">
+				<div class="title margin-left">
+					<h3>
+						<a href="<?php echo node_link('video', $video);?>" 
+							style='cursor: pointer; color: #1e5dad; text-decoration:none;'>
+							<?php echo $video['name'];?> </a></h3>
+				</div>
+				<div class="video-inner margin-left" style='min-height: 440px;'>
+					<a href="<?php echo node_link('video', $video);?>">
+						<img src="<?php echo $imgLink;?>" title="<?php echo $video['name'];?>"
+						style='width: 100%;height: 440px;'>
+						<img class="tidypics-photo-start" width="35px" height="25px" 
+							src="<?php echo ASSETS_CDN?>/img/play_youtube.png" 
+							style="left: 226px;
+						    position: absolute; 
+							top: 194px; width: 101px; 
+							height: 69px; cursor: pointer; 
+							background: none repeat scroll 0 0 rgba(0, 0, 0, 0) !important;
+							box-shadow : none;">
+						</a>
+				</div>
+			</div>
+		<?php endforeach;?>
+	</div>
+	<?php if($is_home_page):?>
+		<div class='pull-right'>
+			<a href='/video/tin-moi'>
+				<i class='glyphicon glyphicon-chevron-right' 
+					style='color: green; text-decoration: none !important;'></i>
+				Xem tất cả
+			</a>
+		</div>
+	<?php else:?>
+		<?php if($this->total > 0) :?>
+	        <?php echo $this->render("widget/gold-pagination.phtml");?>
+	    <?php endif;?>
+	<?php endif;?>
+</div>
+<?php else:?>
+<div class="no-videos">
+    <div class='heading'>
+		<h3 style="margin-top: 0;">
+		<i class='glyphicon glyphicon-home'></i>
+		<?php echo $title;?></h3>
+	</div>
+	<div class="clear-fix clear"></div>
+	<div class="alert alert-info" role="alert">Chưa có bài đăng nào trong chuyên mục này.</div>
+</div>
+<?php endif;?>

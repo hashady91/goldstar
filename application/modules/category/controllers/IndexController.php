@@ -107,15 +107,24 @@ class Category_IndexController extends Cl_Controller_Action_NodeIndex
     	if($r['success']){
     	   $cate_name = $r['result']['name'];
     	   $cate = $r['result'];
+    	   $is_video = (isset($cate['is_video']) && $cate['is_video'] == 'video') ? true : false;
     	   $this->setViewParam('row', $cate);
 			if(!isset($cate['level']))
     		    $cate['level'] = 1;
     		if($cate['level'] == 2){
     			//Show all product of category
-    			$r = Dao_Node_New::getInstance()->getNewsListByCategory($cate['iid']);
-    			if($r['success'] && $r['count'] >0){
-    				$news = $r['result'];
-    				$this->setViewParam('news', $news);
+    			if($is_video){
+    				$r = Dao_Node_Video::getInstance()->getVideosListByCategory($cate['iid']);
+    				if($r['success'] && $r['count'] >0){
+    					$cate_videos = $r['result'];
+    					$this->setViewParam('cate_videos', $cate_videos);
+    				}
+    			}else{
+	    			$r = Dao_Node_New::getInstance()->getNewsListByCategory($cate['iid']);
+	    			if($r['success'] && $r['count'] >0){
+	    				$news = $r['result'];
+	    				$this->setViewParam('news', $news);
+	    			}
     			}
     			$this->setViewParam('is_level', 2);
     		}elseif($cate['level'] == 1){
@@ -131,14 +140,24 @@ class Category_IndexController extends Cl_Controller_Action_NodeIndex
     				
     				$where = array('parent_category_iid' => array('$in' => $cate_iids));
     				$cond['where'] = $where;
-    				$r = Dao_Node_New::getInstance()->findAll($cond);
-	    			if($r['success']){
-	    				$news = $r['result'];
-	    				$this->setViewParam('news', $news);
-	    			}
+    				if($is_video){
+    					$r = Dao_Node_Video::getInstance()->findAll($cond);
+    					if($r['success']){
+    						$cate_videos = $r['result'];
+    						$this->setViewParam('cate_videos', $cate_videos);
+    					}
+    				}else{
+	    				$r = Dao_Node_New::getInstance()->findAll($cond);
+		    			if($r['success']){
+		    				$news = $r['result'];
+		    				$this->setViewParam('news', $news);
+		    			}
+    				}
     			}
     		}
     	}
+    	
+    	$this->setViewParam('is_video', $is_video);
         Bootstrap::$pageTitle = 'Chuyên mục - ' . $cate_name;
     }
     

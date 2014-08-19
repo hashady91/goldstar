@@ -3,6 +3,7 @@
 	$news = isset($this->news) ? $this->news : array();
 	$row = isset($this->row) ? $this->row : array();
 	$videos = $this->videos;
+	$is_video = $this->is_video;
 ?>
 <div style='min-height: 400px;'>
 		<div class='row'>
@@ -12,7 +13,13 @@
 				<div class='separator-high'></div>
 				<?php $this->title = $row['name'];?>
 				<?php $this->url = '/new/tin-moi'?>
-				<?php echo $this->render('/widget/tin-tuc-moi.phtml');?>
+				<?php
+					if($is_video){
+						echo $this->render('/widget/video-moi.phtml');
+					}else{
+						echo $this->render('/widget/tin-tuc-moi.phtml');
+					}
+				?>
 				
 			</div>
 			<div class='col-md-5'>

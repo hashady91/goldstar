@@ -10,6 +10,7 @@ class Dao_Node_Category extends Cl_Dao_Node
     		'description' => 'string',
     		'avatar' => 'string',
     		'is_menu' => 'string',//show|not show on menu
+    		'is_video' => 'string',//video|new
     		//add other stuff u want
     );
 
@@ -39,6 +40,7 @@ class Dao_Node_Category extends Cl_Dao_Node
     		'description' => 'string',
     		'avatar' => 'string',
     		'is_menu' => 'string',//show|not show on menu
+    		'is_video' => 'string',//video|new
 	    );
 	    
     	return array(
@@ -52,6 +54,7 @@ class Dao_Node_Category extends Cl_Dao_Node
     	         "name" => 'string',
         		 'avatar' => 'string',
         		 'is_menu' => 'string',//show|not show on menu
+        		 'is_video' => 'string',//video|new
     	         "description" => 'string',
     	         "meta_description" => 'string',
 			     "category_image" => 'string',

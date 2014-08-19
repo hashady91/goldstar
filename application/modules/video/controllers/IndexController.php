@@ -78,20 +78,8 @@ class Video_IndexController extends Cl_Controller_Action_NodeIndex
     	$lu = Zend_Registry::get('user');
     	
     	$id = $this->getStrippedParam('id');
-    	if(!has_role_video($lu, $id))	
-    		assure_perm('sudo');
+    	assure_perm('sudo');
     	
-    	if(has_role('sudo'))
-    		$this->setLayout("admin");
-    	else{
-    		//Get new video
-    		$list = Dao_Node_Video::getInstance()->getVideoByType('new', 3, $row['ts']);
-    		$this->setViewParam('newVideos', $list);
-    		 
-    		//Get popular video
-    		$list = Dao_Node_Video::getInstance()->getVideoByType('hot', 1, $row['ts']);
-    		$this->setViewParam('hotVideos', $list);
-    	}
         /**
          * Permission to update a node is done in 
          * $Node_Form_Update form->customPermissionFilter()

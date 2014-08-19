@@ -15,6 +15,7 @@ class Dao_Node_Video extends Dao_Node_Site
         	'ts' => 'int',
     		'ats' => 'int',
         	'status' => 'string',
+    		'parent_category_iid' => 'string',
     		//add other stuff u want
     );
         
@@ -66,6 +67,7 @@ class Dao_Node_Video extends Dao_Node_Site
         		'ts' => 'int',
         		'ats' => 'int',
         		'status' => 'string',
+        		'parent_category_iid' => 'string',
         	)
     	);
 	}
@@ -845,5 +847,14 @@ class Dao_Node_Video extends Dao_Node_Site
 			$this->deleteStaticCacheOfType('widget/hot', $situation+1,2);
 		}
 		*/
+	}
+	
+	public function getVideosListByCategory($categoryiid)
+	{
+		$where = array('parent_category_iid' => $categoryiid);
+		$cond['where'] = $where;
+		$r = $this->findAll($cond);
+		return $r;
+	
 	}
 }

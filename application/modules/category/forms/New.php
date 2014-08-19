@@ -4,7 +4,9 @@ class Category_Form_New extends Cl_Form
 	public function init()
 	{
 		parent::init();
-		$this->fieldList = array('avatar', 'name', 'content', 'status', /*'parent_category',*/ 'slug','is_menu');
+		$this->fieldList = array('avatar', 'name', 'content', 'status', /*'parent_category',*/ 'slug','is_menu',
+				'is_video'
+		);
 		$this->setCbHelper('Category_Form_Helper');
 		
 	}
@@ -64,6 +66,14 @@ class Category_Form_New extends Cl_Form
         			'required' => true,
         		),
         		'multiOptionsCallback' => array('getIsMenu')
+        	),
+        	'is_video' => array(
+        		'type' => 'Select',
+        		'options' => array(
+        			'label' => 'Chuyên mục video?(video|new)',
+        			'required' => true,
+        		),
+        		'multiOptionsCallback' => array('getIsVideo')
         	),
         	'level' => array(
         			'type' => 'Select',

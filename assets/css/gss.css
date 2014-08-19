@@ -256,3 +256,18 @@ ul.news-flash img {
 .dieukhoan .title{
 	font-weight: bold;
 }
+/****************Video*************************/
+.title h3, .title h4 {
+    color: rgb(155, 155, 155);
+    font-size: 20px;
+    padding: 10px 0 6px;
+}
+.video-inner {
+    position: relative;
+    width: 100%;
+}
+.video-inner img {
+    background: none repeat scroll 0 0 #fff;
+    box-shadow: 0 0 10px rgb(228, 228, 228);
+    padding: 10px;
+}

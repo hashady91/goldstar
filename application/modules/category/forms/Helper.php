@@ -11,6 +11,11 @@ class Category_Form_Helper extends Cl_Form_NodeHelper
     	$ret = array('show' => 'Hiển thị', 'not_show' => 'Không hiển thị');
     	return array('success' =>true, 'result' => $ret);
     }
+    public function getIsVideo()
+    {
+    	$ret = array('new' => 'Chuyên mục tin', 'video' => 'Chuyên mục video');
+    	return array('success' =>true, 'result' => $ret);
+    }
     public function getLevel()
     {
     	$ret = array(1 => 'Level 1', 2 => 'Level 2');

@@ -10,7 +10,7 @@ class Category_Form_Update extends Category_Form_New
         if ($step == '' )
         {
 			$this->fieldList = array('avatar', 'name', 'content', 'status',
-						 'parent_category', 'slug', 'level','is_menu');
+						 'parent_category', 'slug', 'level','is_menu','is_video');
         }
         elseif ($step == 'status')
         {
