@@ -26,17 +26,14 @@ class Dao_Node_Feedback extends Cl_Dao_Node
     	return array(
     		'collectionName' => 'feedback',
         	'documentSchemaArray' => array(
-        		'overview' => 'string', //Tổng quan về hài lòng của khách
-        		'interface' => 'string', //đánh giá về giao diện
-    	        'used' => 'string', //dễ sử dụng 
-        		'type' => 'int', // 1 => want item, 2 => own item, 3 => had item (reviews). If  9 => "uploaded photo"
-        		'payment' => 'string', //hình thức thanh toán
-        		//'service' => 'string', //phục vụ, lắp đặt
         		'uname' => 'string',
+        		'uphone' => 'string',
         		'umail' => 'string',
+    	        'to' => 'string', //Gửi đến bộ phận nào 
+        		'title' => 'string', //tiêu đề
         		'ts' => 'int',
-        		'more' => 'string', //ý kiến khác, thêm
-        		'status' => 'string'
+        		'content' => 'string', //ý kiến khác, thêm
+        		'status' => 'string',
         	)
     	);
 	}

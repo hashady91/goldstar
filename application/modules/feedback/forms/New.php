@@ -4,7 +4,7 @@ class Feedback_Form_New extends Cl_Form
 	public function init()
 	{
 		parent::init();
-		$this->fieldList = array('overview', 'interface', 'used', 'payment', 'uname', 'umail', 'more', 'status');
+		$this->fieldList = array('uname', 'umail', 'uphone', 'to', 'content', 'title','status');
 		$this->setCbHelper('Feedback_Form_Helper');
 		
 	}
@@ -16,38 +16,13 @@ class Feedback_Form_New extends Cl_Form
     protected function _formFieldsConfigCallback()
     {
         $ret = array(
-        	'overview' => array(
+        	'to' => array(
         		'type' => 'Select',
             		'options' => array(
-            				'label' => 'Tổng quan về hài lòng của khách hàng',
+            				'label' => 'Gửi đến',
             				'required' => true,
             		),
-            		'multiOptionsCallback' => array('getStatusFeedback')
-                //'permission' => 'update_task'
-        	),
-        	'interface' => array(
-        		'type' => 'Select',
-            		'options' => array(
-            				'label' => 'Giao diện',
-            				'required' => true,
-            		),
-            		'multiOptionsCallback' => array('getStatusFeedback')
-        	),
-        	'used' => array(
-        		'type' => 'Select',
-            		'options' => array(
-            				'label' => 'Dễ sử dụng',
-            				'required' => true,
-            		),
-            		'multiOptionsCallback' => array('getStatusFeedback')
-        	),
-        	'payment' => array(
-        		'type' => 'Select',
-            		'options' => array(
-            				'label' => 'Hình thức thanh toán đa dạng thuận tiện',
-            				'required' => true,
-            		),
-            		'multiOptionsCallback' => array('getStatusFeedback')
+            		'multiOptionsCallback' => array('getToAdrees')
         	),
         	'uname' => array(
         		'type' => 'Text',
@@ -67,10 +42,28 @@ class Feedback_Form_New extends Cl_Form
         			'validators' => array('NotEmpty'),
         		),
         	),
-        	'more' => array(
+        		'uphone' => array(
+        				'type' => 'Text',
+        				'options' => array(
+        						'label' => "Điện thoại",
+        						'required' => true,
+        						'filters' => array('StringTrim', 'StripTags'),
+        						'validators' => array('NotEmpty'),
+        				),
+        		),
+        		'title' => array(
+        				'type' => 'Text',
+        				'options' => array(
+        						'label' => "Tiêu đề",
+        						'required' => true,
+        						'filters' => array('StringTrim', 'StripTags'),
+        						'validators' => array('NotEmpty'),
+        				),
+        		),
+        	'content' => array(
         		'type' => 'Textarea',
         		'options' => array(
-        	        'label' => "Chú ý thêm",
+        	        'label' => "Nộidung",
         	        'class' => 'isEditor',
     	    		'filters' => array('StringTrim', 'NodePost'),
         			'prefixPath' => array(

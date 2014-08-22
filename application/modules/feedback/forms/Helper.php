@@ -15,7 +15,17 @@ class Feedback_Form_Helper extends Cl_Form_NodeHelper
     	//Rất tốt, tốt, trung bình, kém, rất kém
     	return array('success' =>true, 'result' => $ret);
     }
-    
+    public function getToAdrees()
+    {
+    	$ret = array('goldstar' => 'GoldStar Việt Nam', 
+    			'kinhdoanh' => 'Bộ phận kinh doanh',
+    			'trienkhai' => 'Bộ phận triển khai',
+    			'baohanh' => 'Bộ phận bảo hành', 
+    			'kythuat' => 'Bộ phận kỹ thuật'
+    	);
+    	//Rất tốt, tốt, trung bình, kém, rất kém
+    	return array('success' =>true, 'result' => $ret);
+    }
     /*
     public function getItemsPerPageList($params)
     {
