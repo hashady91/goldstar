@@ -6,6 +6,7 @@ class Dao_Node_New extends Dao_Node_Site
     		'id' => 'string',
     		'iid' => 'int',
     		'name' => 'string',
+    		'ac_name' => 'string',
     		'avatar' => 'string',
     		'counter' => 'mixed',
         	'slug' => 'string',
