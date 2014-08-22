@@ -61,18 +61,6 @@ class Dao_Node_Bill extends Cl_Dao_Node
      */
 	public function beforeInsertNode($data)
 	{
-		//get product base on model
-		$product_id = $data['product']['id'];
-		$where = array('id'=>$product_id);
-		$r = Dao_Node_Product::getInstance()->findOne($where);
-		if($r['success']){
-			$product = $r['result'];
-			$data['product'] = $product;
-			$update = array('$inc' => array('counter.queued' => 1));
-			
-			$r = Dao_Node_Product::getInstance()->update($where, $update);
-		}
-		
         return array('success' => true, 'result' => $data);
 	}
 	

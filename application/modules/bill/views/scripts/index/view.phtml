@@ -1,47 +1,62 @@
-<div class='row'>
-<?php 
-    $isPreview = is_preview();
-?>
-<?php if (!$isPreview) :?>
-<div class='col-md-12'>
-<?php echo $this->render('index/navbar.phtml');?>
-</div>
+<?php if (has_perm('sudo')) :?>
+	<div class='col-md-12'>
+	<?php echo $this->render('index/navbar.phtml');?>
+	</div>
 <?php endif;?>
 
-<?php if (isset($this->row)):?>
 <?php 
     $row = $this->row;
     $lu = Zend_Registry::get('user');
 ?>
-<script type="text/javascript">
-CL.NID = "<?php echo $row['id']; ?>";
-</script>
-
-<div <?php if (!$isPreview) :?>class='col-md-9'<?php endif;?>>
-    <h3><?php echo $row['name']?></h3>
-    <b>Status</b> : <?php Echo $row['status'];?>
-    <br/>
-    <?php echo $row['content'];?>
-    
-    <?php endif;?>
-    
-    <?php if (!$isPreview) :?>
-    <div><br/><br/><h3>Comments</h3></div>
-    <?php 
-        $this->comment_node_type = 'bill';
-        if($lu['id'] != GUEST_ID)
-            $this->can_comment = true;
-        else 
-            $this->can_comment = false;
-        echo $this->render("widget/comments-wrapper.phtml");
-    ?>
-    <?php endif;?>
+<div style='min-height: 400px;'>
+	<div class='row'>
+		<div class='col-md-7' style='line-height: 20px;'>
+			<div class='alert alert-success'>
+				<i class='glyphicon glyphicon-ok'></i> Tạo hóa đơn thành công
+			</div>
+			<div class='alert' style='border: 1px solid #DDD;'>
+			Cảm ơn <font style='font-weight: bold'><?php echo $row['uname'];?></font>
+			đã đặt hàng tại <font style='color: red; font-weight: bold;'>GoldStar</font>. <br>
+			
+			<font style='color: red; font-weight: bold;'>GoldStar</font> luôn mong muốn bạn sẽ hài lòng với sản phẩm và dịch vụ của công ty.<br>
+			<div class='separator-high'></div>
+			<h4 style='border-bottom: 1px solid #DDD;'>Nếu bạn có ý kiến cần chúng tôi giải đáp, bạn có thể liên hệ tới:<br></h4>
+			<ul>
+				<li>Đường dây nóng: <font style='color: red;'>0936.385.289</font></li>
+				<li>Email: <font style='color: #428BCA;'>lienhe@goldstar.com.vn</font></li>
+			</ul>
+			Hoặc bạn có thể gửi phản hồi trực tiếp <a style='font-weight: bold;' href='/feedback/new'>tại đây</a>
+			</div>
+			
+			
+		</div>
+		<div class='col-md-5'>
+			<?php echo $this->render('/widget/ho-tro-truc-tuyen.phtml');?>
+			<div style="min-height: 10px;"></div>
+			<div class='clearfix'></div>
+			<div class='row'>
+				<div class='col-md-12'>
+					<div style="min-height: 10px;"></div>
+					<div class='row'>
+						<div class='col-md-6' style='padding: 0px'>
+							<?php echo $this->render('/widget/tin-nhanh.phtml');?>
+							
+							<?php echo $this->render('/widget/new-videos.phtml');?>
+						</div>
+						<div class='col-md-6' style='padding: 0px'>
+							<?php echo $this->render('/widget/box-ho-tro.phtml');?>
+							
+							<?php echo $this->render('/widget/dich-vu.phtml');?>
+						</div>
+					</div>
+					<div class='row'>
+						<div class='col-md-12' style='padding: 0px;'>
+							<?php //echo $this->render('/widget/chuyen-muc-hot.phtml');?>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
-<?php $this->inlineScript()->captureStart();?>
-$(function(){
-    url = $(location).attr('href');
-    var id = url.substr(url.indexOf("#") + 1);
-    $("#" + id + ">.comment").css({'background' : 'yellow'});
-});
-<?php $this->inlineScript()->captureEnd();?>
-</div>
+<hr>

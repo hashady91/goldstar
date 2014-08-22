@@ -61,8 +61,6 @@ class Bill_IndexController extends Cl_Controller_Action_NodeIndex
 
     public function newAction()
     {
-    	assure_perm('sudo');
-    	$this->setLayout("admin");
         $this->genericNew("Bill_Form_New", "Dao_Node_Bill", "Node");
         
         if(isset($this->ajaxData)) {
