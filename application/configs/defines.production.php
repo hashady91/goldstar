@@ -12,7 +12,7 @@ define('STATIC_GT', 'http://static.goldstar.com.vn/');
 
 define('NOREPLY_EMAIL', 'noreply@goldstar.com.vn');
 define('DOMAIN', 'goldstar.com.vn');
-define('CONTACT_EMAIL', 'contact@goldstar.com.vn');
+define('CONTACT_EMAIL', 'stk@goldstar.com.vn');
 define('USE_AMAZON_SES', false); // true => send mail with amazon SES
 define('FILES_UPLOAD_PATH', realpath(APPLICATION_PATH . "/../") . "/hidden/");
 define('JSVERSION', '1340447153');
@@ -29,9 +29,9 @@ define('REDIS_PORT', 6379);
 define('REDIS_HOST','127.0.0.1');
 define('REDIS_PASS', '');
 
-define('RDB_DICT_DB', 33); //[0,1,2] is kept for eekip, [3,4,5] for edx,, [6,7,8] for taxi
-define('RDB_CACHE_DB', 34);
-define('RDB_QUEUE_DB', 35);
+define('RDB_DICT_DB', 20); //[0,1,2] is kept for eekip, [3,4,5] for edx,, [6,7,8] for taxi
+define('RDB_CACHE_DB', 21);
+define('RDB_QUEUE_DB', 22);
 
 define('RDB_DICT_PREFIX', 'd:'); //dict
 
